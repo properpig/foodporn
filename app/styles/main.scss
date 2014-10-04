@@ -47,11 +47,11 @@ html, body {
   position: absolute;
   background-color: rgba(0,0,0,0.0);
   transition: background-color 0.5s ease;
-  z-index: 5;
 }
 
 .view-change .vignette {
   background-color: rgba(0,0,0,0.5);
+  z-index: 5;
 }
 
 .main-div {

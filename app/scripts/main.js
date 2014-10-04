@@ -20,7 +20,6 @@
   'use strict';
 
   var container = document.querySelector('.container');
-  var menuButton = document.querySelector('.hamburger-container');
 
   /**
    * Toggles the class on the container so that
@@ -30,16 +29,16 @@
     container.classList.toggle('view-change');
 
     var hamburger = $('.hamburger');
-    if (parseInt(hamburger.css('left').replace("px","")) < -25) {
+    if (parseInt(hamburger.css('left').replace('px','')) < -27) {
       hamburger.animate({
-        'left': -25,
+        'left': -27,
         'right': 0,
       }, 500, function() {
         // hamburger.toggle('clicked');
       });
     } else {
       hamburger.animate({
-        'left': -30,
+        'left': -33,
         'right': 5,
       }, 500, function() {
         // hamburger.toggle('clicked');
@@ -48,7 +47,7 @@
   }
 
   // And switch it back again when you click on the back button
-  menuButton.addEventListener('click', onViewChange);
+  $('.hamburger-container, .vignette').click(onViewChange);
 
  //  /*
  // * Replace all SVG images with inline SVG

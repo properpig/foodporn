@@ -1,0 +1,187 @@
+/*
+ * Web Starter Kit
+ *
+ * Multi-screen layout styles for your page. Brought to you by the
+ * Web Starter Kit team.
+ *
+ */
+@import '_h5bp';
+
+/*
+ * Visual Style Guide styles
+ * Remove if you prefer to use a CSS library, like Bootstrap
+ */
+@import 'components/components';
+
+$base-color: #be1313;
+$bright-red: #f30604;
+$orange: #f88d11;
+$yellow-orange: #ffb606;
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.vignette {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background-color: rgba(0,0,0,0.0);
+  transition: background-color 0.5s ease;
+
+}
+
+.view-change .vignette {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.main-div {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.app-bar-container {
+
+  .hamburger-container {
+    height: 60px;
+    display: inline-block;
+    position: relative;
+  }
+
+  .hamburger {
+    height: 60px;
+    width: 50px;
+    position: absolute;
+    left: -25px;
+    top: 0px;
+  }
+
+  .logo {
+    height: 50px;
+    display: inline-block;
+    margin-left: 17px;
+  }
+
+  .app-bar {
+    display: inline-block;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    line-height: 60px;
+    font-size: 25px;
+    color: white;
+  }
+
+  .app-name {
+    display: inline-block;
+  }
+
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  position: relative;
+  margin: 0 auto;
+  background-color: $base-color;
+}
+
+.navigation-drawer {
+  will-change: transform;
+  width: 60%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 60;
+  transition: -webkit-transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  transition: transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  box-sizing: border-box;
+  background: black;
+  color: white;
+  z-index: 20;
+}
+
+.view-change .navigation-drawer {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.navigation-drawer {
+
+  .nav-item {
+    padding: 10px;
+  }
+
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: url(/fonts/RobotoCondensed-Light.eot);
+  src: local('Roboto Condensed Light'), local('RobotoCondensed-Light'), url(/fonts/RobotoCondensed-Light.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-Light.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/RobotoCondensed-Regular.eot);
+  src: local('Roboto Condensed Regular'), local('RobotoCondensed-Regular'), url(/fonts/RobotoCondensed-Regular.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/RobotoCondensed-Bold.eot);
+  src: local('Roboto Condensed Regular'), local('RobotoCondensed-Bold'), url(/fonts/RobotoCondensed-Bold.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-Bold.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 300;
+  src: url(/fonts/RobotoCondensed-LightItalic.eot);
+  src: local('Roboto Condensed Light Italic'), local('RobotoCondensed-LightItalic'), url(/fonts/RobotoCondensed-LightItalic.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-LightItalic.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 400;
+  src: url(/fonts/RobotoCondensed-Italic.eot);
+  src: local('Roboto Condensed Italic'), local('RobotoCondensed-Italic'), url(/fonts/RobotoCondensed-Italic.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-Italic.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 700;
+  src: url(/fonts/RobotoCondensed-BoldItalic.eot);
+  src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url(/fonts/RobotoCondensed-BoldItalic.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-BoldItalic.woff) format('woff');
+}

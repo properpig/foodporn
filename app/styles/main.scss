@@ -224,7 +224,6 @@ html, body {
 
 .modal-wrapper {
   position: absolute;
-  height: auto;
   top: 110%;
   width: 100%;
   overflow-y: auto;
@@ -236,6 +235,7 @@ html, body {
 
 .modal-wrapper.open {
   background-color: rgba(0,0,0,0.5);
+  height: auto;
   top: 0px;
   bottom: 0px;
   z-index: 20;
@@ -246,7 +246,7 @@ html, body {
   background: whitesmoke;
   width: $modal-width;
   margin: 0 auto;
-  margin-top: 90px;
+  margin-top: 900px;
   margin-bottom: $main-button-height;
   min-height: 100%;
 

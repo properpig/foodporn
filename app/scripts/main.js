@@ -52,38 +52,46 @@
   // Allow switching of sub nav
   $('.sub-nav-item').click(function() {
     // first check if this tab is already selected
-    if ($(this).hasClass("selected")) {
+    if ($(this).hasClass('selected')) {
       return;
     }
-    $('.sub-nav-item').toggleClass("selected");
+    $('.sub-nav-item').toggleClass('selected');
     window.location.href = $(this).data('link');
   });
 
   // opening a modal
   $('.main-buttons .full, .main-buttons .half').click(function() {
     var id = $(this).attr('id');
+    // show the vignette
     $('#modal-' + id).addClass('open');
-  });
-
-  // submitting a modal
-  $('.main-buttons .submit').click(function() {
-    console.log("do something");
-    $('.modal-wrapper.open').removeClass('open');
+    // slide the modal in
+    $('#modal-' + id + ' .modal').animate({
+      'marginTop': 90
+    });
   });
 
   // closing a modal
   $('.modal').click(function(event) {
     // prevent clicks on the child class to propagate to the wrapper
     event.stopPropagation();
-  })
-  $('.modal-wrapper').click(function(event) {
-    $(this).animate({
-      'opacity': '0',
+  });
+  $('.modal-wrapper').click(function() {
+    var id = $(this).attr('id');
+    $('#' + id + ' .modal').animate({
+      'marginTop': 900
     }, 300, function() {
-      $(this).removeClass('open');
-      $(this).css('opacity', 'initial');
+      $('.modal-wrapper').removeClass('open');
     });
-  })
+  });
+
+  // submitting a modal
+  $('.main-buttons .submit').click(function() {
+    console.log("do something");
+
+    // simulate clicking to close modal
+    $('.modal-wrapper.open').click();
+
+  });
 
  //  /*
  // * Replace all SVG images with inline SVG

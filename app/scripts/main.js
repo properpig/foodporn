@@ -49,6 +49,16 @@
   // And switch it back again when you click on the back button
   $('.hamburger-container, .vignette').click(onViewChange);
 
+  // Allow switching of sub nav
+  $('.sub-nav-item').click(function() {
+    // first check if this tab is already selected
+    if ($(this).hasClass("selected")) {
+      return;
+    }
+    $('.sub-nav-item').toggleClass("selected");
+    window.location.href = $(this).data('link');
+  });
+
  //  /*
  // * Replace all SVG images with inline SVG
  // */

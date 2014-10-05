@@ -47,6 +47,7 @@ html, body {
   position: absolute;
   background-color: rgba(0,0,0,0.0);
   transition: background-color 0.5s ease;
+  z-index: -1;
 }
 
 .view-change .vignette {
@@ -55,9 +56,12 @@ html, body {
 }
 
 .main-div {
-  height: 100%;
+  height: auto;
   width: 100%;
-  position: relative;
+  position: absolute;
+  top: 90px;
+  left: 0px;
+  bottom: 0px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -113,7 +117,7 @@ html, body {
     position: absolute;
     color: white;
     right: 0;
-    font-size: 16px;
+    font-size: 14px;
     padding-right: 5px;
   }
 
@@ -159,6 +163,10 @@ html, body {
   .profile {
     background: whitesmoke;
     color: $darkgrey;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 60px;
   }
 
   .profile img {
@@ -169,6 +177,31 @@ html, body {
 
   .profile span {
     margin-left: 10px;
+  }
+
+}
+
+.sub-nav {
+
+  background: whitesmoke;
+  height: 30px;
+  z-index: 10;
+
+  .sub-nav-item {
+    width: 50%;
+    border-bottom: 5px #000;
+    text-align: center;
+    text-transform: uppercase;
+    display: inline-block;
+    box-sizing: content-box;
+  }
+
+  .underline {
+    height: 5px;
+  }
+
+  .selected .underline {
+    background: $base-color;
   }
 
 }

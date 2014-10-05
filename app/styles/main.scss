@@ -20,6 +20,11 @@ $yellow-orange: #ffb606;
 
 $darkgrey: #666666;
 
+$nav-bar-height: 55px;
+$sub-nav-height: 30px;
+$modal-width: 90%;
+$main-button-height: 50px;
+
 html, body {
   width: 100%;
   height: 100%;
@@ -59,9 +64,9 @@ html, body {
   height: auto;
   width: 100%;
   position: absolute;
-  top: 90px;
+  top: $nav-bar-height + $sub-nav-height;
   left: 0px;
-  bottom: 0px;
+  bottom: $main-button-height;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -72,19 +77,19 @@ html, body {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: 60px;
+  height: $nav-bar-height;
   position: relative;
   margin: 0 auto;
   background-color: $base-color;
+  border-bottom: 1px solid $darkgrey;
 
   .hamburger-container {
-    height: 60px;
     display: inline-block;
     position: relative;
   }
 
   .hamburger {
-    height: 60px;
+    height: $nav-bar-height;
     width: 50px;
     position: absolute;
     left: -27px;
@@ -99,12 +104,12 @@ html, body {
 
   .app-bar {
     display: inline-block;
-    height: 60px;
+    height: $nav-bar-height;
     position: fixed;
     top: 0;
     left: 0;
     overflow: hidden;
-    line-height: 60px;
+    line-height: $nav-bar-height;
     font-size: 25px;
     color: white;
   }
@@ -124,7 +129,7 @@ html, body {
   .icons .fa {
     color: white;
     padding: 0px 5px;
-    line-height: 60px;
+    line-height: $nav-bar-height;
   }
 }
 
@@ -134,7 +139,7 @@ html, body {
   height: 100%;
   position: absolute;
   left: 0;
-  top: 60;
+  top: $nav-bar-height;
   transition: -webkit-transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
   transition: transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
   -webkit-transform: translateX(-100%);
@@ -165,8 +170,7 @@ html, body {
     color: $darkgrey;
     width: 100%;
     position: absolute;
-    bottom: 0px;
-    margin-bottom: 60px;
+    bottom: $nav-bar-height;
   }
 
   .profile img {
@@ -184,7 +188,7 @@ html, body {
 .sub-nav {
 
   background: whitesmoke;
-  height: 30px;
+  height: $sub-nav-height;
   z-index: 10;
 
   .sub-nav-item {
@@ -202,6 +206,53 @@ html, body {
 
   .selected .underline {
     background: $base-color;
+  }
+
+}
+
+.main-buttons {
+  position: absolute;
+  bottom: 0px;
+  height: $main-button-height;
+  width: 100%;
+  background: $base-color;
+  color: white;
+  font-size: 18px;
+  line-height: $main-button-height;
+  text-align: center;
+}
+
+.modal-wrapper {
+  position: absolute;
+  height: auto;
+  top: 110%;
+  width: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: rgba(0,0,0,0.0);
+  transition: background-color 0.5s ease;
+  z-index: -1;
+}
+
+.modal-wrapper.open {
+  background-color: rgba(0,0,0,0.5);
+  top: 0px;
+  bottom: 0px;
+  z-index: 20;
+}
+
+.modal {
+
+  background: whitesmoke;
+  width: $modal-width;
+  margin: 0 auto;
+  margin-top: 90px;
+  margin-bottom: $main-button-height;
+  min-height: 100%;
+
+  .main-buttons {
+    position: fixed;
+    width: $modal-width;
   }
 
 }

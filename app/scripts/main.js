@@ -46,7 +46,7 @@
     }
   }
 
-  // And switch it back again when you click on the back button
+  // And switch it back again when you click on the same button
   $('.hamburger-container, .vignette').click(onViewChange);
 
   // Allow switching of sub nav
@@ -58,6 +58,32 @@
     $('.sub-nav-item').toggleClass("selected");
     window.location.href = $(this).data('link');
   });
+
+  // opening a modal
+  $('.main-buttons .full, .main-buttons .half').click(function() {
+    var id = $(this).attr('id');
+    $('#modal-' + id).addClass('open');
+  });
+
+  // submitting a modal
+  $('.main-buttons .submit').click(function() {
+    console.log("do something");
+    $('.modal-wrapper.open').removeClass('open');
+  });
+
+  // closing a modal
+  $('.modal').click(function(event) {
+    // prevent clicks on the child class to propagate to the wrapper
+    event.stopPropagation();
+  })
+  $('.modal-wrapper').click(function(event) {
+    $(this).animate({
+      'opacity': '0',
+    }, 300, function() {
+      $(this).removeClass('open');
+      $(this).css('opacity', 'initial');
+    });
+  })
 
  //  /*
  // * Replace all SVG images with inline SVG

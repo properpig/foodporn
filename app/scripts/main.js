@@ -1,3 +1,4 @@
+/*global $:false */
 /*!
  *
  *  Web Starter Kit
@@ -86,7 +87,7 @@
 
   // submitting a modal
   $('.main-buttons .submit').click(function() {
-    console.log("do something");
+    console.log('do something');
 
     // simulate clicking to close modal
     $('.modal-wrapper.open').click();

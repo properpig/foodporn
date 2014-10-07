@@ -19,18 +19,21 @@ $orange: #f88d11;
 $yellow-orange: #ffb606;
 
 $darkgrey: #666666;
+$lightgrey: #f6f6f6;
 
 $nav-bar-height: 55px;
 $sub-nav-height: 30px;
 $modal-width: 90%;
 $main-button-height: 50px;
 
+$radius: 3px;
+
 html, body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+  font-family: 'Lato', 'Roboto Condensed', Helvetica, Arial, sans-serif;
   font-weight: 300;
   box-sizing: border-box;
 }
@@ -63,6 +66,7 @@ html, body {
 .main-div {
   height: auto;
   width: 100%;
+  background: $lightgrey;
   position: absolute;
   top: $nav-bar-height + $sub-nav-height;
   left: 0px;
@@ -81,7 +85,7 @@ html, body {
   position: relative;
   margin: 0 auto;
   background-color: $base-color;
-  border-bottom: 1px solid $darkgrey;
+  border-bottom: 1px solid white;
 
   .hamburger-container {
     display: inline-block;
@@ -124,12 +128,19 @@ html, body {
     right: 0;
     font-size: 14px;
     padding-right: 5px;
-  }
 
-  .icons .fa {
-    color: white;
-    padding: 0px 5px;
-    line-height: $nav-bar-height;
+    .fa {
+      color: white;
+      padding: 0px 5px;
+      line-height: $nav-bar-height;
+    }
+
+    img {
+      height: 40px;
+      margin-top: 7px;
+      vertical-align: top;
+    }
+
   }
 }
 
@@ -187,7 +198,7 @@ html, body {
 
 .sub-nav {
 
-  background: whitesmoke;
+  background: white;
   height: $sub-nav-height;
   z-index: 10;
 
@@ -255,6 +266,17 @@ html, body {
     width: $modal-width;
   }
 
+}
+
+.box {
+  background: white;
+  border-radius: $radius;
+  box-shadow: 1px 2px 2px 0px #b8b8b8;
+  box-sizing: border-box;
+}
+
+.template {
+  display: none;
 }
 
 @font-face {

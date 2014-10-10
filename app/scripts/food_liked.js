@@ -3,7 +3,7 @@
     'use strict';
 
     var username = 'john';
-    $.getJSON( 'http://128.199.140.174:8000/food/likedfoodlist/' + username + '/', function( data ) {
+    $.getJSON( window.apiUrl + '/food/liked/' + username + '/', function( data ) {
 
       var template = $('.template').children().first().clone();
 

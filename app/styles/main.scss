@@ -13,27 +13,14 @@
  */
 @import 'components/components';
 
-$base-color: #be1313;
-$bright-red: #f30604;
-$orange: #f88d11;
-$yellow-orange: #ffb606;
-
-$darkgrey: #666666;
-$lightgrey: #f6f6f6;
-
-$nav-bar-height: 55px;
-$sub-nav-height: 30px;
-$modal-width: 90%;
-$main-button-height: 50px;
-
-$radius: 3px;
+@import '_custom_vars';
 
 html, body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Lato', 'Roboto Condensed', Helvetica, Arial, sans-serif;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
   font-weight: 300;
   box-sizing: border-box;
 }
@@ -194,6 +181,11 @@ html, body {
     margin-left: 10px;
   }
 
+  .fa {
+    width: 20px;
+    text-align: center;
+  }
+
 }
 
 .sub-nav {
@@ -280,11 +272,31 @@ html, body {
 }
 
 @font-face {
-  font-family: 'Roboto Condensed';
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 300;
-  src: url(/fonts/RobotoCondensed-Light.eot);
-  src: local('Roboto Condensed Light'), local('RobotoCondensed-Light'), url(/fonts/RobotoCondensed-Light.eot) format('embedded-opentype'), url(/fonts/RobotoCondensed-Light.woff) format('woff');
+  src: url(/fonts/Lato-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 300;
+  src: url(/fonts/Lato-LightItalic.ttf);
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/Lato-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/Lato-Bold.ttf);
 }
 
 @font-face {

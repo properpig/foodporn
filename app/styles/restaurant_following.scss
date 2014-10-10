@@ -1,0 +1,57 @@
+@import '_custom_vars';
+
+.restaurant-item {
+
+  position: relative;
+  width: 100%;
+
+  .photo {
+
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+
+    .get-there-button {
+      background: white;
+      color: $base-color;
+      border: 1px solid $base-color;
+      font-weight: 400;
+      margin: 15px;
+      padding: 7px 15px;
+      border-radius: 3px;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      cursor: pointer;
+    }
+
+  }
+
+  .info {
+
+    background: white;
+    padding: 7px;
+
+    .name {
+      font-weight: 400;
+    }
+
+    .more {
+
+      .address {
+        display: inline-block;
+      }
+
+      .price-range {
+        display: inline-block;
+        float: right;
+      }
+
+    }
+
+  }
+
+}

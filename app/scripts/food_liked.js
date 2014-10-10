@@ -9,13 +9,15 @@
 
       $.each(data, function(index, food) {
 
-        template.find('.name').text(food.name);
-        template.find('.price').text(food.price);
-        /*jshint camelcase: false */
-        template.find('.num_likes .num').text(food.num_likes);
-        template.find('.food-photo img').attr('src', '/images/' + food.photo);
+        var thisTemplate = template.clone();
 
-        $('.main-div').append(template.clone());
+        thisTemplate.find('.name').text(food.name);
+        thisTemplate.find('.price').text(food.price);
+        /*jshint camelcase: false */
+        thisTemplate.find('.num_likes .num').text(food.num_likes);
+        thisTemplate.find('.food-photo img').attr('src', '/images/' + food.photo);
+
+        $('.main-div').append(thisTemplate);
 
       });
 

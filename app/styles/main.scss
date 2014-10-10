@@ -192,11 +192,12 @@ html, body {
 
   background: white;
   height: $sub-nav-height;
+  box-shadow: 1px 2px 2px 0px #b8b8b8;
+  position: relative;
   z-index: 10;
 
   .sub-nav-item {
     width: 50%;
-    border-bottom: 5px #000;
     text-align: center;
     text-transform: uppercase;
     display: inline-block;

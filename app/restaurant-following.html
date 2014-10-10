@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/restaurant_following.css">
+    <link rel="stylesheet" href="styles/restaurants.css">
 
   </head>
   <body>
@@ -51,7 +51,7 @@
            --><div class="app-name">Restaurants</div>
         </div>
         <div class="icons">
-            <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
+            <a href="#"><img src="images/icons/map-view.svg" /></a>
             <a href="search.html"><i class="fa fa-search fa-2x"></i></a>
          </div>
       </div>
@@ -74,20 +74,21 @@
       </div>
 
       <div class="main-div">
-        <div class="restaurant-item">
-          <div class="photo">
-            <img src="images/restaurant/madforgarlic.png" />
-            <div class="get-there-button">Get there!</div>
-          </div>
-          <div class="info">
-            <div class="name">Mad For Garlic</div>
-            <div class="more">
-              <div class="address">address</div>
-              <div class="price-range">$5 - $10</div>
+        <div class="template">
+          <div class="restaurant-item">
+            <div class="photo">
+              <img src="images/restaurant/thewinecompany.png" />
+              <div class="get-there-button">Get there!</div>
+            </div>
+            <div class="info">
+              <div class="name">The Wine Company</div>
+              <div class="price-range"><span class="low">$1</span> - <span class="high">$20</span></div>
+              <div class="more">
+                <div class="address">6 Sentosa Gateway</div>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
 
       <div class="main-buttons"><div class="full" id="filters">Filters</div></div>
@@ -105,6 +106,9 @@
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/restaurant_following.min.js -->
+    <script src="scripts/restaurant_following.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

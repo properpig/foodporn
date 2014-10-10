@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/restaurants.css">
 
   </head>
   <body>
@@ -50,7 +51,7 @@
            --><div class="app-name">Restaurants</div>
         </div>
         <div class="icons">
-            <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
+            <a href="#"><img src="images/icons/map-view.svg" /></a>
             <a href="search.html"><i class="fa fa-search fa-2x"></i></a>
          </div>
       </div>
@@ -73,18 +74,21 @@
       </div>
 
       <div class="main-div">
-        hello there! This will contain pictures of random food ^^
-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat mollis felis, eu ultrices eros elementum non. Mauris consequat pellentesque ex non viverra. Donec ullamcorper pretium neque, nec ullamcorper risus. Fusce consequat lobortis massa, vel tincidunt nisl venenatis sed. Nulla vehicula justo at fringilla elementum. Nullam vel velit nibh. Mauris a sem auctor, tincidunt ex vitae, aliquam elit. Maecenas sed dignissim neque. Ut at maximus nibh. Aenean cursus quam in sagittis eleifend. Maecenas molestie purus id lectus bibendum, sit amet placerat magna sollicitudin.
-
-        Vivamus ut maximus diam. Suspendisse potenti. Sed sit amet orci vitae arcu pretium tincidunt. Praesent quis nunc ante. Fusce venenatis auctor urna quis laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet tempor nunc, vitae eleifend elit. Praesent at lectus porta, fermentum erat id, sollicitudin lectus. Quisque ullamcorper urna sed risus placerat, id tincidunt nibh ornare. Fusce non venenatis est.
-
-        In iaculis turpis odio, et porta tellus vulputate ut. Cras eget enim scelerisque, commodo ligula ut, dignissim orci. Quisque faucibus lectus quis sem fermentum aliquet. Nunc id dolor nisl. Praesent finibus, leo ut pulvinar ultrices, erat orci tincidunt eros, a feugiat nisi augue id nulla. Aliquam cursus, ipsum vel rhoncus finibus, massa orci ornare elit, eu rhoncus quam tortor a leo. Maecenas vehicula vel purus sit amet tempor. Cras tristique est velit, et commodo sem fringilla id. Sed et pulvinar tortor, tristique malesuada lacus. Ut molestie accumsan sapien. Praesent ac felis vitae risus consectetur tincidunt. Aenean arcu nisi, porta sit amet sodales sodales, commodo ac quam. Quisque feugiat fringilla dolor non tincidunt. Etiam pellentesque est mauris, ultrices commodo mauris vestibulum in. Morbi vitae pretium dolor. Curabitur bibendum pulvinar lectus vitae porta.
-
-        Quisque nibh diam, hendrerit vitae scelerisque sed, posuere ut mauris. Phasellus rhoncus, ex ut venenatis finibus, tortor erat dapibus lectus, id molestie felis arcu ac magna. Phasellus at vulputate leo. In quis cursus neque. Duis quis faucibus mauris. Quisque vel nisl nec dolor tempus ultricies. Quisque ac elit molestie, rutrum mi in, vestibulum nisl. Maecenas in metus ut libero consequat egestas.
-
-        Aliquam nisl tellus, dictum nec posuere non, tincidunt eget quam. Sed tempus ex eget nisl ultricies, sed auctor nulla lacinia. Donec mattis, odio non interdum aliquam, arcu justo convallis lorem, ac volutpat elit magna ut turpis. Nam eleifend at neque sed blandit. Vivamus elit odio, facilisis ac nibh eget, facilisis euismod neque. Integer finibus eget elit id malesuada. Nunc elementum id quam sit amet hendrerit. Nam consectetur enim quis lorem aliquet, id luctus lorem consequat. In vehicula vestibulum arcu non finibus. Fusce consectetur rhoncus urna sit amet suscipit. Nam ut dictum velit. Nam vitae mattis libero. Aenean volutpat erat nunc, ut lacinia arcu feugiat in. Pellentesque laoreet ipsum massa, vel blandit tellus hendrerit sit amet. Suspendisse a odio placerat, ornare tortor sollicitudin, luctus nisl.
-
+        <div class="template">
+          <div class="restaurant-item">
+            <div class="photo">
+              <img src="images/restaurant/thewinecompany.png" />
+              <div class="follow-button"></div>
+            </div>
+            <div class="info">
+              <div class="name">The Wine Company</div>
+              <div class="price-range"><span class="low">$1</span> - <span class="high">$20</span></div>
+              <div class="more">
+                <div class="address">6 Sentosa Gateway</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="main-buttons"><div class="full" id="filters">Filters</div></div>
@@ -102,6 +106,9 @@
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/restaurants_recommended.min.js -->
+    <script src="scripts/restaurants_recommended.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

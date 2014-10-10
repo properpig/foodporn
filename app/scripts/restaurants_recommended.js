@@ -2,8 +2,7 @@
 (function () {
     'use strict';
 
-    var username = 'john';
-    $.getJSON( window.apiUrl + '/restaurants/recommended/' + username + '/', function( data ) {
+    $.getJSON( window.apiUrl + '/restaurants/recommended/' + window.username + '/', function( data ) {
 
       console.log(data);
 
@@ -23,6 +22,22 @@
         if (restaurant.is_following) {
           thisTemplate.find('.follow-button').addClass('following');
         }
+
+        var people_following = "";
+
+        // get the people following this restaurant
+        $.each(restaurant.followed_by, function(index, user) {
+          people_following += '<img src="images/' + user.profile_pic + '" />';
+        });
+
+        var more_count = restaurant.following_count - restaurant.followed_by.length;
+        if (more_count > 0) {
+          thisTemplate.find('.followed-by .num').text(more_count);
+        } else {
+          thisTemplate.find('.followed-by .more-following').hide();
+        }
+
+        thisTemplate.find('.followed-by').prepend(people_following);
 
         $('.main-div').append(thisTemplate);
 

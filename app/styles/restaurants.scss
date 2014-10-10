@@ -92,6 +92,22 @@
         display: inline-block;
       }
 
+      .followed-by {
+
+        line-height: 30px;
+
+        img {
+          width: 30px;
+          margin: 3px;
+          border-radius: 20px;
+        }
+
+      }
+
+      .more-following {
+        display: inline-block;
+      }
+
     }
 
   }

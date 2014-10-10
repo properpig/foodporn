@@ -22,6 +22,7 @@
 
   window.apiUrl = 'http://localhost:8000/foodporn';
   // window.apiUrl = 'http://128.199.140.174:8000/foodporn';
+  window.username = 'john';
 
   var container = document.querySelector('.container');
 

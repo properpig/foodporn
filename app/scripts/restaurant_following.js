@@ -2,8 +2,7 @@
 (function () {
     'use strict';
 
-    var username = 'john';
-    $.getJSON( window.apiUrl + '/restaurants/following/' + username + '/', function( data ) {
+    $.getJSON( window.apiUrl + '/restaurants/following/' + window.username + '/', function( data ) {
 
       var template = $('.template').children().first().clone();
 

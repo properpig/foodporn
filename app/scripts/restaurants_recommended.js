@@ -17,7 +17,7 @@
         thisTemplate.find('.price-range .low').text(restaurant.price_low);
         thisTemplate.find('.price-range .high').text(restaurant.price_high);
         thisTemplate.find('.address').text(restaurant.location_name);
-        thisTemplate.find('.photo img').attr('src', '/images/' + restaurant.photo);
+        thisTemplate.find('.photo img').attr('src', 'images/' + restaurant.photo);
 
         if (restaurant.is_following) {
           thisTemplate.find('.follow-button').addClass('following');
@@ -38,6 +38,8 @@
         }
 
         thisTemplate.find('.followed-by').prepend(people_following);
+
+        thisTemplate.find('.photo, .info').wrap('<a href="restaurant.html?id=' + restaurant.id + '"></a>');
 
         $('.main-div').append(thisTemplate);
 

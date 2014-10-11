@@ -15,7 +15,9 @@
         thisTemplate.find('.price-range .low').text(restaurant.price_low);
         thisTemplate.find('.price-range .high').text(restaurant.price_high);
         thisTemplate.find('.address').text(restaurant.location_name);
-        thisTemplate.find('.photo img').attr('src', '/images/' + restaurant.photo);
+        thisTemplate.find('.photo img').attr('src', 'images/' + restaurant.photo);
+
+        thisTemplate.find('.photo, .info').wrap('<a href="restaurant.html?id=' + restaurant.id + '"></a>');
 
         $('.main-div').append(thisTemplate);
 

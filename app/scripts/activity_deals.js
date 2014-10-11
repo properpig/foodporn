@@ -11,9 +11,9 @@
 
       var thisTemplate = template.clone();
 
-      thisTemplate.find('.photo img').attr('src', '/images/' + deal.photo);
+      thisTemplate.find('.photo img').attr('src', 'images/' + deal.photo);
       thisTemplate.find('.title').text(deal.title);
-      thisTemplate.find('.restaurant .name').text(deal.restaurant);
+      thisTemplate.find('.restaurant .name').text(deal.restaurant).wrap('<a href="restaurant.html?id=' + deal.restaurant_id + '"></a>');
       thisTemplate.find('.details').text(deal.details);
       thisTemplate.find('.more').text(deal.more);
 

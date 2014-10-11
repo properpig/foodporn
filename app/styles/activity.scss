@@ -41,10 +41,15 @@
 
 .activity-item {
 
+  padding: 7px;
+  clear: both;
+
   .actor-photo {
     width: 20%;
     padding: 3px;
+    padding-top: 10px;
     display: inline-block;
+    float: left;
 
     img {
       border-radius: 100px;
@@ -53,8 +58,70 @@
   }
 
   .info {
-    width: 78%;
+    width: 77%;
     display: inline-block;
+    float: left;
+
+    .timesince {
+      height: 14px;
+      padding-bottom: 2px;
+      font-size: 12px;
+      line-height: 12px;
+      text-align: right;
+      color: $darkgrey;
+    }
+
+    .text {
+      width: 70%;
+      line-height: 19px;
+      display: inline-block;
+      float: left;
+    }
+
+    /* text styling */
+    .actor, .friend, .restaurant {
+      color: $base-color;
+      font-weight: 400;
+    }
+
+    .num {
+      font-style: italic;
+    }
+
+    /* special case for achieving 100 likes*/
+    .text.full {
+      width: 100%;
+    }
+
+    .photo {
+      width: 30%;
+      float: right;
+      display: inline-block;
+
+      img {
+        border-radius: $radius;
+      }
+    }
+
+    .foods {
+
+      img {
+        margin: 2px;
+        width: 30px;
+        border-radius: 30px;
+      }
+
+    }
+
   }
+
+  .review-photo {
+    width: 50%;
+
+    img {
+      border-radius: $radius;
+    }
+  }
+
 
 }

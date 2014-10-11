@@ -52,10 +52,10 @@ gulp.task('jshint', function () {
 // Optimize Images
 gulp.task('images', function () {
   return gulp.src('app/images/**/*')
-    .pipe($.cache($.imagemin({
-      progressive: true,
-      interlaced: true
-    })))
+    // .pipe($.cache($.imagemin({
+    //   progressive: true,
+    //   interlaced: true
+    // })))
     .pipe(gulp.dest('dist/images'))
     .pipe($.size({title: 'images'}));
 });
@@ -74,9 +74,16 @@ gulp.task('copy', function () {
 
 // Copy Web Fonts To Dist
 gulp.task('fonts', function () {
-  return gulp.src(['app/fonts/**'])
-    .pipe(gulp.dest('dist/fonts'))
+  return gulp.src(['app/fonts/**', 'app/styles/fonts/**'])
+    .pipe(gulp.dest('dist/styles/fonts'))
     .pipe($.size({title: 'fonts'}));
+});
+
+// Copy libs To Dist
+gulp.task('styleslibs', function () {
+  return gulp.src(['app/styles/libs/**'])
+    .pipe(gulp.dest('dist/styles/libs'))
+    .pipe($.size({title: 'styleslibs'}));
 });
 
 // Compile and Automatically Prefix Stylesheets
@@ -172,7 +179,7 @@ gulp.task('serve:dist', ['default'], function () {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence('styles', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
+  runSequence('styles', ['jshint', 'html', 'images', 'fonts', 'styleslibs', 'copy'], cb);
 });
 
 // Run PageSpeed Insights

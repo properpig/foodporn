@@ -1,31 +1,90 @@
 /*global $:false */
+/*jshint camelcase: false */
 (function () {
-  'use strict';
+    'use strict';
 
-  // populating stuff
-  $.getJSON( window.apiUrl + '/activity/friends/' + window.username + '/', function( data ) {
+    $.getJSON( window.apiUrl + '/activity/friends/' + window.username + '/', function( data ) {
 
-    var template = $('.template').children().first().clone();
+      var template_follow_friend = $('.template.follow-friend').children().first().clone();
+      var template_follow_restaurant = $('.template.follow-restaurant').children().first().clone();
+      var template_achievement = $('.template.achievement').children().first().clone();
+      var template_review = $('.template.review').children().first().clone();
 
-    $.each(data, function(index, deal) {
+      var thisTemplate, i;
 
-      var thisTemplate = template.clone();
+      $.each(data, function(index, activity) {
 
-      thisTemplate.find('.photo img').attr('src', '/images/' + deal.photo);
-      thisTemplate.find('.title').text(deal.title);
-      thisTemplate.find('.restaurant .name').text(deal.restaurant);
-      thisTemplate.find('.details').text(deal.details);
-      thisTemplate.find('.more').text(deal.more);
+        if (activity.type === 'follow_friend') {
 
-      $('.main-div').append(thisTemplate);
+          thisTemplate = template_follow_friend.clone();
+
+          thisTemplate.find('.timesince').text(activity.timestamp);
+
+          thisTemplate.find('.actor-photo img').attr('src', 'images/' + activity.actor_photo).wrap('<a href="user.html?id=' + activity.actor_id + '"></a>');
+          thisTemplate.find('.actor').text(activity.actor).wrap('<a href="user.html?id=' + activity.actor_id + '"></a>');
+          thisTemplate.find('.friend').text(activity.friend).wrap('<a href="user.html?id=' + activity.friend_id + '"></a>');
+          thisTemplate.find('.photo img').attr('src', 'images/' + activity.friend_photo).wrap('<a href="user.html?id=' + activity.friend_id + '"></a>');
+
+          $('.main-div').append(thisTemplate);
+
+        } else if (activity.type === 'follow_restaurant') {
+
+          thisTemplate = template_follow_restaurant.clone();
+
+          thisTemplate.find('.timesince').text(activity.timestamp);
+
+          thisTemplate.find('.actor-photo img').attr('src', 'images/' + activity.actor_photo).wrap('<a href="user.html?id=' + activity.actor_id + '"></a>');
+          thisTemplate.find('.actor').text(activity.actor).wrap('<a href="user.html?id=' + activity.actor_id + '"></a>');
+          thisTemplate.find('.restaurant').text(activity.restaurant).wrap('<a href="restaurant.html?id=' + activity.restaurant_id + '"></a>');
+          thisTemplate.find('.photo img').attr('src', 'images/' + activity.restaurant_photo).wrap('<a href="restaurant.html?id=' + activity.restaurant_id + '"></a>');
+
+          $('.main-div').append(thisTemplate);
+
+        } else if (activity.type === 'achievement') {
+
+          thisTemplate = template_achievement.clone();
+
+          thisTemplate.find('.timesince').text(activity.timestamp);
+
+          thisTemplate.find('.actor-photo img').attr('src', 'images/' + activity.actor_photo).wrap('<a href="user.html?id=' + activity.actor_id + '"></a>');
+          thisTemplate.find('.actor').text(activity.actor).wrap('<a href="user.html?id=' + activity.actor_id + '"></a>');
+
+          var foods_liked = '';
+          // get the foods this person like
+          $.each(activity.foods, function(index, food) {
+            foods_liked += '<a href="food.html?id=' + food.food_id + '"><img src="images/' + food.food_photo + '" /></a>';
+          });
+          thisTemplate.find('.foods').prepend(foods_liked);
+
+          $('.main-div').append(thisTemplate);
+
+        } else {
+
+          thisTemplate = template_review.clone();
+
+          thisTemplate.find('.timesince').text(activity.timestamp);
+
+          thisTemplate.find('.actor-photo img').attr('src', 'images/' + activity.actor_photo).wrap('<a href="user.html?id=' + activity.actor_id + '"></a>');
+          thisTemplate.find('.actor').text(activity.actor).wrap('<a href="user.html?id=' + activity.actor_id + '"></a>');
+          thisTemplate.find('.restaurant').text(activity.restaurant).wrap('<a href="restaurant.html?id=' + activity.restaurant_id + '"></a>');
+          thisTemplate.find('.photo img').attr('src', 'images/' + activity.photo).wrap('<a href="restaurant.html?id=' + activity.restaurant_id + '"></a>');
+
+          var rating = '';
+          for (i=0; i<activity.rating; i++) {
+            rating += '<i class="fa fa-star"></i>';
+          }
+          for (i=0; i<5-activity.rating; i++) {
+            rating += '<i class="fa fa-star-o"></i>';
+          }
+
+          thisTemplate.find('.rating').append(rating);
+
+          $('.main-div').append(thisTemplate);
+
+        }
+
+      });
+
 
     });
-  }).done(function() {
-    // attaching listeners to the more button
-    $('.more-button').click(function() {
-      $(this).fadeOut();
-      $(this).parent().find('.more').slideDown();
-    });
-  });
-
 })();

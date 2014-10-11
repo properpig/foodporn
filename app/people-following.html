@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/activity.css">
+    <link rel="stylesheet" href="styles/people.css">
 
   </head>
   <body>
@@ -48,7 +48,7 @@
             <img class="hamburger" src="images/hamburger.svg" />
             <img class="logo" src="images/logo.svg" />
           </div><!--
-           --><div class="app-name">Activity Feed</div>
+           --><div class="app-name">People</div>
         </div>
         <div class="icons">
             <a href="#"><img src="images/icons/map-view.svg" /></a>
@@ -70,26 +70,22 @@
       <div class="vignette"></div>
 
       <div class="sub-nav">
-        <div data-link="activity-deals.html" class="selected sub-nav-item">Deals<div class="underline"></div></div><div data-link="activity-friends.html" class="sub-nav-item">Friends<div class="underline"></div></div>
+        <div data-link="people-following.html" class="selected sub-nav-item">Following<div class="underline"></div></div><div data-link="people-recommended.html" class="sub-nav-item">Recommended<div class="underline"></div></div>
       </div>
 
       <div class="main-div">
-        <!-- this is our template -->
         <div class="template">
-          <div class="deal-item">
+          <div class="restaurant-item">
             <div class="photo">
-              <img src="images/food/caesarsalad.png" />
+              <img src="images/restaurant/thewinecompany.png" />
+              <div class="get-there-button">Get there!</div>
             </div>
             <div class="info">
-              <div class="title">FREE Caesar Salad</div>
-              <div class="restaurant">by <span class="name">The Wine Company</span></div>
-              <div class="details">
-                get a free Caesar Salad today!
-              </div>
+              <div class="name">The Wine Company</div>
+              <div class="price-range"><span class="low">$1</span> - <span class="high">$20</span></div>
               <div class="more">
-                Only available yesterday :)
+                <div class="address">6 Sentosa Gateway</div>
               </div>
-              <div class="more-button">More</div>
             </div>
           </div>
         </div>
@@ -111,8 +107,8 @@
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
-    <!-- build:js scripts/activity_deals.min.js -->
-    <script src="scripts/activity_deals.js"></script>
+    <!-- build:js scripts/people_following.min.js -->
+    <script src="scripts/people_following.js"></script>
     <!-- endbuild -->
 
 

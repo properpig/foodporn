@@ -23,7 +23,7 @@
           thisTemplate.find('.follow-button').addClass('following');
         }
 
-        var people_following = "";
+        var people_following = '';
 
         // get the people following this restaurant
         $.each(restaurant.followed_by, function(index, user) {

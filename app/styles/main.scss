@@ -81,7 +81,7 @@ a, a:visited, a:active {
 
   .hamburger-container {
     display: inline-block;
-    position: relative;
+    float: left;
   }
 
   .hamburger {
@@ -106,7 +106,7 @@ a, a:visited, a:active {
     left: 0;
     overflow: hidden;
     line-height: $nav-bar-height;
-    font-size: 25px;
+    font-size: 22px;
     color: white;
   }
 

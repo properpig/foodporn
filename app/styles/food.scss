@@ -1,0 +1,36 @@
+@import '_custom_vars';
+
+$main-padding: 10px;
+
+.heading {
+  font-weight: 400;
+  text-align: center;
+}
+
+.food-photo {
+  img {
+    width: 100%;
+  }
+}
+
+.title {
+
+  padding: $main-padding;
+  text-align: center;
+
+  .food-name {
+    font-weight: 400;
+    font-size: 18px;
+  }
+
+  .restaurant {
+
+  }
+
+}
+
+.description {
+
+  padding: $main-padding;
+
+}

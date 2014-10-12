@@ -1,0 +1,234 @@
+@import '_custom_vars';
+
+$main-padding: 10px;
+$icon-height: 45px;
+$whitegrey: #fafafa;
+
+.main-div {
+  line-height: 20px;
+}
+
+.heading {
+  margin: 10px 0px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.main-photo {
+
+  position: relative;
+
+  img {
+    width: 100%;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
+}
+
+.photo-bar {
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+  padding: 3px;
+  color: white;
+  position: absolute;
+  bottom: 0px;
+
+  img {
+    width: 35px;
+    margin: 2px;
+    border-radius: 30px;
+  }
+
+  .num {
+    font-weight: 400;
+  }
+
+  .more {
+    display: inline-block;
+    float: right;
+
+    i {
+      font-size: 24px;
+      line-height: 37px;
+    }
+
+    .fa-thumbs-o-up, .fa-users {
+      margin-right: 5px;
+    }
+  }
+
+}
+
+.circle {
+  height: $icon-height;
+  width: $icon-height;
+  line-height: $icon-height + 5px;
+  background: $base-color-transparent;
+  padding: 3px;
+  margin: 5px;
+  border-radius: 1000px;
+  color: white;
+  text-align: center;
+}
+
+.photo-bar.buttons-overlay {
+  text-align: right;
+  padding: 3px;
+}
+
+.get-there-button {
+  background: white;
+  color: $base-color;
+  border: 1px solid $base-color;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 7px 15px;
+  border-radius: $radius;
+  display: inline-block;
+}
+
+.follow-button {
+  background: $base-color;
+  color: white;
+  border: 1px solid white;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 7px 15px;
+  border-radius: $radius;
+  display: inline-block;
+}
+
+.photo-bar.followed-by {
+  position: relative;
+  bottom: auto;
+  background: white;
+  color: $darkgrey;
+
+  .more {
+
+  }
+}
+
+.main-photo.restaurant {
+  height: 250px;
+  overflow: hidden;
+}
+
+.title {
+
+  padding: $main-padding;
+  text-align: center;
+  background: $whitegrey;
+
+  .food-name, .restaurant-name {
+    font-weight: 400;
+    font-size: 18px;
+    margin: 10px 0px;
+  }
+
+  .restaurant .name {
+    color: $base-color;
+  }
+
+}
+
+.description {
+
+  padding: $main-padding;
+  background: $whitegrey;
+
+}
+
+.icons {
+
+  .food-icon {
+
+    display: inline-block;
+    width: 70px;
+    margin: 3px;
+
+    .text {
+
+      font-size: 14px;
+      text-align: center;
+
+    }
+
+  }
+
+}
+
+.cuisine, .dietary {
+
+  padding: $main-padding;
+  text-align: center;
+
+}
+
+.menu {
+
+  padding: $main-padding;
+  background: $whitegrey;
+
+  .menu-items img {
+    width: 42px;
+    margin: 3px;
+    border-radius: $radius;
+  }
+
+}
+
+.deals {
+
+  padding: $main-padding;
+
+  .item {
+
+    margin: 7px 0px;
+
+    .photo {
+
+      width: 20%;
+      display: inline-block;
+      float: left;
+
+      img {
+        border-radius: $radius;
+      }
+    }
+
+    .info {
+      width: 80%;
+      height: 40px;
+      padding: 8px;
+      display: inline-block;
+    }
+
+    .info:after{
+      content: '\f105';
+      font-family: 'FontAwesome';
+      line-height: 40px;
+      float: right;
+    }
+
+  }
+
+}
+
+.reviews {
+
+  padding: $main-padding;
+  background: $whitegrey;
+
+  .review-items img {
+    width: 42px;
+    margin: 3px;
+    border-radius: $radius;
+  }
+
+}

@@ -288,6 +288,10 @@ a, a:visited, a:active {
   display: none;
 }
 
+.clear {
+  clear: both;
+}
+
 @font-face {
   font-family: 'Lato';
   font-style: normal;

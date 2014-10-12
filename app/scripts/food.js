@@ -14,7 +14,7 @@
       $('.restaurant .name').text(data.restaurant).wrap('<a href="restaurant.html?id=' + data.restaurant_id + '"></a>');
       $('.main-buttons .full').wrap('<a href="restaurant.html?id=' + data.restaurant_id + '"></a>');
 
-      $('.food-photo > img').attr('src', 'images/' + data.photo);
+      $('.main-photo > img').attr('src', 'images/' + data.photo);
 
       $('.description .text').text(data.description);
 

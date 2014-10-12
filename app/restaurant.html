@@ -49,7 +49,7 @@
             <i class="fa fa-angle-left"></i>
             <img class="logo" src="images/logo.svg" />
           </div><!--
-           --><div class="app-name">Food<div class="sub-name">Caesar Salad</div></div>
+           --><div class="app-name">Restaurant<div class="sub-name">Bella Pizza</div></div>
         </div>
         <div class="icons">
             <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
@@ -65,23 +65,26 @@
 
       <div class="main-div">
 
-        <div class="main-photo">
+        <div class="main-photo restaurant">
           <img src="images/blank.png" />
           <div class="overlay">
-            <div class="circle"><i class="fa fa-thumbs-o-up fa-2x"></i></div>
-            <div class="circle"><i class="fa fa-thumbs-o-down fa-2x"></i></div>
             <div class="circle"><i class="fa fa-share-alt fa-2x"></i></div>
           </div>
-          <div class="liked-overlay photo-bar">
-            <div class="more">
-              <span class="num"></span> <i class="fa fa-thumbs-o-up fa-2x"></i> <i class="fa fa-angle-right fa-2x"></i>
-            </div>
+          <div class="buttons-overlay photo-bar">
+            <div class="follow-button">Follow</div>
+            <div class="get-there-button">Get There!</div>
+          </div>
+        </div>
+
+        <div class="followed-by photo-bar">
+          <div class="more">
+            <span class="num">4</span> <i class="fa fa-users fa-2x"></i> <i class="fa fa-angle-right fa-2x"></i>
           </div>
         </div>
 
         <div class="title">
-          <div class="food-name">Caesar Salad</div>
-          <div class="restaurant">by <span class="name">The Wine Company</span></div>
+          <div class="restaurant-name">Caesar Salad</div>
+          <div class="rating"></div>
         </div>
 
         <div class="description">
@@ -122,17 +125,54 @@
           </div>
         </div>
 
+        <div class="menu">
+          <div class="heading">
+            <span class="num">10</span> Menu Items
+          </div>
+          <div class="menu-items">
+          </div>
+        </div>
+
+        <div class="deals">
+          <div class="heading">
+            Deals
+          </div>
+          <div class="deal-items">
+
+            <div class="template deal">
+              <div class="item">
+                <div class="photo">
+                  <img src="images/food/caesarsalad.png" />
+                </div>
+                <div class="info">
+                  a title here! :D
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="reviews">
+          <div class="heading">
+            <span class="num">10</span> Reviews
+          </div>
+          <div class="review-items">
+          </div>
+        </div>
+
       </div>
 
-      <div class="main-buttons"><div class="full">View Restaurant</div></div>
+      <div class="main-buttons"><div class="full">Get There!</div></div>
 
     </div>
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
-    <!-- build:js scripts/food.min.js -->
-    <script src="scripts/food.js"></script>
+    <!-- build:js scripts/restaurant.min.js -->
+    <script src="scripts/restaurant.js"></script>
     <!-- endbuild -->
 
 

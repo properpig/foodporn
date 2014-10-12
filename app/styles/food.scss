@@ -1,16 +1,74 @@
 @import '_custom_vars';
 
 $main-padding: 10px;
+$icon-height: 45px;
+
+.main-div {
+  line-height: 20px;
+}
 
 .heading {
+  margin: 10px 0px;
   font-weight: 400;
   text-align: center;
 }
 
 .food-photo {
+
+  position: relative;
+
   img {
     width: 100%;
   }
+
+  .overlay {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
+  .liked-overlay {
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    padding: 3px;
+    color: white;
+    position: absolute;
+    bottom: 0px;
+
+    img {
+      width: 35px;
+      margin: 2px;
+      border-radius: 30px;
+    }
+
+    .num {
+      font-weight: 400;
+    }
+
+    .more {
+      display: inline-block;
+      float: right;
+
+      i {
+        font-size: 24px;
+        line-height: 37px;
+      }
+    }
+
+  }
+
+  .circle {
+    height: $icon-height;
+    width: $icon-height;
+    line-height: $icon-height + 5px;
+    background: $base-color-transparent;
+    padding: 3px;
+    margin: 5px;
+    border-radius: 1000px;
+    color: white;
+    text-align: center;
+  }
+
 }
 
 .title {
@@ -21,10 +79,11 @@ $main-padding: 10px;
   .food-name {
     font-weight: 400;
     font-size: 18px;
+    margin: 10px 0px;
   }
 
-  .restaurant {
-
+  .restaurant .name {
+    color: $base-color;
   }
 
 }
@@ -32,5 +91,31 @@ $main-padding: 10px;
 .description {
 
   padding: $main-padding;
+
+}
+
+.icons {
+
+  .food-icon {
+
+    display: inline-block;
+    width: 70px;
+    margin: 3px;
+
+    .text {
+
+      font-size: 14px;
+      text-align: center;
+
+    }
+
+  }
+
+}
+
+.cuisine, .dietary {
+
+  padding: $main-padding;
+  text-align: center;
 
 }

@@ -2,6 +2,7 @@
 
 $main-padding: 10px;
 $icon-height: 45px;
+$whitegrey: #fafafa;
 
 .main-div {
   line-height: 20px;
@@ -53,6 +54,10 @@ $icon-height: 45px;
         font-size: 24px;
         line-height: 37px;
       }
+
+      .fa-thumbs-o-up {
+        margin-right: 5px;
+      }
     }
 
   }
@@ -75,6 +80,7 @@ $icon-height: 45px;
 
   padding: $main-padding;
   text-align: center;
+  background: $whitegrey;
 
   .food-name {
     font-weight: 400;
@@ -91,6 +97,7 @@ $icon-height: 45px;
 .description {
 
   padding: $main-padding;
+  background: $whitegrey;
 
 }
 

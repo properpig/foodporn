@@ -1,4 +1,5 @@
 /*global $:false */
+/*jshint camelcase: false */
 (function () {
   'use strict';
 

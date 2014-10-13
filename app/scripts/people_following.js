@@ -1,18 +1,20 @@
 /*global $:false */
+/*global Handlebars:false */
+
 (function () {
     'use strict';
 
     Handlebars.registerHelper('pluralise', function(num, type) {
       var string = type;
-      if (num != 1) {
+      if (num !== 1) {
         string += 's';
       }
-      return num + " " + string;
+      return num + ' ' + string;
     });
 
     $.getJSON( window.apiUrl + '/people/following/' + window.username + '/', function( data ) {
 
-      var source = $("#person-template").html();
+      var source = $('#person-template').html();
       var template = Handlebars.compile(source);
 
       var users = {'users': data};

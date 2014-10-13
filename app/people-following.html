@@ -10,6 +10,7 @@
     <!-- build:js scripts/libs/libs.min.js -->
     <script src="scripts/libs/jquery-1.11.1.min.js"></script>
     <!-- endbuild -->
+    <script src="scripts/libs/handlebars-v2.0.0.js"></script>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -74,21 +75,26 @@
       </div>
 
       <div class="main-div">
-        <div class="template">
-          <div class="restaurant-item">
-            <div class="photo">
-              <img src="images/restaurant/thewinecompany.png" />
-              <div class="get-there-button">Get there!</div>
-            </div>
-            <div class="info">
-              <div class="name">The Wine Company</div>
-              <div class="price-range"><span class="low">$1</span> - <span class="high">$20</span></div>
-              <div class="more">
-                <div class="address">6 Sentosa Gateway</div>
+        <script id="person-template" type="text/x-handlebars-template">
+          {{#users}}
+            <div class="person-item">
+              <div class="photo">
+                <a href="user.html?id={{ id }}"><img src="images/{{ photo }}" /></a>
+              </div>
+              <div class="info">
+                <div class="name"><a href="user.html?id={{ id }}">{{ name }}</a></div>
+                <div class="stats">
+                  {{ pluralise num_reviews "Review" }} | {{ pluralise num_followers "Follower" }} | {{ pluralise num_likes "Like" }}
+                </div>
+                <div class="reviews">
+                  {{#reviews}}
+                    <a href="restaurant.html?id={{ restaurant_id }}"><img src="images/{{ photo }}" /></a>
+                  {{/reviews}}
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          {{/users}}
+        </script>
       </div>
 
       <div class="main-buttons"><div class="full" id="filters">Filters</div></div>

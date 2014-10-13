@@ -1,0 +1,45 @@
+@import '_custom_vars';
+
+$thumbnailheight: 35px;
+
+.person-item {
+
+  padding: 8px;
+  border-bottom: $grey solid 1px;
+
+  .photo {
+    width: 20%;
+    float: left;
+
+    img {
+      border-radius: 100px;
+    }
+
+  }
+
+  .name {
+    font-weight: 400;
+  }
+
+  .info {
+    width: 80%;
+    padding-left: 10px;
+    float: right;
+  }
+
+  .reviews {
+
+    img {
+      width: $thumbnailheight;
+      border-radius: $radius;
+    }
+
+  }
+
+}
+
+.person-item:after {
+  content: "";
+  display: table;
+  clear: both;
+}

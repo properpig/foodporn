@@ -27,7 +27,7 @@
 
         // get the people following this restaurant
         $.each(restaurant.followed_by, function(index, user) {
-          people_following += '<img src="images/' + user.profile_pic + '" />';
+          people_following += '<img src="images/' + user.photo + '" />';
         });
 
         var more_count = restaurant.following_count - restaurant.followed_by.length;

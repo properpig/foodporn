@@ -26,7 +26,7 @@
       var followed_by = '';
 
       $.each(data.followed_by, function(index, user) {
-        followed_by += '<a href="user.html?id=' + user.user_id + '"><img src="images/' + user.profile_pic + '" /></a>';
+        followed_by += '<a href="user.html?id=' + user.user_id + '"><img src="images/' + user.photo + '" /></a>';
       });
 
       $('.followed-by').prepend(followed_by);

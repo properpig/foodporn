@@ -1,4 +1,5 @@
 /*global $:false */
+/*jshint camelcase: false */
 (function () {
     'use strict';
 
@@ -20,10 +21,10 @@
 
       $('.liked-overlay .num').text(data.num_likes);
 
-      var liked_by = ''
+      var liked_by = '';
 
       $.each(data.liked_by, function(index, user) {
-        liked_by += '<a href="user.html?id=' + user.user_id + '"><img src="images/' + user.profile_pic + '" /></a>';
+        liked_by += '<a href="user.html?id=' + user.user_id + '"><img src="images/' + user.photo + '" /></a>';
       });
 
       $('.liked-overlay').prepend(liked_by);

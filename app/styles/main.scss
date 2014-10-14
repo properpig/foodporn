@@ -284,6 +284,58 @@ a, a:visited, a:active {
   box-sizing: border-box;
 }
 
+/* buttons */
+
+.follow-button {
+  background: $base-color;
+  color: white;
+  border: 1px solid white;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 7px 15px;
+  border-radius: $radius;
+}
+
+.follow-button::after {
+  content: 'Follow';
+}
+
+.follow-button.following {
+  background: rgba(255, 255, 255, 0.8);
+  color: $base-color;
+  border: 1px solid $base-color;
+}
+
+.follow-button.following::after {
+  content: 'Following';
+}
+
+.get-there-button {
+  background: white;
+  color: $base-color;
+  border: 1px solid $base-color;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 7px 15px;
+  border-radius: $radius;
+}
+
+/* thumbnails */
+
+.food-thumbnail {
+  width: 42px;
+  margin: 3px;
+  border-radius: $radius;
+}
+
+.user-thumbnail {
+  width: 35px;
+  margin: 2px;
+  border-radius: 30px;
+}
+
+/* template */
+
 .template {
   display: none;
 }

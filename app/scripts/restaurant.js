@@ -53,12 +53,14 @@
 
       $('.rating').append(rating);
 
+      $('.map .heading').text(data.location_name);
+
       $('.menu .num').text(data.food_count);
 
       var foods = '';
 
       $.each(data.foods, function(index, food) {
-        foods += '<a href="food.html?id=' + food.id + '"><img src="images/' + food.photo + '" /></a>';
+        foods += '<a href="food.html?id=' + food.id + '"><img class="food-thumbnail" src="images/' + food.photo + '" /></a>';
       });
 
       $('.menu-items').prepend(foods);
@@ -78,7 +80,7 @@
       $('.reviews .num').text(data.reviews_count);
 
       $.each(data.reviews, function(index, review) {
-        $('.review-items').append($('<img>',{src:'images/' + review.photo, 'data-info': JSON.stringify(review)}));
+        $('.review-items').append($('<img>',{src:'images/' + review.photo, 'data-info': JSON.stringify(review), 'class': 'food-thumbnail'}));
       });
 
 

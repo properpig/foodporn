@@ -19,12 +19,21 @@ $thumbnailheight: 35px;
 
   .name {
     font-weight: 400;
+    line-height: 34px;
   }
 
   .info {
     width: 80%;
     padding-left: 10px;
     float: right;
+  }
+
+  .follow-button {
+    float: right;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 3px 12px;
+    clear: both;
   }
 
   .reviews {
@@ -38,7 +47,7 @@ $thumbnailheight: 35px;
 
 }
 
-.person-item:after {
+.person-item::after {
   content: "";
   display: table;
   clear: both;

@@ -86,6 +86,13 @@ gulp.task('styleslibs', function () {
     .pipe($.size({title: 'styleslibs'}));
 });
 
+// Copy libs To Dist
+gulp.task('scriptslibs', function () {
+  return gulp.src(['app/scripts/libs/**'])
+    .pipe(gulp.dest('dist/scripts/libs'))
+    .pipe($.size({title: 'scriptslibs'}));
+});
+
 // Compile and Automatically Prefix Stylesheets
 gulp.task('styles', function () {
   // For best performance, don't add Sass partials to `gulp.src`
@@ -179,7 +186,7 @@ gulp.task('serve:dist', ['default'], function () {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence('styles', ['jshint', 'html', 'images', 'fonts', 'styleslibs', 'copy'], cb);
+  runSequence('styles', ['jshint', 'html', 'images', 'fonts', 'styleslibs', 'scriptslibs', 'copy'], cb);
 });
 
 // Run PageSpeed Insights

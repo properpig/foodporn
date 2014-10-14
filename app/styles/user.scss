@@ -1,0 +1,91 @@
+@import '_custom_vars';
+
+$photo-width: 70px;
+
+#map-canvas {
+  width: 100%;
+  height: 150px;
+}
+
+.main-info {
+
+  position: relative;
+
+  .follow-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  .profile-picture {
+
+    width: $photo-width;
+    margin: 16px;
+    margin-top: -($photo-width/2);
+    float: left;
+
+    img {
+      border-radius: 100px;
+      border: 2px solid white;
+      box-shadow: 1px 2px 2px 0px #b8b8b8;
+    }
+
+  }
+
+  .name {
+    width: 70%;
+    padding-top: 5px;
+    height: $photo-width/2;
+    line-height: 24px;
+
+    font-size: 18px;
+    font-weight: 400;
+
+    float: right;
+
+    .member {
+      color: $darkgrey;
+      font-size: 14px;
+      font-weight: 300;
+
+      .date {
+        font-style: italic;
+      }
+    }
+
+  }
+
+  .bio {
+    padding: $main-padding;
+    display: inline-block;
+  }
+
+  .bio::before {
+    content: "\f10d";
+    font-family: 'FontAwesome';
+    font-size: 12px;
+    color: $grey;
+    margin-top: -10px;
+    margin-right: 5px;
+    float: left;
+  }
+
+  .bio::after {
+    content: "\f10e";
+    font-family: 'FontAwesome';
+    font-size: 12px;
+    color: $grey;
+    margin-top: 10px;
+    margin-left: 5px;
+    float: right;
+  }
+
+}
+
+.reviews, .followers, .following {
+  padding: $main-padding;
+}
+
+.following {
+  background: $whitegrey;
+}

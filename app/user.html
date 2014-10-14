@@ -10,6 +10,7 @@
     <!-- build:js scripts/libs/libs.min.js -->
     <script src="scripts/libs/jquery-1.11.1.min.js"></script>
     <!-- endbuild -->
+    <script src="scripts/libs/handlebars-v2.0.0.js"></script>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -31,10 +32,14 @@
     <link rel="canonical" href="http://www.example.com/">
     -->
 
+    <!-- build:css /static/css/user.min.css -->
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/secondary.css">
     <link rel="stylesheet" href="styles/information.css">
+    <link rel="stylesheet" href="styles/user.css">
+    <!-- endbuild -->
+
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
 
   </head>
@@ -49,7 +54,7 @@
             <i class="fa fa-angle-left"></i>
             <img class="logo" src="images/logo.svg" />
           </div><!--
-           --><a href="index.html"><div class="app-name">Food<div class="sub-name">Caesar Salad</div></div></a>
+           --><a href="people-following.html"><div class="app-name">People<div class="sub-name"> </div></div></a>
         </div>
         <div class="icons">
             <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
@@ -65,74 +70,76 @@
 
       <div class="main-div">
 
-        <div class="main-photo">
-          <img src="images/blank.png" />
-          <div class="overlay">
-            <div class="circle"><i class="fa fa-thumbs-o-up fa-2x"></i></div>
-            <div class="circle"><i class="fa fa-thumbs-o-down fa-2x"></i></div>
-            <div class="circle"><i class="fa fa-share-alt fa-2x"></i></div>
+        <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlfMykYSTngeUvgXnv5tAdlJByP8FpXUM">
+        </script>
+
+        <div id="map-canvas"></div>
+
+        <script id="user-template" type="text/x-handlebars-template">
+
+          <div class="main-info">
+
+            <div class="follow-button {{#if is_following}}following{{/if}}"></div>
+            <div class="profile-picture">
+              <img src="images/{{ photo }}" />
+            </div>
+
+            <div class="name">
+              {{ name }}
+              <div class="member">
+                <i class="fa fa-user"></i> Joined <span class="date">29/09/2014</span>
+              </div>
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="bio">
+              A self-proclaimed foodie since 1988!
+            </div>
+
           </div>
-          <div class="liked-overlay photo-bar">
-            <div class="more">
-              <span class="num"></span> <i class="fa fa-thumbs-o-up fa-2x"></i> <i class="fa fa-angle-right fa-2x"></i>
+
+          <div class="reviews">
+            <div class="heading">
+              {{ pluralise num_reviews "Review" }}
+            </div>
+            <div class="review-items">
+              {{#reviews}}<a href="restaurant.html?id={{ restaurant_id }}"><img class="food-thumbnail" src="images/{{ photo }}" /></a>{{/reviews}}
             </div>
           </div>
-        </div>
 
-        <div class="title">
-          <div class="food-name">Caesar Salad</div>
-          <div class="restaurant">by <span class="name">The Wine Company</span></div>
-        </div>
-
-        <div class="description">
-          <div class="heading">Description</div>
-          <div class="text">
-
-          </div>
-        </div>
-
-        <div class="cuisine">
-
-          <div class="heading">Cuisine</div>
-
-          <div class="icons">
-            <div class="food-icon">
-              <img src="images/cuisine/chinese.svg" />
-              <div class="text">Chinese</div>
+          <div class="followers">
+            <div class="heading">
+              {{ pluralise num_followers "Follower" }}
+            </div>
+            <div class="follower-items">
+              {{#followers}}<a href="user.html?id={{ id }}"><img class="user-thumbnail" src="images/{{ photo }}" /></a>{{/followers}}
             </div>
           </div>
-        </div>
 
-        <div class="dietary">
-          <div class="heading">Dietary</div>
-
-          <div class="icons">
-            <div class="food-icon">
-              <img src="images/dietary/dietary1.svg" />
-              <div class="text">Vegetarian</div>
+          <div class="following">
+            <div class="heading">
+              {{ num_following }} Following
             </div>
-            <div class="food-icon">
-              <img src="images/dietary/dietary2.svg" />
-              <div class="text">Halal</div>
-            </div>
-            <div class="food-icon">
-              <img src="images/dietary/dietary3.svg" />
-              <div class="text">Vegan</div>
+            <div class="follower-items">
+              {{#following}}<a href="user.html?id={{ id }}"><img class="user-thumbnail" src="images/{{ photo }}" /></a>{{/following}}
             </div>
           </div>
-        </div>
+
+        </script>
 
       </div>
 
-      <div class="main-buttons"><div class="full">View Restaurant</div></div>
+      <div class="main-buttons"><div class="full">Follow</div></div>
 
     </div>
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
-    <!-- build:js scripts/food.min.js -->
-    <script src="scripts/food.js"></script>
+    <!-- build:js scripts/user.min.js -->
+    <script src="scripts/user.js"></script>
     <!-- endbuild -->
 
 

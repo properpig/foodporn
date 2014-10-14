@@ -82,8 +82,7 @@
                 <a href="user.html?id={{ id }}"><img src="images/{{ photo }}" /></a>
               </div>
               <div class="info">
-              <div class="follow-button">
-                Follow
+              <div class="follow-button {{#if is_following}}following{{/if}}">
               </div>
                 <div class="name"><a href="user.html?id={{ id }}">{{ name }}</a></div>
                 <div class="stats">

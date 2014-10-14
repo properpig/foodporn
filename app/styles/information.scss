@@ -1,8 +1,8 @@
 @import '_custom_vars';
 
-$main-padding: 10px;
+/* information file is for both food and restaurant view */
+
 $icon-height: 45px;
-$whitegrey: #fafafa;
 
 .main-div {
   line-height: 20px;
@@ -82,24 +82,10 @@ $whitegrey: #fafafa;
 }
 
 .get-there-button {
-  background: white;
-  color: $base-color;
-  border: 1px solid $base-color;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 7px 15px;
-  border-radius: $radius;
   display: inline-block;
 }
 
 .follow-button {
-  background: $base-color;
-  color: white;
-  border: 1px solid white;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 7px 15px;
-  border-radius: $radius;
   display: inline-block;
 }
 
@@ -175,12 +161,6 @@ $whitegrey: #fafafa;
   padding: $main-padding;
   background: $whitegrey;
 
-  .menu-items img {
-    width: 42px;
-    margin: 3px;
-    border-radius: $radius;
-  }
-
 }
 
 .deals {
@@ -224,11 +204,5 @@ $whitegrey: #fafafa;
 
   padding: $main-padding;
   background: $whitegrey;
-
-  .review-items img {
-    width: 42px;
-    margin: 3px;
-    border-radius: $radius;
-  }
 
 }

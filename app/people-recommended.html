@@ -77,7 +77,7 @@
       <div class="main-div">
         <script id="person-template" type="text/x-handlebars-template">
           {{#users}}
-            <div class="person-item">
+            <div class="person-item" onclick="window.location='user.html?id={{ id }}';">
               <div class="photo">
                 <a href="user.html?id={{ id }}"><img src="images/{{ photo }}" /></a>
               </div>

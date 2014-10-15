@@ -1,8 +1,7 @@
-/*global $:false */
 (function () {
     'use strict';
 
-    $.getJSON( window.apiUrl + '/restaurants/recommended/' + window.username + '/', function( data ) {
+    $.getJSON( window.apiUrl + '/restaurants/list/' + window.username + '/?recommended=true', function( data ) {
 
       console.log(data);
 

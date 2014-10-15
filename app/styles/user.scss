@@ -34,25 +34,25 @@ $photo-width: 70px;
 
   .name {
     width: 70%;
-    padding-top: 5px;
+    padding-top: 7px;
     height: $photo-width/2;
-    line-height: 24px;
+    line-height: $photo-width/2;
 
     font-size: 18px;
     font-weight: 400;
 
     float: right;
 
-    .member {
-      color: $darkgrey;
-      font-size: 14px;
-      font-weight: 300;
+  }
 
-      .date {
-        font-style: italic;
-      }
+  .stats {
+    padding: $main-padding;
+    color: $darkgrey;
+    font-size: 14px;
+
+    .date {
+      font-style: italic;
     }
-
   }
 
   .bio {
@@ -80,6 +80,10 @@ $photo-width: 70px;
     float: right;
   }
 
+}
+
+.user-thumbnail {
+  width: 38px;
 }
 
 .reviews, .followers, .following {

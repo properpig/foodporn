@@ -67,6 +67,11 @@ a, a:visited, a:active {
   -webkit-overflow-scrolling: touch;
 }
 
+/* for pages without a main button*/
+.main-div.extended {
+  bottom: 0px;
+}
+
 .app-bar-container {
 
   display: -webkit-flex;
@@ -290,7 +295,7 @@ a, a:visited, a:active {
   background: $base-color;
   color: white;
   border: 1px solid white;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 400;
   padding: 7px 15px;
   border-radius: $radius;
@@ -314,7 +319,7 @@ a, a:visited, a:active {
   background: white;
   color: $base-color;
   border: 1px solid $base-color;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 400;
   padding: 7px 15px;
   border-radius: $radius;

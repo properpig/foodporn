@@ -1,8 +1,7 @@
-/*global $:false */
 (function () {
     'use strict';
 
-    $.getJSON( window.apiUrl + '/food/liked/' + window.username + '/', function( data ) {
+    $.getJSON( window.apiUrl + '/food/list/' + window.username + '/?liked=true', function( data ) {
 
       var template = $('.template').children().first().clone();
 

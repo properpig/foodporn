@@ -47,6 +47,10 @@ $thumbnailheight: 35px;
 
 }
 
+.user-thumbnail {
+  width: 38px;
+}
+
 .person-item::after {
   content: "";
   display: table;

@@ -1,8 +1,7 @@
-/*global $:false */
 (function () {
     'use strict';
 
-    $.getJSON( window.apiUrl + '/restaurants/following/' + window.username + '/', function( data ) {
+    $.getJSON( window.apiUrl + '/restaurants/list/' + window.username + '/?following=true', function( data ) {
 
       var template = $('.template').children().first().clone();
 

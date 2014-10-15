@@ -1,0 +1,13 @@
+@import '_custom_vars';
+
+.main-div {
+  top: $nav-bar-height + $sub-nav-height;
+}
+
+.sub-nav {
+
+  .sub-nav-item {
+    width: 33.333%;
+  }
+
+}

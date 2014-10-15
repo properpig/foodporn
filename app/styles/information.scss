@@ -9,7 +9,7 @@ $icon-height: 45px;
 }
 
 .heading {
-  margin: 10px 0px;
+  padding: 10px 0px;
   font-weight: 400;
   text-align: center;
 }
@@ -128,6 +128,10 @@ $icon-height: 45px;
   padding: $main-padding;
   background: $whitegrey;
 
+}
+
+.map {
+  background: $whitegrey;
 }
 
 .icons {

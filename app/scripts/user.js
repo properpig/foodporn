@@ -1,7 +1,3 @@
-/*global $:false */
-/*jshint camelcase: false */
-/*global Handlebars:false */
-/*global google:false */
 /*jshint unused:false */
 
 (function () {
@@ -32,7 +28,11 @@
       if (num !== 1) {
         string += 's';
       }
-      return num + ' ' + string;
+      if (num > 0) {
+        return num + ' ' + string;
+      }
+
+      return 'No ' + string;
     });
 
     $.getJSON( window.apiUrl + '/user/' + user_id + '/' + window.username + '/', function( data ) {

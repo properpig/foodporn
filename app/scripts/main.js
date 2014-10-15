@@ -1,4 +1,3 @@
-/*global $:false */
 /*!
  *
  *  Web Starter Kit
@@ -60,7 +59,8 @@
     if ($(this).hasClass('selected')) {
       return;
     }
-    $('.sub-nav-item').toggleClass('selected');
+    $('.sub-nav-item').removeClass('selected');
+    $(this).addClass('selected');
     window.location.href = $(this).data('link');
   });
 

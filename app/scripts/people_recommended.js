@@ -1,6 +1,3 @@
-/*global $:false */
-/*global Handlebars:false */
-
 (function () {
     'use strict';
 
@@ -12,7 +9,7 @@
       return num + ' ' + string;
     });
 
-    $.getJSON( window.apiUrl + '/people/recommended/' + window.username + '/', function( data ) {
+    $.getJSON( window.apiUrl + '/people/list/' + window.username + '/?recommended=true', function( data ) {
 
       var source = $('#person-template').html();
       var template = Handlebars.compile(source);

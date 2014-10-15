@@ -1,4 +1,3 @@
-/*global $:false */
 /*jshint camelcase: false */
 (function () {
     'use strict';
@@ -16,6 +15,7 @@
       $('.title .restaurant-name').text(data.name);
 
       $('.main-buttons .full').wrap('<a href="directions.html?id=' + data.restaurant_id + '"></a>');
+      $('.get-there-button').wrap('<a href="directions.html?id=' + data.restaurant_id + '"></a>');
 
       $('.main-photo > img').attr('src', 'images/' + data.photo);
 

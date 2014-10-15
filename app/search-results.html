@@ -10,7 +10,6 @@
     <!-- build:js scripts/libs/libs.min.js -->
     <script src="scripts/libs/jquery-1.11.1.min.js"></script>
     <!-- endbuild -->
-    <script src="scripts/libs/handlebars-v2.0.0.js"></script>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -35,9 +34,7 @@
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/secondary.css">
-    <link rel="stylesheet" href="styles/information.css">
-    <link rel="stylesheet" href="styles/user.css">
-
+    <link rel="stylesheet" href="styles/search.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
 
   </head>
@@ -52,9 +49,9 @@
             <i class="fa fa-angle-left"></i>
             <img class="logo" src="images/logo.svg" />
           </div><!--
-           --><a href="people-following.html"><div class="app-name">People<div class="sub-name"> </div></div></a>
+           --><div class="app-name"><i class="fa fa-search fa-1x"></i><input type="text" placeholder="<entered term>" /></a></div>
         </div>
-        <div class="icons">
+        <div class="icons hidden">
             <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
             <a href="search.html"><i class="fa fa-search fa-2x"></i></a>
          </div>
@@ -66,84 +63,17 @@
         <div data-link="index.html" class="selected sub-nav-item">Explore<div class="underline"></div></div><div data-link="food-liked.html" class="sub-nav-item">Liked<div class="underline"></div></div>
       </div> -->
 
-      <div class="main-div extended">
+      <div class="main-div">
 
-        <script type="text/javascript"
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlfMykYSTngeUvgXnv5tAdlJByP8FpXUM">
-        </script>
-
-        <div id="map-canvas"></div>
-
-        <script id="user-template" type="text/x-handlebars-template">
-
-          <div class="main-info">
-
-            <div class="follow-button {{#if is_following}}following{{/if}}"></div>
-            <div class="profile-picture">
-              <img src="images/{{ photo }}" />
-            </div>
-
-            <div class="name">
-              {{ name }}
-            </div>
-
-            <div class="clear"></div>
-
-            <div class="stats">
-              <div class="member">
-                <i class="fa fa-user"></i> Joined <span class="date">{{ join_date }}</span>
-              </div>
-              <div class="likes">
-                <i class="fa fa-thumbs-up"></i> {{ num_likes }} Likes
-              </div>
-            </div>
-
-            <div class="bio">
-              {{ bio }}
-            </div>
-
-          </div>
-
-          <div class="reviews">
-            <div class="heading">
-              {{ pluralise num_reviews "Review" }}
-            </div>
-            <div class="review-items">
-              {{#reviews}}<a href="restaurant.html?id={{ restaurant_id }}"><img class="food-thumbnail" src="images/{{ photo }}" /></a>{{/reviews}}
-            </div>
-          </div>
-
-          <div class="followers">
-            <div class="heading">
-              {{ pluralise num_followers "Follower" }}
-            </div>
-            <div class="follower-items">
-              {{#followers}}<a href="user.html?id={{ id }}"><img class="user-thumbnail" src="images/{{ photo }}" /></a>{{/followers}}
-            </div>
-          </div>
-
-          <div class="following">
-            <div class="heading">
-              {{ num_following }} Following
-            </div>
-            <div class="follower-items">
-              {{#following}}<a href="user.html?id={{ id }}"><img class="user-thumbnail" src="images/{{ photo }}" /></a>{{/following}}
-            </div>
-          </div>
-
-        </script>
-
+        Display the list of search results. note that restaurants, food and people have different views
       </div>
 
-<!--       <div class="main-buttons"><div class="full">Follow</div></div>
- -->
+      <div class="main-buttons"><div class="full">Change this</div></div>
+
     </div>
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
-    <!-- endbuild -->
-    <!-- build:js scripts/user.min.js -->
-    <script src="scripts/user.js"></script>
     <!-- endbuild -->
 
 

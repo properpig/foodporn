@@ -22,18 +22,7 @@
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
 
-    // after map is done, load user info
-    Handlebars.registerHelper('pluralise', function(num, type) {
-      var string = type;
-      if (num !== 1) {
-        string += 's';
-      }
-      if (num > 0) {
-        return num + ' ' + string;
-      }
 
-      return 'No ' + string;
-    });
 
     $.getJSON( window.apiUrl + '/user/' + user_id + '/' + window.username + '/', function( data ) {
 

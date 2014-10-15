@@ -10,6 +10,7 @@
     <!-- build:js scripts/libs/libs.min.js -->
     <script src="scripts/libs/jquery-1.11.1.min.js"></script>
     <!-- endbuild -->
+    <script src="scripts/libs/handlebars-v2.0.0.js"></script>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -49,7 +50,7 @@
             <i class="fa fa-angle-left"></i>
             <img class="logo" src="images/logo.svg" />
           </div><!--
-           --><a href="restaurant-following.html"><div class="app-name">Restaurant<div class="sub-name">Bella Pizza</div></div></a>
+           --><a href="restaurant-following.html"><div class="app-name">Restaurant<div class="sub-name"> </div></div></a>
         </div>
         <div class="icons">
             <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
@@ -65,107 +66,124 @@
 
       <div class="main-div">
 
-        <div class="main-photo restaurant">
-          <img src="images/blank.png" />
-          <div class="overlay">
-            <div class="circle"><i class="fa fa-share-alt fa-2x"></i></div>
-          </div>
-          <div class="buttons-overlay photo-bar">
-            <div class="follow-button"></div>
-            <div class="get-there-button">Get There!</div>
-          </div>
-        </div>
+        <script id="restaurant-template" type="text/x-handlebars-template">
 
-        <div class="followed-by photo-bar">
-          <div class="more">
-            <span class="num">4</span> <i class="fa fa-users fa-2x"></i> <i class="fa fa-angle-right fa-2x"></i>
-          </div>
-        </div>
-
-        <div class="title">
-          <div class="restaurant-name">Caesar Salad</div>
-          <div class="rating"></div>
-        </div>
-
-        <div class="description">
-          <div class="heading">Description</div>
-          <div class="text">
-
-          </div>
-        </div>
-
-        <div class="map">
-          <div class="heading">Location</div>
-          <img src="https://maps.googleapis.com/maps/api/staticmap?center=1.296568,103.852118&zoom=14&size=450x250&markers=color:red%%7C1.296568,103.852118" />
-        </div>
-
-        <div class="cuisine">
-
-          <div class="heading">Cuisine</div>
-
-          <div class="icons">
-            <div class="food-icon">
-              <img src="images/cuisine/chinese.svg" />
-              <div class="text">Chinese</div>
+          <div class="main-photo restaurant">
+            <img src="images/{{ photo }}" />
+            <div class="overlay">
+              <div class="circle"><i class="fa fa-share-alt fa-2x"></i></div>
+            </div>
+            <div class="buttons-overlay photo-bar">
+              <div class="follow-button {{#if is_following}}following{{/if}}"></div>
+              <div class="get-there-button" onclick="window.location='directions.html?id={{ restaurant_id }}';">Get There!</div>
             </div>
           </div>
-        </div>
 
-        <div class="dietary">
-          <div class="heading">Dietary</div>
-
-          <div class="icons">
-            <div class="food-icon">
-              <img src="images/dietary/dietary1.svg" />
-              <div class="text">Vegetarian</div>
+          <div class="followed-by photo-bar">
+            <div class="more">
+              {{ following_count }} <i class="fa fa-users fa-2x"></i> <i class="fa fa-angle-right fa-2x {{#if less_than_8}}hidden{{/if}}"></i>
             </div>
-            <div class="food-icon">
-              <img src="images/dietary/dietary2.svg" />
-              <div class="text">Halal</div>
+            {{#followed_by}}
+              <a href="user.html?id={{user_id}}"><img src="images/{{photo}}" /></a>
+            {{/followed_by}}
+          </div>
+
+          <div class="title">
+            <div class="restaurant-name">{{ name }}</div>
+            <div class="rating">{{{ rating_stars rating reviews_count }}}</div>
+          </div>
+
+          <div class="description">
+            <div class="heading">Description</div>
+            <div class="text">
+              {{ description }}
             </div>
-            <div class="food-icon">
-              <img src="images/dietary/dietary3.svg" />
-              <div class="text">Vegan</div>
+          </div>
+
+          <div class="map">
+            <div class="heading">{{ location_name }}</div>
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center={{ location_x }},{{ location_y }}&zoom=14&size=450x250&markers=color:red%%7C{{ location_x }},{{ location_y }}" />
+          </div>
+
+          <div class="cuisine">
+
+            <div class="heading">Cuisine</div>
+
+            <div class="icons">
+              {{#cuisine}}
+                <div class="food-icon">
+                  <img src="images/{{ image }}" />
+                  <div class="text">{{ name }}</div>
+                </div>
+              {{/cuisine}}
             </div>
           </div>
-        </div>
 
-        <div class="menu">
-          <div class="heading">
-            <span class="num">10</span> Menu Items
-          </div>
-          <div class="menu-items">
-          </div>
-        </div>
+          <div class="dietary">
+            <div class="heading">Dietary</div>
 
-        <div class="deals">
-          <div class="heading">
-            Deals
+            <div class="icons">
+              {{#dietary}}
+                <div class="food-icon">
+                  <img src="images/{{ image }}" />
+                  <div class="text">{{ name }}</div>
+                </div>
+              {{/dietary}}
+            </div>
           </div>
-          <div class="deal-items">
 
-            <div class="template deal">
+          <div class="menu">
+            <div class="heading">
+              {{ pluralise food_count "Menu Item" }}
+            </div>
+            <div class="menu-items">
+            {{#foods}}<a href="food.html?id={{ id }}"><img class="food-thumbnail" src="images/{{ photo }}" /></a>{{/foods}}
+            </div>
+          </div>
+
+          <div class="deals">
+            <div class="heading">
+              {{ pluralise deal_count "Deal" }}
+            </div>
+            <div class="deal-items">
+            {{#deals}}
               <div class="item">
                 <div class="photo">
-                  <img src="images/food/caesarsalad.png" />
+                  <img src="images/{{photo}}" />
                 </div>
                 <div class="info">
-                  a title here! :D
+                  {{title}}
                 </div>
                 <div class="clear"></div>
               </div>
+            {{/deals}}
             </div>
+          </div>
 
+          <div class="reviews">
+            <div class="heading">
+              {{ pluralise reviews_count "Review" }}
+            </div>
+            <div class="review-items">
+              {{#reviews}}<img class="food-thumbnail" src="images/{{ photo }}" />{{/reviews}}
+            </div>
           </div>
-        </div>
 
-        <div class="reviews">
-          <div class="heading">
-            <span class="num">10</span> Reviews
+          <div class="amenities">
+            <div class="heading">
+              Amenities
+            </div>
+            <div class="icons">
+              {{#amenities}}
+                <div class="food-icon">
+                  <img src="images/{{ image }}" />
+                  <div class="text">{{ name }}</div>
+                </div>
+              {{/amenities}}
+            </div>
           </div>
-          <div class="review-items">
-          </div>
-        </div>
+
+        </script>
 
       </div>
 

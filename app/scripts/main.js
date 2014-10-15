@@ -103,6 +103,18 @@
     window.history.back();
   });
 
+  Handlebars.registerHelper('pluralise', function(num, type) {
+    var string = type;
+    if (num !== 1) {
+      string += 's';
+    }
+    if (num > 0) {
+      return num + ' ' + string;
+    }
+
+    return 'No ' + string;
+  });
+
  //  /*
  // * Replace all SVG images with inline SVG
  // */

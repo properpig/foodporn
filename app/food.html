@@ -10,6 +10,7 @@
     <!-- build:js scripts/libs/libs.min.js -->
     <script src="scripts/libs/jquery-1.11.1.min.js"></script>
     <!-- endbuild -->
+    <script src="scripts/libs/handlebars-v2.0.0.js"></script>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -65,63 +66,66 @@
 
       <div class="main-div">
 
-        <div class="main-photo">
-          <img src="images/blank.png" />
-          <div class="overlay">
-            <div class="circle"><i class="fa fa-thumbs-o-up fa-2x"></i></div>
-            <div class="circle"><i class="fa fa-thumbs-o-down fa-2x"></i></div>
-            <div class="circle"><i class="fa fa-share-alt fa-2x"></i></div>
-          </div>
-          <div class="liked-overlay photo-bar">
-            <div class="more">
-              <span class="num"></span> <i class="fa fa-thumbs-o-up fa-2x"></i> <i class="fa fa-angle-right fa-2x"></i>
+        <script id="food-template" type="text/x-handlebars-template">
+
+          <div class="main-photo">
+            <img src="images/{{ photo }}" />
+            <div class="overlay">
+              <div class="circle"><i class="fa fa-thumbs{{#if is_liked}}{{else}}-o{{/if}}-up fa-2x"></i></div>
+              <div class="circle"><i class="fa fa-thumbs{{#if is_disliked}}{{else}}-o{{/if}}-down fa-2x"></i></div>
+              <div class="circle"><i class="fa fa-share-alt fa-2x"></i></div>
+            </div>
+            <div class="liked-overlay photo-bar">
+              <div class="more">
+                {{ num_likes }} <i class="fa fa-thumbs-o-up fa-2x"></i> <i class="fa fa-angle-right fa-2x {{#if less_than_8}}hidden{{/if}}"></i>
+              </div>
+              {{#liked_by}}
+                <a href="user.html?id={{user_id}}"><img src="images/{{ photo }}" /></a>
+              {{/liked_by}}
             </div>
           </div>
-        </div>
 
-        <div class="title">
-          <div class="food-name">Caesar Salad</div>
-          <div class="restaurant">by <span class="name">The Wine Company</span></div>
-        </div>
-
-        <div class="description">
-          <div class="heading">Description</div>
-          <div class="text">
-
+          <div class="title">
+            <div class="food-name">{{ name }}</div>
+            <div class="restaurant">by <span class="name"><a href="restaurant.html?id={{restaurant_id}}">{{restaurant}}</a></span></div>
           </div>
-        </div>
 
-        <div class="cuisine">
-
-          <div class="heading">Cuisine</div>
-
-          <div class="icons">
-            <div class="food-icon">
-              <img src="images/cuisine/chinese.svg" />
-              <div class="text">Chinese</div>
+          <div class="description">
+            <div class="heading">Description</div>
+            <div class="text">
+              {{ description }}
             </div>
           </div>
-        </div>
 
-        <div class="dietary">
-          <div class="heading">Dietary</div>
+          <div class="cuisine">
 
-          <div class="icons">
-            <div class="food-icon">
-              <img src="images/dietary/dietary1.svg" />
-              <div class="text">Vegetarian</div>
-            </div>
-            <div class="food-icon">
-              <img src="images/dietary/dietary2.svg" />
-              <div class="text">Halal</div>
-            </div>
-            <div class="food-icon">
-              <img src="images/dietary/dietary3.svg" />
-              <div class="text">Vegan</div>
+            <div class="heading">Cuisine</div>
+
+            <div class="icons">
+              {{#cuisine}}
+                <div class="food-icon">
+                  <img src="images/{{ image }}" />
+                  <div class="text">{{ name }}</div>
+                </div>
+              {{/cuisine}}
             </div>
           </div>
-        </div>
 
+          <div class="dietary">
+            <div class="heading">Dietary</div>
+
+            <div class="icons">
+              {{#dietary}}
+                <div class="food-icon">
+                  <img src="images/{{ image }}" />
+                  <div class="text">{{ name }}</div>
+                </div>
+              {{/dietary}}
+            </div>
+          </div>
+
+
+        </script>
       </div>
 
       <div class="main-buttons"><div class="full">View Restaurant</div></div>

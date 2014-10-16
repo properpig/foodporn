@@ -282,6 +282,19 @@ a, a:visited, a:active {
 
 }
 
+.modal.short {
+  min-height: inherit;
+  height: 450px;
+  position: relative;
+
+  .main-buttons {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+  }
+
+}
+
 .box {
   background: white;
   border-radius: $radius;
@@ -296,7 +309,6 @@ a, a:visited, a:active {
   color: white;
   border: 1px solid white;
   font-size: 17px;
-  font-weight: 400;
   padding: 7px 15px;
   border-radius: $radius;
 }

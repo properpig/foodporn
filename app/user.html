@@ -74,64 +74,66 @@
 
         <div id="map-canvas"></div>
 
-        <script id="user-template" type="text/x-handlebars-template">
+        <div id="dynamic-info">
+          <script id="user-template" type="text/x-handlebars-template">
 
-          <div class="main-info">
+            <div class="main-info">
 
-            <div class="follow-button {{#if is_following}}following{{/if}}"></div>
-            <div class="profile-picture">
-              <img src="images/{{ photo }}" />
-            </div>
-
-            <div class="name">
-              {{ name }}
-            </div>
-
-            <div class="clear"></div>
-
-            <div class="stats">
-              <div class="member">
-                <i class="fa fa-user"></i> Joined <span class="date">{{ join_date }}</span>
+              <div class="follow-button {{#if is_following}}following{{/if}} {{#if is_me}}hidden{{/if}}" data-id={{ id }}></div>
+              <div class="profile-picture">
+                <img src="images/{{ photo }}" />
               </div>
-              <div class="likes">
-                <i class="fa fa-thumbs-up"></i> {{ num_likes }} Likes
+
+              <div class="name">
+                {{ name }}
+              </div>
+
+              <div class="clear"></div>
+
+              <div class="stats">
+                <div class="member">
+                  <i class="fa fa-user"></i> Joined <span class="date">{{ join_date }}</span>
+                </div>
+                <div class="likes">
+                  <i class="fa fa-thumbs-up"></i> {{ num_likes }} Likes
+                </div>
+              </div>
+
+              <div class="bio">
+                {{ bio }}
+              </div>
+
+            </div>
+
+            <div class="reviews">
+              <div class="heading">
+                {{ pluralise num_reviews "Review" }}
+              </div>
+              <div class="review-items">
+                {{#reviews}}<a href="restaurant.html?id={{ restaurant_id }}"><img class="food-thumbnail" src="images/{{ photo }}" /></a>{{/reviews}}
               </div>
             </div>
 
-            <div class="bio">
-              {{ bio }}
+            <div class="followers">
+              <div class="heading">
+                {{ pluralise num_followers "Follower" }}
+              </div>
+              <div class="follower-items">
+                {{#followers}}<a href="user.html?id={{ id }}"><img class="user-thumbnail" src="images/{{ photo }}" /></a>{{/followers}}
+              </div>
             </div>
 
-          </div>
+            <div class="following">
+              <div class="heading">
+                Following {{ num_following }}
+              </div>
+              <div class="follower-items">
+                {{#following}}<a href="user.html?id={{ id }}"><img class="user-thumbnail" src="images/{{ photo }}" /></a>{{/following}}
+              </div>
+            </div>
 
-          <div class="reviews">
-            <div class="heading">
-              {{ pluralise num_reviews "Review" }}
-            </div>
-            <div class="review-items">
-              {{#reviews}}<a href="restaurant.html?id={{ restaurant_id }}"><img class="food-thumbnail" src="images/{{ photo }}" /></a>{{/reviews}}
-            </div>
-          </div>
-
-          <div class="followers">
-            <div class="heading">
-              {{ pluralise num_followers "Follower" }}
-            </div>
-            <div class="follower-items">
-              {{#followers}}<a href="user.html?id={{ id }}"><img class="user-thumbnail" src="images/{{ photo }}" /></a>{{/followers}}
-            </div>
-          </div>
-
-          <div class="following">
-            <div class="heading">
-              Following {{ num_following }}
-            </div>
-            <div class="follower-items">
-              {{#following}}<a href="user.html?id={{ id }}"><img class="user-thumbnail" src="images/{{ photo }}" /></a>{{/following}}
-            </div>
-          </div>
-
-        </script>
+          </script>
+        </div>
 
       </div>
 

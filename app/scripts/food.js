@@ -24,7 +24,7 @@
           $.getJSON (window.apiUrl + '/food/like/' + food_id + '/' + window.username + '/', function(data) {
             if (data.status === 'success') {
               getDetails();
-            };
+            }
           });
         });
 
@@ -32,13 +32,13 @@
           $.getJSON (window.apiUrl + '/food/dislike/' + food_id + '/' + window.username + '/', function(data) {
             if (data.status === 'success') {
               getDetails();
-            };
+            }
           });
         });
 
       });
 
-    };
+    }
 
     getDetails();
 

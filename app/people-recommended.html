@@ -81,11 +81,11 @@
                 <a href="user.html?id={{ id }}"><img src="images/{{ photo }}" /></a>
               </div>
               <div class="info">
-              <div class="follow-button {{#if is_following}}following{{/if}}">
+              <div class="follow-button {{#if is_following}}following{{/if}} {{#if is_me}}hidden{{/if}}" data-id={{ id }}>
               </div>
                 <div class="name"><a href="user.html?id={{ id }}">{{ name }}</a></div>
                 <div class="stats">
-                  {{ pluralise num_reviews "Review" }} | {{ pluralise num_followers "Follower" }} | {{ pluralise num_likes "Like" }}
+                  {{ pluralise num_reviews "Review" }} | <span class="followers">{{ pluralise num_followers "Follower" }}</span> | {{ pluralise num_likes "Like" }}
                 </div>
                 <div class="reviews">
                   {{#reviews}}

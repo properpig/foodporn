@@ -8,6 +8,9 @@
   var query  = window.location.search.substring(1);
   var user_id = query.substring(query.indexOf('=') + 1, query.length);
 
+  var source = $('#user-template').html();
+  var template = Handlebars.compile(source);
+
   // map stuff
   function initialize() {
     var mapOptions = {
@@ -22,14 +25,15 @@
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
 
+    getDetails();
 
+  }
+
+  function getDetails() {
 
     $.getJSON( window.apiUrl + '/user/' + user_id + '/' + window.username + '/', function( data ) {
 
-      var source = $('#user-template').html();
-      var template = Handlebars.compile(source);
-
-      $('.main-div').append(template(data));
+      $('#dynamic-info').html(template(data));
 
       $('.sub-name').text(data.name);
 
@@ -42,6 +46,23 @@
         });
 
         marker.setMap(map);
+
+      });
+
+    }).done(function() {
+
+      $('.follow-button').click(function() {
+
+        var user_id = $(this).data('id');
+        var follow_button = $(this);
+
+        $.getJSON (window.apiUrl + '/user/follow/' + user_id + '/' + window.username + '/', function(data) {
+
+          if (data.status === 'success') {
+            follow_button.toggleClass('following');
+            getDetails();
+          }
+        });
 
       });
 

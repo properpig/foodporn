@@ -75,26 +75,30 @@
       </div>
 
       <div class="main-div">
-        <div class="template">
-          <div class="restaurant-item">
+        <script id="restaurant-template" type="text/x-handlebars-template">
+          {{#restaurants}}
+          <div class="restaurant-item" onclick="window.location='restaurant.html?id={{ id }}';">
             <div class="photo">
-              <img src="images/restaurant/thewinecompany.png" />
-              <div class="follow-button"></div>
+              <img src="images/{{ photo }}" />
+              <div class="follow-button {{#if is_following}}following{{/if}}" data-id={{id}}></div>
             </div>
             <div class="info">
-              <div class="name">The Wine Company</div>
-              <div class="price-range"><span class="low">$1</span> - <span class="high">$20</span></div>
+              <div class="name">{{ name }}</div>
+              <div class="price-range">{{ price_low }} - {{ price_high }}</div>
               <div class="more">
                 <div class="followed-by">
-                  <i class="fa fa-users"></i>
+                  {{#followed_by}}
+                    <a href="user.html?id={{user_id}}"><img src="images/{{photo}}" /></a>
+                  {{/followed_by}}
                   <div class="more-following">
-                    <span class="num">1</span> more
+                    {{ following_count }} <i class="fa fa-users"></i>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          {{/restaurants}}
+        </script>
       </div>
 
       <div class="main-buttons"><div class="half" id="filters">Filters</div><div class="half" id="cant-decide">Can't Decide</div></div>

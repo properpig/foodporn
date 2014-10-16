@@ -5,6 +5,9 @@
     var query  = window.location.search.substring(1);
     var restaurant_id = query.substring(query.indexOf('=') + 1, query.length);
 
+    var source = $('#restaurant-template').html();
+    var template = Handlebars.compile(source);
+
     Handlebars.registerHelper('rating_stars', function(rating_num, num_reviews) {
       var i;
       var rating = '';
@@ -19,18 +22,33 @@
 
     });
 
-    $.getJSON( window.apiUrl + '/restaurant/' + restaurant_id + '/' + window.username + '/', function( data ) {
+    function getDetails() {
 
-      console.log(data);
+      $.getJSON( window.apiUrl + '/restaurant/' + restaurant_id + '/' + window.username + '/', function( data ) {
 
-      $('.sub-name').text(data.name);
-      $('.main-buttons .full').wrap('<a href="directions.html?id=' + data.restaurant_id + '"></a>');
+        console.log(data);
 
+        $('.sub-name').text(data.name);
+        $('.main-buttons .full').wrap('<a href="directions.html?id=' + data.restaurant_id + '"></a>');
 
-      var source = $('#restaurant-template').html();
-      var template = Handlebars.compile(source);
+        $('.main-div').html(template(data));
 
-      $('.main-div').append(template(data));
+      }).done(function() {
 
-    });
+        $('.follow-button').click(function(event) {
+
+          var restaurant_id = $(this).data('id');
+
+          $.getJSON (window.apiUrl + '/restaurant/follow/' + restaurant_id + '/' + window.username + '/', function(data) {
+            getDetails();
+          });
+
+          $(this).toggleClass('following');
+          event.stopPropagation();
+        });
+
+      });
+    }
+
+    getDetails();
 })();

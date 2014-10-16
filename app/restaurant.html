@@ -71,10 +71,10 @@
           <div class="main-photo restaurant">
             <img src="images/{{ photo }}" />
             <div class="overlay">
-              <div class="circle"><i class="fa fa-share-alt fa-2x"></i></div>
+              <div class="circle"><img class="share-button" src="images/icons/share-o.svg" /></div>
             </div>
             <div class="buttons-overlay photo-bar">
-              <div class="follow-button {{#if is_following}}following{{/if}}"></div>
+              <div class="follow-button {{#if is_following}}following{{/if}}" data-id={{ restaurant_id }}></div>
               <div class="get-there-button" onclick="window.location='directions.html?id={{ restaurant_id }}';">Get There!</div>
             </div>
           </div>

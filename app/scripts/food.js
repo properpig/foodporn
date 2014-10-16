@@ -5,17 +5,41 @@
     var query  = window.location.search.substring(1);
     var food_id = query.substring(query.indexOf('=') + 1, query.length);
 
-    $.getJSON( window.apiUrl + '/food/' + food_id + '/' + window.username + '/', function( data ) {
+    var source = $('#food-template').html();
+    var template = Handlebars.compile(source);
 
-      console.log(data);
+    function getDetails() {
 
-      $('.sub-name').text(data.name);
-      $('.main-buttons .full').wrap('<a href="restaurant.html?id=' + data.restaurant_id + '"></a>');
+      $.getJSON( window.apiUrl + '/food/' + food_id + '/' + window.username + '/', function( data ) {
 
-      var source = $('#food-template').html();
-      var template = Handlebars.compile(source);
+        $('.sub-name').text(data.name);
+        $('.main-buttons .full').wrap('<a href="restaurant.html?id=' + data.restaurant_id + '"></a>');
 
-      $('.main-div').append(template(data));
+        $('.main-div').html(template(data));
 
-    });
+      }).done(function() {
+
+        // attach listeners for like/dislike
+        $('.fa-thumbs-o-up, .fa-thumbs-up').click(function() {
+          $.getJSON (window.apiUrl + '/food/like/' + food_id + '/' + window.username + '/', function(data) {
+            if (data.status === 'success') {
+              getDetails();
+            };
+          });
+        });
+
+        $('.fa-thumbs-o-down, .fa-thumbs-down').click(function() {
+          $.getJSON (window.apiUrl + '/food/dislike/' + food_id + '/' + window.username + '/', function(data) {
+            if (data.status === 'success') {
+              getDetails();
+            };
+          });
+        });
+
+      });
+
+    };
+
+    getDetails();
+
 })();

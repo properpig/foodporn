@@ -27,6 +27,7 @@ var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var pagespeed = require('psi');
 var reload = browserSync.reload;
+var replace = require('gulp-replace');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -124,6 +125,7 @@ gulp.task('html', function () {
     .pipe(assets)
     // Concatenate And Minify JavaScript
     .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+    .pipe(replace('http://localhost:8000', 'http://128.199.140.174:8000'))
     // Remove Any Unused CSS
     // Note: If not using the Style Guide, you can delete it from
     // the next line to only include styles your project uses.

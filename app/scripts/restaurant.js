@@ -8,6 +8,10 @@
     var source = $('#restaurant-template').html();
     var template = Handlebars.compile(source);
 
+    var menu_items;
+    var menu_source = $('#menu-template').html();
+    var menu_template = Handlebars.compile(menu_source);
+
     Handlebars.registerHelper('rating_stars', function(rating_num, num_reviews) {
       var i;
       var rating = '';
@@ -25,6 +29,8 @@
     function getDetails() {
 
       $.getJSON( window.apiUrl + '/restaurant/' + restaurant_id + '/' + window.username + '/', function( data ) {
+
+        menu_items = data.foods;
 
         console.log(data);
 
@@ -47,8 +53,24 @@
           event.stopPropagation();
         });
 
+        $('.modal-button').click(function() {
+          var index = $(this).data('index');
+
+          $('#modal-menu-item').html(menu_template(menu_items[index]));
+
+          var id = $(this).attr('id');
+          // show the vignette
+          $('#modal-' + id).addClass('open');
+          // slide the modal in
+          $('#modal-' + id + ' .modal').animate({
+            'marginTop': 90
+          });
+
+        });
+
       });
     }
 
     getDetails();
+
 })();

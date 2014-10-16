@@ -1,0 +1,38 @@
+@import '_custom_vars';
+
+.main-div {
+  overflow: hidden;
+}
+
+#food-photo, #food-photo2 {
+
+  position: relative;
+
+  img {
+    width: 100%;
+    position: absolute;
+  }
+
+  z-index: 2;
+
+}
+
+#food-photo2 {
+  z-index: 1;
+}
+
+.info {
+  padding: 7px;
+
+  .name {
+    font-weight: 400;
+    font-size: 18px;
+  }
+
+  .restaurant-name {
+    font-size: 17px;
+    font-style: italic;
+    color: $base-color;
+  }
+
+}

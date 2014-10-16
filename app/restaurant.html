@@ -137,7 +137,7 @@
               {{ pluralise food_count "Menu Item" }}
             </div>
             <div class="menu-items">
-            {{#foods}}<a href="food.html?id={{ id }}"><img class="food-thumbnail" src="images/{{ photo }}" /></a>{{/foods}}
+            {{#foods}}<img class="modal-button food-thumbnail" id="menu-item" src="images/{{ photo }}" data-index={{ @index }} />{{/foods}}
             </div>
           </div>
 
@@ -185,9 +185,31 @@
 
         </script>
 
+        <script id="food-template" type="text/x-handlebars-template">
+        </script>
+
       </div>
 
       <div class="main-buttons"><div class="full">Get There!</div></div>
+
+
+      <div class="modal-wrapper" id="modal-menu-item">
+        <script id="menu-template" type="text/x-handlebars-template">
+          <div class="modal short">
+
+            <div class="photo">
+              <a href="food.html?id={{ id }}"><img src="images/{{ photo }}" /></a>
+            </div>
+
+            <div class="info">
+              <div class="name">{{ name }}</div>
+              <div class="price">{{ price }}</div>
+            </div>
+
+            <div class="main-buttons"><a href="food.html?id={{ id }}"><div class="view-food-button">View Food</div></a></div>
+          </div>
+        </script>
+      </div>
 
     </div>
 

@@ -224,3 +224,23 @@ $icon-height: 45px;
 .amenities {
   padding: $main-padding;
 }
+
+#modal-menu-item {
+
+  .info {
+    padding: $main-padding;
+    font-size: 18px;
+  }
+
+  .name {
+    float: left;
+    font-weight: 400;
+    width: 85%;
+  }
+
+  .price {
+    float: right;
+    width: 15%;
+  }
+
+}

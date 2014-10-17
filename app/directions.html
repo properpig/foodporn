@@ -32,11 +32,16 @@
     <link rel="canonical" href="http://www.example.com/">
     -->
 
-    <link rel="stylesheet" href="styles/components.css">
+		<link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/secondary.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
+		<link rel="stylesheet" href="styles/directions.css">
 
+		<script type="text/javascript"
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlfMykYSTngeUvgXnv5tAdlJByP8FpXUM">
+    </script>
+		
   </head>
   <body>
     <!-- Add your site or app content here -->
@@ -48,8 +53,8 @@
           <div class="back-button-container">
             <i class="fa fa-angle-left"></i>
             <img class="logo" src="images/logo.svg" />
-          </div><!--
-           --><a href="restaurant-following.html"><div class="app-name">Restaurant<div class="sub-name">Get to Bella Pizza</div></div></a>
+          </div>
+           <a href="restaurant-following.html"><div class="app-name">Restaurant<div class="sub-name"></div></div></a>
         </div>
         <div class="icons">
             <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
@@ -58,23 +63,26 @@
       </div>
 
       <div class="vignette"></div>
-
-<!--       <div class="sub-nav">
-        <div data-link="index.html" class="selected sub-nav-item">Explore<div class="underline"></div></div><div data-link="food-liked.html" class="sub-nav-item">Liked<div class="underline"></div></div>
-      </div> -->
-
+			
       <div class="main-div">
-
-        Display map and directions
-
+					<div id="map-canvas"></div>
+					<script id="directions-template" type="text/x-handlebars-template">
+					<div id="directions-panel"></div>
+					
+					</script>
       </div>
 
-      <div class="main-buttons"><div class="full">Change this</div></div>
+      <div class="main-buttons"><div class="full">
+					<label id="transport-icons"><input type="radio" name="transportMode" value="WALKING" onclick="calcRoute()"><img src="images/directions/walk_icon.png"></label>
+					<label id="transport-icons"><input type="radio" name="transportMode" value="TRANSIT" onclick="calcRoute()"><img src="images/directions/bus_icon.png"></label>
+					<label id="transport-icons"><input type="radio" name="transportMode" value="DRIVING" onclick="calcRoute()"><img src="images/directions/car_icon.png"></label>
+			</div></div>
 
     </div>
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
+		<script src="scripts/directions.js"></script>
     <!-- endbuild -->
 
 

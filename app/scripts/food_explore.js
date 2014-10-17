@@ -20,22 +20,21 @@
 
     $('#food-photo img, #food-photo2 img').css({
       height: $(window).width()
-    })
+    });
 
     // create a simple instance
     // by default, it only adds horizontal recognizers
     var mc = new Hammer(myElement);
-    var positionX = 0;
 
     // listen to events...
-    mc.on("panleft panright tap press", function(ev) {
+    mc.on('panleft panright tap press', function(ev) {
 
       foodphoto.css({
         'left': ev.deltaX,
         'top': ev.deltaY
       });
 
-      if (ev.eventType == 4) {
+      if (ev.eventType === 4) {
         foodphoto.css({
           'left': 0,
           'top': 0
@@ -44,7 +43,7 @@
 
     });
 
-    mc.on("swipeleft swiperight", function(ev) {
+    mc.on('swipeleft swiperight', function(ev) {
 
       foodphoto.css({
         'left': 0,
@@ -66,12 +65,12 @@
     }
 
     function populateNextFood(index) {
-      if (index == foodlist.length) {
+      if (index === foodlist.length) {
         return;
       }
       $('.info').html(template(foodlist[index]));
       foodphoto.attr('src', 'images/' + foodlist[index].photo);
-      if (index+1 != foodlist.length){
+      if (index+1 !== foodlist.length){
         foodphoto2.attr('src', 'images/' + foodlist[index+1].photo);
       }
     }

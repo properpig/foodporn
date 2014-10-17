@@ -18,6 +18,7 @@
     "$": false,
     "jQuery": false,
     "google": false,
-    "Handlebars": false
+    "Handlebars": false,
+    "Hammer": false
   }
 }

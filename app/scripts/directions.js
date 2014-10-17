@@ -6,7 +6,7 @@ var latlng, restaurantAdd;
 
 (function () {
     'use strict';
-    var map;
+    var map, alert;
     directionsDisplay = new google.maps.DirectionsRenderer(); 
 
     var query  = window.location.search.substring(1);
@@ -22,12 +22,12 @@ var latlng, restaurantAdd;
                     center: latlng,
                 };
 
-                map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
                 directionsDisplay.setMap(map);
                 
                 $.getJSON( window.apiUrl + '/restaurant/' + restaurant_id + '/' + window.username + '/', function( data ) {
 
-                    $('.sub-name').text("Get to " + data.name);
+                    $('.sub-name').text('Get to ' + data.name);
      
                     var source = $('#directions-template').html();
                     var template = Handlebars.compile(source);
@@ -35,7 +35,7 @@ var latlng, restaurantAdd;
                     $('.main-div').append(template(data));
 
 
-                    restaurantAdd = new google.maps.LatLng(data.location_x, data.location_y)
+                    restaurantAdd = new google.maps.LatLng(data.location_x, data.location_y);
                     var request = {
                         origin: latlng,
                         destination: restaurantAdd,
@@ -44,23 +44,22 @@ var latlng, restaurantAdd;
 
                     directionsDisplay.setPanel(document.getElementById('directions-panel'));
                     directionsService.route(request, function (response, status) {
-                        if (status == google.maps.DirectionsStatus.OK) {
+                        if (status === google.maps.DirectionsStatus.OK) {
                             directionsDisplay.setDirections(response);
                         }
                     });
                 });
             });
        } else {
-            alert("Geolocation not supported");
+            alert('Geolocation not supported');
         }
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 })();
 
+/* exported calcRoute */
 function calcRoute() {
-    //var start = document.getElementById('start').value;
-    ///var end = document.getElementById('end').value;
-
+    'use strict';
     var mode = document.getElementsByName('transportMode');
 
     var selectedMode;
@@ -80,7 +79,7 @@ function calcRoute() {
 
     directionsDisplay.setPanel(document.getElementById('directions-panel'));
     directionsService.route(request, function(response, status) {
-        if (status == google.maps.DirectionsStatus.OK) {
+        if (status === google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
         }
     });

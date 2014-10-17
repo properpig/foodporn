@@ -2,53 +2,84 @@ html, body, #map-canvas {
     height: 100%;
     margin: 0px;
     padding: 0px;
-		overflow:hidden;
+	overflow:hidden;
 }
 
 .main-div {
-		overflow:hidden;
+	overflow:hidden;
 }
 
 #directions-panel {
-    height: 55%;
+    height: 45%;
     width: 100%;
     overflow: auto;
-		box-sizing: content-box;
+	box-sizing: content-box;
 }
 
 #map-canvas {
     height:45%;
-		width:100%;
+	width:100%;
 }
 
-#transport-icons{
-    width:65px;
-		margin: 0 4% 0 4%;
-    background:none;
-		border:none;
-		height:100%;
-		cursor:pointer;
-		display:inline-block;
-		box-sizing: border-box;
+.change-location {
+	margin:15px 5px 10px 5px;
+	font-weight:bold;
+
+	input{
+		margin-left:10px;
+	}
 }
 
-.main-buttons label img{
+#directions-panel table tbody tr td{
+    width: 0px;
+	position: relative;
+	display: table-cell;
+	vertical-align: inherit;
+	padding: 0px;
+
+    &::before {
+      display: none;
+    }
+}
+
+.transport-icon {
+    display: inline-block;
+    width: 17%;
+	margin: 0 4% 0 4%;
+	cursor: pointer;
+	height:100%;
+
+	img{
 		height: 28px;
+		margin-top: -20px;
+	}
+
+	.text {
+		margin-top:-35px;
+ 		height: 15px;
+    	font-size: 14px;
+   		text-align: center;
+	}
+}
+
+.warnbox-content {
+	display: none;
+	background: none;
+}
+
+.adp-warnbox {
+	display: none;
+}
+
+.adp-directions table tbody tr{
+	padding-left:50px;
+	margin-top:0px;
 }
 
 input[type="radio"] {
     display: none;
 }
 
-#directions-panel table tbody tr td{
-    width:0px;
-		position: relative;
-		display: table-cell;
-		vertical-align: inherit;
-		padding:0px;
-
-    // This is to re-plicate the table-headers for mobile
-    &::before {
-      display:none;
-    }
+input[type="radio"]:checked + label {
+    border-bottom: 2.5px solid #FFF;
 }

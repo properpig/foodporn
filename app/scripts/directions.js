@@ -1,58 +1,46 @@
 /*jshint camelcase: false */
 
-var directionsDisplay;
+var directionsDisplay = new google.maps.DirectionsRenderer();
 var directionsService = new google.maps.DirectionsService();
-var latlng, restaurantAdd;
+var origin, restaurantAdd;
 
 (function () {
     'use strict';
     var map, alert;
-    directionsDisplay = new google.maps.DirectionsRenderer(); 
 
     var query  = window.location.search.substring(1);
     var restaurant_id = query.substring(query.indexOf('=') + 1, query.length);
 
-    function initialize() {
-        if (navigator.geolocation) { 
-            navigator.geolocation.getCurrentPosition(function (position) {                                                              
-                latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    function initialize() {                                                        
+        origin = new google.maps.LatLng(1.296568, 103.852118);
 
-                var mapOptions = {
-                    zoom: 14,  
-                    center: latlng,
-                };
+        var mapOptions = {
+            zoom: 14,  
+            center: origin,
+        };
 
-                map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-                directionsDisplay.setMap(map);
-                
-                $.getJSON( window.apiUrl + '/restaurant/' + restaurant_id + '/' + window.username + '/', function( data ) {
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        directionsDisplay.setMap(map);
+        
+        $.getJSON( window.apiUrl + '/directions/' + restaurant_id + '/' + window.username + '/', function( data ) {
 
-                    $('.sub-name').text('Get to ' + data.name);
-     
-                    var source = $('#directions-template').html();
-                    var template = Handlebars.compile(source);
+            $('.sub-name').text('Get to ' + data.restaurant['name']);
 
-                    $('.main-div').append(template(data));
+            restaurantAdd = new google.maps.LatLng(data.restaurant['x'], data.restaurant['y']);
+            origin = new google.maps.LatLng(data.user['x'], data.user['y']);
+            var request = {
+                origin: origin,
+                destination: restaurantAdd,
+                travelMode: google.maps.DirectionsTravelMode.WALKING,
+            };
 
-
-                    restaurantAdd = new google.maps.LatLng(data.location_x, data.location_y);
-                    var request = {
-                        origin: latlng,
-                        destination: restaurantAdd,
-                        travelMode: google.maps.DirectionsTravelMode.WALKING,
-                    };
-
-                    directionsDisplay.setPanel(document.getElementById('directions-panel'));
-                    directionsService.route(request, function (response, status) {
-                        if (status === google.maps.DirectionsStatus.OK) {
-                            directionsDisplay.setDirections(response);
-                        }
-                    });
-                });
+            directionsDisplay.setPanel(document.getElementById('directions-panel'));
+            directionsService.route(request, function (response, status) {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                }
             });
-       } else {
-            alert('Geolocation not supported');
-        }
+        });
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 })();
@@ -60,18 +48,22 @@ var latlng, restaurantAdd;
 /* exported calcRoute */
 function calcRoute() {
     'use strict';
-    var mode = document.getElementsByName('transportMode');
+    var start = document.getElementById('start').value;
+    if(start){
+        origin = start;
+    }
 
-    var selectedMode;
+    var mode = document.getElementsByName('transportMode');
+    var selectedMode='DRIVING';
     for(var i=0; i < mode.length; i++){
         if(mode[i].checked){
             selectedMode = mode[i].value;
             break;
         }
     }
-    
+
     var request = {
-        origin: latlng,
+        origin: origin,
         destination: restaurantAdd,
         travelMode: google.maps.TravelMode[selectedMode],
         provideRouteAlternatives:false

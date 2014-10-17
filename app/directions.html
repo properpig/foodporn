@@ -41,13 +41,12 @@
 		<script type="text/javascript"
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlfMykYSTngeUvgXnv5tAdlJByP8FpXUM">
     </script>
-		
   </head>
+
   <body>
     <!-- Add your site or app content here -->
 
     <div class="container">
-
       <div class="app-bar-container">
         <div class="app-bar">
           <div class="back-button-container">
@@ -66,17 +65,34 @@
 			
       <div class="main-div">
 					<div id="map-canvas"></div>
-					<script id="directions-template" type="text/x-handlebars-template">
+
+          <div class="change-location">
+              <input type="text" placeholder="Change your Starting Location" name="start" id="start" size="30"/>
+              <input type="button" value="Submit" id="submit" Onclick="calcRoute()"/>
+          </div>
+
 					<div id="directions-panel"></div>
-					
-					</script>
       </div>
 
-      <div class="main-buttons"><div class="full">
-					<label id="transport-icons"><input type="radio" name="transportMode" value="WALKING" onclick="calcRoute()"><img src="images/directions/walk_icon.png"></label>
-					<label id="transport-icons"><input type="radio" name="transportMode" value="TRANSIT" onclick="calcRoute()"><img src="images/directions/bus_icon.png"></label>
-					<label id="transport-icons"><input type="radio" name="transportMode" value="DRIVING" onclick="calcRoute()"><img src="images/directions/car_icon.png"></label>
-			</div></div>
+      <div class="main-buttons">
+          <input type="radio" id="driving" name="transportMode" value="DRIVING" checked="true" onclick="calcRoute()">
+          <label class="transport-icon" for="driving">
+            <img src="images/directions/car_icon.png">
+            <div class="text">DRIVE</div>
+          </label>
+
+          <input type="radio" id="transit" name="transportMode" value="TRANSIT" onclick="calcRoute()">
+          <label class="transport-icon" for="transit">
+            <img src="images/directions/bus_icon.png">
+            <div class="text">TRANSIT</div>
+          </label>
+
+          <input type="radio" id="walk" name="transportMode" value="WALKING" onclick="calcRoute()">
+          <label class="transport-icon" for="walk">
+            <img src="images/directions/walk_icon.png">
+            <div class="text">WALK</div>
+          </label>
+      </div>
 
     </div>
 
@@ -84,7 +100,6 @@
     <script src="scripts/main.js"></script>
 		<script src="scripts/directions.js"></script>
     <!-- endbuild -->
-
 
     <!-- Built with love using Web Starter Kit -->
   </body>

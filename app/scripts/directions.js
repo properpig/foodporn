@@ -1,4 +1,5 @@
 /*jshint camelcase: false */
+/*jshint sub:true*/
 
 var directionsDisplay = new google.maps.DirectionsRenderer();
 var directionsService = new google.maps.DirectionsService();
@@ -6,7 +7,7 @@ var origin, restaurantAdd;
 
 (function () {
     'use strict';
-    var map, alert;
+    var map;
 
     var query  = window.location.search.substring(1);
     var restaurant_id = query.substring(query.indexOf('=') + 1, query.length);
@@ -24,14 +25,14 @@ var origin, restaurantAdd;
         
         $.getJSON( window.apiUrl + '/directions/' + restaurant_id + '/' + window.username + '/', function( data ) {
 
-            $('.sub-name').text('Get to ' + data.restaurant['name']);
+            $('.sub-name').text('Get to ' + data.restaurant.name);
 
-            restaurantAdd = new google.maps.LatLng(data.restaurant['x'], data.restaurant['y']);
-            origin = new google.maps.LatLng(data.user['x'], data.user['y']);
+            restaurantAdd = new google.maps.LatLng(data.restaurant.x, data.restaurant.y);
+            origin = new google.maps.LatLng(data.user.x, data.user.y);
             var request = {
                 origin: origin,
                 destination: restaurantAdd,
-                travelMode: google.maps.DirectionsTravelMode.WALKING,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING,
             };
 
             directionsDisplay.setPanel(document.getElementById('directions-panel'));

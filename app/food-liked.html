@@ -76,20 +76,24 @@
 
       <div class="main-div">
         <!-- this is our template -->
-        <div class="template">
-          <div class="box food-item">
-            <div class="food-photo">
-              <img src="images/food/caesarsalad.png" />
-            </div>
-            <div class="info">
-              <div class="name">Caesar Salad</div>
-              <div class="more">
-                <div class="price">$4.50</div>
-                <div class="num_likes"><i class="fa fa-thumbs-o-up"></i> <span class="num">5</span></div>
+        <script id="food-template" type="text/x-handlebars-template">
+        {{#foods}}<div class="box food-item">
+            <a href="food.html?id={{ id }}">
+              <div class="food-photo">
+                <img src="images/{{ photo }}" />
               </div>
-            </div>
-          </div>
-        </div>
+            </a>
+            <a href="food.html?id={{ id }}">
+              <div class="info">
+                <div class="name">{{ name }}</div>
+                <div class="more">
+                  <div class="price">{{ price }}</div>
+                  <div class="num_likes"><i class="fa fa-thumbs-o-up"></i> <span class="num">{{ num_likes }}</span></div>
+                </div>
+              </div>
+            </a>
+          </div>{{/foods}}
+        </script>
       </div>
 
       <div class="main-buttons"><div class="full" id="filters">Filters</div></div>

@@ -3,24 +3,12 @@
 
     $.getJSON( window.apiUrl + '/food/list/' + window.username + '/?liked=true', function( data ) {
 
-      var template = $('.template').children().first().clone();
+      console.log(data);
 
-      $.each(data, function(index, food) {
+      var source = $('#food-template').html();
+      var template = Handlebars.compile(source);
 
-        var thisTemplate = template.clone();
-
-        thisTemplate.find('.name').text(food.name);
-        thisTemplate.find('.price').text(food.price);
-        /*jshint camelcase: false */
-        thisTemplate.find('.num_likes .num').text(food.num_likes);
-        thisTemplate.find('.food-photo img').attr('src', 'images/' + food.photo);
-
-        thisTemplate.find('.food-photo, .info').wrap('<a href="food.html?id=' + food.id + '"></a>');
-
-        $('.main-div').append(thisTemplate);
-
-      });
-
-
+      $('.main-div').html(template({'foods': data}));
     });
+
 })();

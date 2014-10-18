@@ -43,12 +43,21 @@ $icon-height: 47px;
 
   .restaurant-name {
     font-size: 17px;
+    font-weight: 400;
     font-style: italic;
     color: $yellow-orange;
   }
 
-  .likes {
+  .stats {
     float: right;
+    font-size: 17px;
+  }
+
+  .price {
+    width: 50px;
+    text-align: right;
+    display: inline-block;
+    font-weight: 400;
   }
 }
 

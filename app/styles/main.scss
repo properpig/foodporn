@@ -26,8 +26,12 @@ html, body {
 }
 
 a, a:visited, a:active {
-  color: inherit;
+  color: auto;
   text-decoration: none;
+}
+
+a:visited, a:active {
+  color: auto !important;
 }
 
 .container {
@@ -380,6 +384,13 @@ a, a:visited, a:active {
   font-style: normal;
   font-weight: 400;
   src: url(fonts/Lato-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: url(fonts/Lato-Italic.ttf);
 }
 
 @font-face {

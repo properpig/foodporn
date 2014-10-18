@@ -17,9 +17,11 @@
     var likeButton = $('.controls .fa-thumbs-o-up');
     var dislikeButton = $('.controls .fa-thumbs-o-down');
     dislikeButton.click(function(){
+      $.getJSON (window.apiUrl + '/food/dislike/' + foodlist[foodIndex].id + '/' + window.username + '/');
       likeFood(false);
     });
     likeButton.click(function(){
+      $.getJSON (window.apiUrl + '/food/like/' + foodlist[foodIndex].id + '/' + window.username + '/');
       likeFood(true);
     });
 
@@ -29,6 +31,14 @@
 
     $('.controls .fa-question').click(function() {
       $('.instructions').fadeToggle();
+    });
+
+    $('.controls .fa-undo').click(function() {
+      if (foodIndex === 0) {
+        return;
+      }
+      populateNextFood(--foodIndex);
+      $.getJSON (window.apiUrl + '/food/reset/' + foodlist[foodIndex].id + '/' + window.username + '/');
     });
 
     $('.dismiss-button').click(function() {

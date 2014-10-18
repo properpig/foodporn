@@ -78,6 +78,10 @@
 
       $('#modal-menu-item .modal').html(menu_template({'not_first':not_first, 'not_last':not_last, 'item':menu_items[index]}));
 
+      // set the height of the menu item so its fixed
+      var width = $('#modal-menu-item .photo img').width();
+      $('#modal-menu-item .photo img').height(width);
+
       $('.controls .right').click(function(event) {
         displayMenuItem(++menuIndex);
         event.stopPropagation();

@@ -16,6 +16,7 @@
         thisTemplate.find('.address').text(restaurant.location_name);
         thisTemplate.find('.photo img').attr('src', 'images/' + restaurant.photo);
 
+        thisTemplate.find('.get-there-button').wrap('<a href="directions.html?id=' + restaurant.id + '"></a>');
         thisTemplate.find('.photo, .info').wrap('<a href="restaurant.html?id=' + restaurant.id + '"></a>');
 
         $('.main-div').append(thisTemplate);

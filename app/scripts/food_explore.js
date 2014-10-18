@@ -94,6 +94,10 @@
       likeButton.click(); // simulate a click to the button
     });
 
+    mc.on('press tap', function(ev) {
+      window.location='food.html?id=' + foodlist[foodIndex].id;
+    });
+
     function getFoodList() {
       $.getJSON( window.apiUrl + '/food/list/' + window.username + '/', function( data ) {
         foodlist = data;

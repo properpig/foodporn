@@ -236,6 +236,45 @@ $icon-height: 45px;
 
 #modal-menu-item {
 
+  .photo {
+
+    position: relative;
+
+    .controls {
+      display: block;
+      height: 100%;
+      width: 100%;
+
+      .wrapper {
+        position: absolute;
+        margin: auto 2px;
+        top: 0px;
+        bottom: 0px;
+        height: 35px;
+        width: 35px;
+        line-height: 35px;
+        font-size: 35x;
+        background: $base-color-transparent;
+        text-align: center;
+        color: white;
+        border-radius: 100px;
+        padding: 0px 10px;
+        opacity: 0.9;
+      }
+
+      .wrapper.left, {
+        text-align: left;
+        left: 0px;
+      }
+
+      .wrapper.right {
+        text-align: right;
+        right: 0px;
+      }
+
+    }
+  }
+
   .info {
     padding: $main-padding;
     font-size: 18px;

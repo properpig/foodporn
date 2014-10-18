@@ -194,21 +194,24 @@
 
 
       <div class="modal-wrapper" id="modal-menu-item">
-        <script id="menu-template" type="text/x-handlebars-template">
-          <div class="modal short">
-
+        <div class="modal short">
+          <script id="menu-template" type="text/x-handlebars-template">
             <div class="photo">
-              <a href="food.html?id={{ id }}"><img src="images/{{ photo }}" /></a>
+              <a href="food.html?id={{ item.id }}"><img src="images/{{ item.photo }}" /></a>
+              <div class="controls">
+                {{#if not_first}}<div class="wrapper left"><i class="fa fa-caret-left fa-2x"></i></div>{{/if}}
+                {{#if not_last}}<div class="wrapper right"><i class="fa fa-caret-right fa-2x"></i></div>{{/if}}
+              </div>
             </div>
 
             <div class="info">
-              <div class="name">{{ name }}</div>
-              <div class="price">{{ price }}</div>
+              <div class="name">{{ item.name }}</div>
+              <div class="price">{{ item.price }}</div>
             </div>
 
-            <div class="main-buttons"><a href="food.html?id={{ id }}"><div class="view-food-button">View Food</div></a></div>
-          </div>
-        </script>
+            <div class="main-buttons"><a href="food.html?id={{ item.id }}"><div class="view-food-button">View Food</div></a></div>
+          </script>
+        </div>
       </div>
 
     </div>

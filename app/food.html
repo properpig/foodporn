@@ -80,7 +80,7 @@
             </div>
             <div class="liked-overlay photo-bar">
               <div class="more">
-                {{ num_likes }} <i class="fa fa-thumbs-o-up fa-2x"></i> <i class="fa fa-angle-right fa-2x {{#if less_than_8}}hidden{{/if}}"></i>
+                <i class="fa fa-thumbs-o-up fa-2x"></i>{{ num_likes }} <i class="fa fa-angle-right fa-2x {{#if less_than_8}}hidden{{/if}}"></i>
               </div>
               {{#liked_by}}
                 <a href="user.html?id={{user_id}}"><img src="images/{{ photo }}" /></a>

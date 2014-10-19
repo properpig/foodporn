@@ -84,7 +84,7 @@
 
           <div class="followed-by photo-bar">
             <div class="more">
-              {{ following_count }} <i class="fa fa-users fa-2x"></i> <i class="fa fa-angle-right fa-2x {{#if less_than_8}}hidden{{/if}}"></i>
+              <i class="fa fa-users fa-2x"></i>{{ following_count }} <i class="fa fa-angle-right fa-2x {{#if less_than_8}}hidden{{/if}}"></i>
             </div>
             {{#followed_by}}
               <a href="user.html?id={{user_id}}"><img src="images/{{photo}}" /></a>
@@ -202,14 +202,14 @@
             <div class="photo">
               <a href="food.html?id={{ item.id }}"><img src="images/{{ item.photo }}" /></a>
               <div class="controls">
-                {{#if not_first}}<div class="wrapper left"><i class="fa fa-caret-left fa-2x"></i></div>{{/if}}
-                {{#if not_last}}<div class="wrapper right"><i class="fa fa-caret-right fa-2x"></i></div>{{/if}}
+                {{#if not_first}}<div class="wrapper left"><div class="red-overlay"><i class="fa fa-caret-left fa-2x"></i></div></div>{{/if}}
+                {{#if not_last}}<div class="wrapper right"><div class="red-overlay"><i class="fa fa-caret-right fa-2x"></i></div></div>{{/if}}
               </div>
             </div>
 
             <div class="info">
               <div class="name">{{ item.name }}</div>
-              <div class="price">{{ item.price }}</div>
+              <div class="price">{{ item.price }} <i class="fa fa-thumbs-o-up"></i> {{ item.num_likes }}</div>
             </div>
 
             <div class="main-buttons"><a href="food.html?id={{ item.id }}"><div class="view-food-button">View Food</div></a></div>

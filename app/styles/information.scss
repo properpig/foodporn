@@ -58,6 +58,7 @@ $icon-height: 45px;
   .more {
     display: inline-block;
     float: right;
+    margin-right: 5px;
 
     i {
       font-size: 20px;
@@ -247,6 +248,23 @@ $icon-height: 45px;
 
       .wrapper {
         position: absolute;
+        top: 0px;
+        bottom: 0px;
+        width: 18%;
+        display: block;
+      }
+
+      .wrapper.left, {
+        left: 0px;
+
+      }
+
+      .wrapper.right {
+        right: 0px;
+      }
+
+      .red-overlay {
+        position: absolute;
         margin: auto 2px;
         top: 0px;
         bottom: 0px;
@@ -262,14 +280,14 @@ $icon-height: 45px;
         opacity: 0.9;
       }
 
-      .wrapper.left, {
+      .left .red-overlay {
         text-align: left;
-        left: 0px;
+        left: 2px;
       }
 
-      .wrapper.right {
+      .right .red-overlay {
         text-align: right;
-        right: 0px;
+        right: 2px;
       }
 
     }
@@ -277,18 +295,25 @@ $icon-height: 45px;
 
   .info {
     padding: $main-padding;
-    font-size: 18px;
+    position: relative;
   }
 
   .name {
-    float: left;
+    font-size: 18px;
+    line-height: 20px;
     font-weight: 400;
-    width: 85%;
+    width: 100%;
+    height: 40px;
   }
 
   .price {
-    float: right;
-    width: 15%;
+    position: absolute;
+    right: $main-padding;
+    bottom: $main-padding;
+
+    .fa {
+      padding-left: 5px;
+    }
   }
 
 }

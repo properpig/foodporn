@@ -99,7 +99,7 @@
     });
 
     function getFoodList() {
-      $.getJSON( window.apiUrl + '/food/list/' + window.username + '/', function( data ) {
+      $.getJSON( window.apiUrl + '/food/list/' + window.username + '/?explore=true', function( data ) {
         foodlist = data;
         populateNextFood(0);
       });

@@ -25,6 +25,11 @@
     $('.more-button').click(function() {
       $(this).fadeOut();
       $(this).parent().find('.more').slideDown();
+
+      var dealItem = $(this).parent().parent();
+      dealItem.find('.photo').animate({
+        height: dealItem.find('.photo img').height(),
+      }, 500);
     });
   });
 

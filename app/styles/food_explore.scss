@@ -1,7 +1,13 @@
 @import '_custom_vars';
 
+$icon-height: 47px;
+
 .main-div {
   overflow: hidden;
+}
+
+.food-container {
+  position: relative;
 }
 
 #food-photo, #food-photo2 {
@@ -23,6 +29,12 @@
 
 .info {
   padding: 7px;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  position: absolute;
+  bottom: 0px;
+  z-index: 3;
 
   .name {
     font-weight: 400;
@@ -31,8 +43,63 @@
 
   .restaurant-name {
     font-size: 17px;
+    font-weight: 400;
     font-style: italic;
-    color: $base-color;
+    color: $yellow-orange;
+  }
+
+  .stats {
+    float: right;
+    font-size: 17px;
+  }
+
+  .price {
+    text-align: right;
+    display: inline-block;
+    font-weight: 400;
+  }
+}
+
+.instructions {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  z-index: 4;
+  display: none;
+
+  .dismiss-button {
+    border: 1px solid white;
+    padding: 5px;
+    margin: 0px 30%;
+    text-align: center;
+    border-radius: $radius;
+  }
+
+}
+
+.controls {
+
+  width: 100%;
+  text-align: center;
+
+  .circle {
+    height: $icon-height;
+    width: $icon-height;
+    line-height: $icon-height + 5px;
+    background: $base-color-transparent;
+    padding: 3px;
+    margin: 5px;
+    border-radius: 1000px;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    transition: background 0.2s ease;
+  }
+
+  .circle.clicked {
+    background: $yellow-orange-transparent;
   }
 
 }

@@ -13,29 +13,71 @@
     var foodphoto = $('#food-photo img');
     var foodphoto2 = $('#food-photo2 img');
 
-    // position the info so its visible
-    $('.info').css({
-      marginTop: $(window).width()
+    // set some listeners to the buttons
+    var likeButton = $('.controls .fa-thumbs-o-up');
+    var dislikeButton = $('.controls .fa-thumbs-o-down');
+    dislikeButton.click(function(){
+      $.getJSON (window.apiUrl + '/food/dislike/' + foodlist[foodIndex].id + '/' + window.username + '/');
+      likeFood(false);
+    });
+    likeButton.click(function(){
+      $.getJSON (window.apiUrl + '/food/like/' + foodlist[foodIndex].id + '/' + window.username + '/');
+      likeFood(true);
+    });
+
+    $('.controls .fa-info').click(function() {
+      window.location='food.html?id=' + foodlist[foodIndex].id;
+    });
+
+    $('.controls .fa-question').click(function() {
+      $('.instructions').fadeToggle();
+    });
+
+    $('.controls .fa-undo').click(function() {
+      if (foodIndex === 0) {
+        return;
+      }
+      populateNextFood(--foodIndex);
+      $.getJSON (window.apiUrl + '/food/reset/' + foodlist[foodIndex].id + '/' + window.username + '/');
+    });
+
+    $('.dismiss-button').click(function() {
+      $('.instructions').fadeOut();
+    });
+
+    var clickedButton;
+    // color the circle
+    $('.controls .circle').click(function() {
+      clickedButton = $(this);
+      clickedButton.addClass('clicked');
+      setTimeout(function(){clickedButton.removeClass('clicked');},400);
+    });
+
+    $('.food-container').css({
+      height: $(window).width()
     });
 
     $('#food-photo img, #food-photo2 img').css({
       height: $(window).width()
-    })
+    });
 
     // create a simple instance
     // by default, it only adds horizontal recognizers
     var mc = new Hammer(myElement);
-    var positionX = 0;
 
     // listen to events...
-    mc.on("panleft panright tap press", function(ev) {
+    mc.on('panleft panright tap press', function(ev) {
+
+      if (ev.deltaX < -100 && ev.deltaX > 100) {
+        return;
+      }
 
       foodphoto.css({
         'left': ev.deltaX,
-        'top': ev.deltaY
+        // 'top': ev.deltaY
       });
 
-      if (ev.eventType == 4) {
+      if (ev.eventType === 4) {
         foodphoto.css({
           'left': 0,
           'top': 0
@@ -44,18 +86,16 @@
 
     });
 
-    mc.on("swipeleft swiperight", function(ev) {
-
-      foodphoto.css({
-        'left': 0,
-        'top': 0
-      });
-
-      populateNextFood(foodIndex++);
+    mc.on('swipeleft', function(ev) {
+      dislikeButton.click(); // simulate a click to the button
     });
 
-    foodphoto.click(function() {
-      console.log('e');
+    mc.on('swiperight', function(ev) {
+      likeButton.click(); // simulate a click to the button
+    });
+
+    mc.on('press tap', function(ev) {
+      window.location='food.html?id=' + foodlist[foodIndex].id;
     });
 
     function getFoodList() {
@@ -65,13 +105,31 @@
       });
     }
 
+    function likeFood(status) {
+      var pos = '-100%';
+      if (status) {
+        pos = '100%';
+      }
+      foodphoto.animate({
+        'left': pos,
+        'top': 0,
+        'opacity': 0.0
+      }, 500, function() {
+        populateNextFood(++foodIndex);
+        foodphoto.css({
+          'left': 0,
+          'opacity': 1.0
+        });
+      });
+    }
+
     function populateNextFood(index) {
-      if (index == foodlist.length) {
+      if (index > foodlist.length-1) {
         return;
       }
       $('.info').html(template(foodlist[index]));
       foodphoto.attr('src', 'images/' + foodlist[index].photo);
-      if (index+1 != foodlist.length){
+      if (index+1 !== foodlist.length){
         foodphoto2.attr('src', 'images/' + foodlist[index+1].photo);
       }
     }

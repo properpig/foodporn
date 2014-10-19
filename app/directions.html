@@ -32,24 +32,28 @@
     <link rel="canonical" href="http://www.example.com/">
     -->
 
-    <link rel="stylesheet" href="styles/components.css">
+		<link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/secondary.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
+		<link rel="stylesheet" href="styles/directions.css">
 
+		<script type="text/javascript"
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlfMykYSTngeUvgXnv5tAdlJByP8FpXUM">
+    </script>
   </head>
+
   <body>
     <!-- Add your site or app content here -->
 
     <div class="container">
-
       <div class="app-bar-container">
         <div class="app-bar">
           <div class="back-button-container">
             <i class="fa fa-angle-left"></i>
             <img class="logo" src="images/logo.svg" />
-          </div><!--
-           --><a href="restaurant-following.html"><div class="app-name">Restaurant<div class="sub-name">Get to Bella Pizza</div></div></a>
+          </div>
+           <div class="app-name">Restaurant<div class="sub-name"> </div></div>
         </div>
         <div class="icons">
             <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
@@ -59,24 +63,45 @@
 
       <div class="vignette"></div>
 
-<!--       <div class="sub-nav">
-        <div data-link="index.html" class="selected sub-nav-item">Explore<div class="underline"></div></div><div data-link="food-liked.html" class="sub-nav-item">Liked<div class="underline"></div></div>
-      </div> -->
-
       <div class="main-div">
+					<div id="map-canvas"></div>
 
-        Display map and directions
+          <div class="change-location">
+              <input type="text" placeholder="Change your Starting Location" name="start" id="start" size="30"/>
+              <input type="button" value="Submit" id="submit" Onclick="calcRoute()"/>
+          </div>
 
+					<div id="directions-panel"></div>
       </div>
 
-      <div class="main-buttons"><div class="full">Change this</div></div>
+      <div class="main-buttons">
+          <input type="radio" id="driving" class="transportMode" name="transportMode" value="DRIVING" checked="true">
+          <label class="transport-icon" for="driving">
+            <img src="images/directions/car_icon.png">
+            <div class="text">DRIVE</div>
+          </label>
+
+          <input type="radio" id="transit" class="transportMode" name="transportMode" value="TRANSIT">
+          <label class="transport-icon" for="transit">
+            <img src="images/directions/bus_icon.png">
+            <div class="text">TRANSIT</div>
+          </label>
+
+          <input type="radio" id="walk" class="transportMode" name="transportMode" value="WALKING">
+          <label class="transport-icon" for="walk">
+            <img src="images/directions/walk_icon.png">
+            <div class="text">WALK</div>
+          </label>
+      </div>
 
     </div>
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
-
+    <!-- build:js scripts/directions.min.js -->
+    <script src="scripts/directions.js"></script>
+    <!-- endbuild -->
 
     <!-- Built with love using Web Starter Kit -->
   </body>

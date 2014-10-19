@@ -9,6 +9,7 @@
     var template = Handlebars.compile(source);
 
     var menu_items;
+    var menuIndex;
     var menu_source = $('#menu-template').html();
     var menu_template = Handlebars.compile(menu_source);
 
@@ -54,20 +55,41 @@
         });
 
         $('.modal-button').click(function() {
-          var index = $(this).data('index');
+          menuIndex = $(this).data('index');
 
-          $('#modal-menu-item').html(menu_template(menu_items[index]));
+          displayMenuItem(menuIndex);
 
           var id = $(this).attr('id');
           // show the vignette
           $('#modal-' + id).addClass('open');
           // slide the modal in
           $('#modal-' + id + ' .modal').animate({
-            'marginTop': 90
+            'marginTop': $(window).height()/9
           });
 
         });
 
+      });
+    }
+
+    function displayMenuItem(index) {
+      var not_first = (index !== 0);
+      var not_last = (index !== menu_items.length-1);
+
+      $('#modal-menu-item .modal').html(menu_template({'not_first':not_first, 'not_last':not_last, 'item':menu_items[index]}));
+
+      // set the height of the menu item so its fixed
+      var width = $('#modal-menu-item .photo img').width();
+      $('#modal-menu-item .photo img').height(width);
+
+      $('.controls .right').click(function(event) {
+        displayMenuItem(++menuIndex);
+        event.stopPropagation();
+      });
+
+      $('.controls .left').click(function(event) {
+        displayMenuItem(--menuIndex);
+        event.stopPropagation();
       });
     }
 

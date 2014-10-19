@@ -58,14 +58,6 @@
       </div>
 
       <div class="navigation-drawer">
-        <a href="index.html" class="nav-item"><i class="fa fa-cutlery"></i> Food</a>
-        <a href="activity-deals.html" class="nav-item"><i class="fa fa-rss"></i> Activity Feed</a>
-        <a href="restaurant-following.html" class="nav-item"><i class="fa fa-glass"></i> Restaurants</a>
-        <a href="people-following.html" class="nav-item"><i class="fa fa-users"></i> People</a>
-        <a href="#" class="nav-item"><i class="fa fa-gear"></i> Settings</a>
-        <a href="#" class="nav-item"><i class="fa fa-question-circle"></i> Help</a>
-        <a href="user.html?id=1" class="nav-item profile"><img src="images/user/john.jpg" /><span class="username">John</span></a>
-
       </div>
 
       <div class="vignette"></div>
@@ -76,20 +68,24 @@
 
       <div class="main-div">
         <!-- this is our template -->
-        <div class="template">
-          <div class="box food-item">
-            <div class="food-photo">
-              <img src="images/food/caesarsalad.png" />
-            </div>
-            <div class="info">
-              <div class="name">Caesar Salad</div>
-              <div class="more">
-                <div class="price">$4.50</div>
-                <div class="num_likes"><i class="fa fa-thumbs-o-up"></i> <span class="num">5</span></div>
+        <script id="food-template" type="text/x-handlebars-template">
+        {{#foods}}<div class="box food-item">
+            <a href="food.html?id={{ id }}">
+              <div class="food-photo">
+                <img src="images/{{ photo }}" />
               </div>
-            </div>
-          </div>
-        </div>
+            </a>
+            <a href="food.html?id={{ id }}">
+              <div class="info">
+                <div class="name">{{ name }}</div>
+                <div class="more">
+                  <div class="price">{{ price }}</div>
+                  <div class="num_likes"><i class="fa fa-thumbs-o-up"></i> <span class="num">{{ num_likes }}</span></div>
+                </div>
+              </div>
+            </a>
+          </div>{{/foods}}
+        </script>
       </div>
 
       <div class="main-buttons"><div class="full" id="filters">Filters</div></div>

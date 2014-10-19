@@ -46,16 +46,19 @@
 
       <div class="app-bar-container">
         <div class="app-bar">
-          <div class="back-button-container">
-            <i class="fa fa-angle-left"></i>
+          <div class="hamburger-container">
+            <img class="hamburger" src="images/hamburger.svg" />
             <img class="logo" src="images/logo.svg" />
           </div><!--
-           --><a href="index.html"><div class="app-name">Food<div class="sub-name">Caesar Salad</div></div></a>
+           --><div class="app-name">Food<div class="sub-name"> </div></div>
         </div>
         <div class="icons">
             <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
             <a href="search.html"><i class="fa fa-search fa-2x"></i></a>
          </div>
+      </div>
+
+      <div class="navigation-drawer">
       </div>
 
       <div class="vignette"></div>
@@ -77,7 +80,7 @@
             </div>
             <div class="liked-overlay photo-bar">
               <div class="more">
-                {{ num_likes }} <i class="fa fa-thumbs-o-up fa-2x"></i> <i class="fa fa-angle-right fa-2x {{#if less_than_8}}hidden{{/if}}"></i>
+                <i class="fa fa-thumbs-o-up fa-2x"></i>{{ num_likes }} <i class="fa fa-angle-right fa-2x {{#if less_than_8}}hidden{{/if}}"></i>
               </div>
               {{#liked_by}}
                 <a href="user.html?id={{user_id}}"><img src="images/{{ photo }}" /></a>
@@ -105,7 +108,7 @@
               {{#cuisine}}
                 <div class="food-icon">
                   <img src="images/{{ image }}" />
-                  <div class="text">{{ name }}</div>
+                  <center><div class="text">{{ name }}</div></center>
                 </div>
               {{/cuisine}}
             </div>
@@ -118,7 +121,7 @@
               {{#dietary}}
                 <div class="food-icon">
                   <img src="images/{{ image }}" />
-                  <div class="text">{{ name }}</div>
+                  <center><div class="text">{{ name }}</div></center>
                 </div>
               {{/dietary}}
             </div>

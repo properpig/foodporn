@@ -1,13 +1,11 @@
 /*jshint camelcase: false */
 /*jshint sub:true*/
 
-var directionsDisplay = new google.maps.DirectionsRenderer();
-var directionsService = new google.maps.DirectionsService();
-var origin, restaurantAdd;
-
 (function () {
     'use strict';
-    var map;
+    var map, restaurantAdd, origin;
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var directionsService = new google.maps.DirectionsService();
 
     var query  = window.location.search.substring(1);
     var restaurant_id = query.substring(query.indexOf('=') + 1, query.length);
@@ -43,37 +41,36 @@ var origin, restaurantAdd;
             });
         });
     }
+
+    $('#submit, .transportMode').click(function(){
+
+        var start = $('#start').val();
+        if(start){
+            origin = start;
+        }
+
+        var mode = $('.transportMode');
+        for(var i=0; i < mode.length; i++){
+            if(mode[i].checked){
+                mode = mode[i].value;
+                break;
+            }
+        }
+
+        var request = {
+            origin: origin,
+            destination: restaurantAdd,
+            travelMode: google.maps.TravelMode[mode],
+            provideRouteAlternatives:false
+        };
+
+        directionsDisplay.setPanel(document.getElementById('directions-panel'));
+        directionsService.route(request, function(response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            }
+        });
+    });
+
     google.maps.event.addDomListener(window, 'load', initialize);
 })();
-
-/* exported calcRoute */
-function calcRoute() {
-    'use strict';
-    var start = document.getElementById('start').value;
-    if(start){
-        origin = start;
-    }
-
-    var mode = document.getElementsByName('transportMode');
-    var selectedMode='DRIVING';
-    for(var i=0; i < mode.length; i++){
-        if(mode[i].checked){
-            selectedMode = mode[i].value;
-            break;
-        }
-    }
-
-    var request = {
-        origin: origin,
-        destination: restaurantAdd,
-        travelMode: google.maps.TravelMode[selectedMode],
-        provideRouteAlternatives:false
-    };
-
-    directionsDisplay.setPanel(document.getElementById('directions-panel'));
-    directionsService.route(request, function(response, status) {
-        if (status === google.maps.DirectionsStatus.OK) {
-            directionsDisplay.setDirections(response);
-        }
-    });
-}

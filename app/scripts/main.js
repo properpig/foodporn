@@ -21,7 +21,10 @@
 
   // window.apiUrl = 'http://localhost:8000/foodporn';
   window.apiUrl = 'http://128.199.140.174:8000/foodporn';
-  window.username = 'john';
+  window.username = 'john'; // default
+  if ('username' in localStorage) {
+    window.username = localStorage.getItem('username');
+  }
 
   var container = document.querySelector('.container');
 
@@ -113,6 +116,21 @@
     }
 
     return 'No ' + string;
+  });
+
+  $.getJSON( window.apiUrl + '/login/' + '?username=' + localStorage.getItem('username'), function( data ) {
+
+    /*jshint multistr: true */
+    var navHtml = '<a href="index.html" class="nav-item"><i class="fa fa-cutlery"></i> Food</a> \
+        <a href="activity-deals.html" class="nav-item"><i class="fa fa-rss"></i> Activity Feed</a> \
+        <a href="restaurant-following.html" class="nav-item"><i class="fa fa-glass"></i> Restaurants</a> \
+        <a href="people-following.html" class="nav-item"><i class="fa fa-users"></i> People</a> \
+        <a href="#" class="nav-item"><i class="fa fa-gear"></i> Settings</a> \
+        <a href="#" class="nav-item"><i class="fa fa-question-circle"></i> Help</a> \
+        <a href="user.html?id=' + data.id + '" class="nav-item profile"><img src="images/' + data.photo + '" /><span class="username">' + data.name + '</span></a>';
+
+    $('.navigation-drawer').html(navHtml);
+
   });
 
  //  /*

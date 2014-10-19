@@ -31,25 +31,43 @@
 
   function getDetails() {
 
+    var bounds = new google.maps.LatLngBounds();
+    var has_reviews = false;
+
     $.getJSON( window.apiUrl + '/user/' + user_id + '/' + window.username + '/', function( data ) {
 
       $('#dynamic-info').html(template(data));
 
       $('.sub-name').text(data.name);
 
+      if (data.reviews.length > 0) {
+        has_reviews = true;
+      }
+
       $.each(data.reviews, function(index, review){
 
+        var latlon = new google.maps.LatLng(review.restaurant_x, review.restaurant_y);
+
         marker = new google.maps.Marker({
-            position: new google.maps.LatLng(review.restaurant_x, review.restaurant_y),
+            position: latlon,
             map: map,
             title: 'Hello World!'
         });
 
         marker.setMap(map);
 
+        bounds.extend(latlon);
+
       });
 
     }).done(function() {
+      if (has_reviews) {
+        map.fitBounds(bounds);
+        var listener = google.maps.event.addListener(map, 'idle', function() {
+          if (map.getZoom() > 14) {map.setZoom(14);}
+          google.maps.event.removeListener(listener);
+        });
+      }
 
       $('.follow-button').click(function() {
 

@@ -38,15 +38,24 @@ $photo-width: 70px;
 
   .name {
     width: 70%;
-    padding-top: 7px;
-    height: $photo-width/2;
-    line-height: $photo-width/2;
+    height: 20px;
+    line-height: 20px;
 
     font-size: 18px;
     font-weight: 400;
 
     float: right;
+  }
 
+  .username {
+    color: $darkgrey;
+    line-height: 14px;
+    font-size: 14px;
+    padding-bottom: 5px;
+  }
+
+  .username::before {
+    content: '@';
   }
 
   .stats {

@@ -131,6 +131,7 @@
       foodphoto.attr('src', 'images/' + foodlist[index].photo);
       if (index+1 !== foodlist.length){
         foodphoto2.attr('src', 'images/' + foodlist[index+1].photo);
+        foodphoto2.css('background-image', 'url(images/' + foodlist[index+2].photo + ')');
       }
     }
 

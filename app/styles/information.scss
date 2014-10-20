@@ -140,6 +140,9 @@ $icon-height: 45px;
 
 .map {
   background: $whitegrey;
+  .heading {
+    padding: 10px;
+  }
 }
 
 .icons {

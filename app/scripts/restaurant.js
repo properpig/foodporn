@@ -36,7 +36,6 @@
         console.log(data);
 
         $('.sub-name').text(data.name);
-        $('.main-buttons .full').wrap('<a href="directions.html?id=' + data.restaurant_id + '"></a>');
 
         $('.main-div').html(template(data));
 

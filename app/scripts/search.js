@@ -1,0 +1,42 @@
+/*jshint camelcase: false */
+(function () {
+    'use strict';
+    $('ul.cuisine-list li').hide().slice(0, 4).show();;
+    var askForLoad = false;
+
+    $( "#cuisine-load" ).click(function() {
+      if (!askForLoad){
+        $('ul.cuisine-list li').show();
+        askForLoad = true;
+        $("#cuisine-load").html("Hide");
+      } else {
+        $('ul.cuisine-list li').hide().slice(0, 4).show();;
+        askForLoad = false;
+      }
+    });
+
+    $('.price-slider').noUiSlider({
+      start: [ 0, 1000 ],
+      connect: true,
+      range: {
+        'min': 0,
+        'max': 1000
+      }
+    });
+
+    $(".price-slider").Link('lower').to($('.price-display-low'));
+    $(".price-slider").Link('upper').to($('.price-display-high'));
+
+    $('.location-slider').noUiSlider({
+      start: [15],
+      connect: "lower",
+      range: {
+        'min': 0,
+        'max': 30
+      }
+    });
+
+    $(".location-slider").Link('lower').to($('.location-display-low'));
+
+
+})();

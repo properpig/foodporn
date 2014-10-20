@@ -12,6 +12,8 @@
     <!-- endbuild -->
     <script src="scripts/libs/handlebars-v2.0.0.js"></script>
 
+    <script src="scripts/libs/jquery.nouislider.all.js"></script>
+
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
@@ -37,6 +39,7 @@
     <link rel="stylesheet" href="styles/secondary.css">
     <link rel="stylesheet" href="styles/search.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/libs/jquery.nouislider.css">
 
   </head>
   <body>
@@ -118,25 +121,44 @@
         <div class="price">
           <div class="price-icon">
             <img src="images/filters/general/price.svg" />
-            <div class="text">Price</div>
+            <div class="price-display">
+              <span>$</span>
+              <span class="price-display-low"></span>
+              <span> - $</span>
+              <span class="price-display-high"></span>
+            </div>
           </div>
+          <div class="price-slider"></div>
         </div>
 
         <div class="location">
           <div class="location-icon">
             <img src="images/filters/general/location.svg" />
-            <div class="text">Location</div>
+            <div class="location-display">
+              <span>Within </span>
+              <span class="location-display-low"></span>
+              <span> km</span>
+            </div>
           </div>
+          <div class="location-slider"></div>
         </div>
         <p class="cuisine-title">Cuisine Type</p>
         <div id="cuisine">
-          <ul>
+          <ul class="cuisine-list">
             <li>Chinese</li>
-            <li>Japanese</li>
+            <li>Western</li>
             <li>Indian</li>
-            <li>Tamil</li>
             <li>Malay</li>
+            <li>Western</li>
+            <li>Italian</li>
+            <li>Mexican</li>
+            <li>Japanese</li>
+            <li>Korean</li>
+            <li>Sub</li>
+            <li>Sub</li>
+            <li>Sub</li>
           </ul>
+          <button id="cuisine-load">Load more</button>
         </div>
         Display the filters here <br />
 
@@ -151,6 +173,7 @@
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
+    <script src="scripts/search.js"></script>
     <!-- endbuild -->
 
 

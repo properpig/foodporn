@@ -51,11 +51,17 @@
   text-align: center;
 
 
+  .price-slider{
+    margin: 0 auto;
+    width:60%;
+  }
+
+
   .price-icon {
 
 
     display: inline-block;
-    width: 18%;
+    width: 100%;
     padding: 10px;
 
     .text {
@@ -78,12 +84,17 @@
 
   text-align: center;
 
+  .location-slider{
+    margin: 0 auto;
+    width:60%;
+  }
+
 
   .location-icon {
 
 
     display: inline-block;
-    width: 18%;
+    width: 100%;
     padding: 10px;
 
     .text {
@@ -120,7 +131,7 @@
 #cuisine ul li {
   padding: 3px 2px;
   margin: 3px;
-  width: 10%;
+  width: 20%;
   border-radius: 4px;
   display: inline-block;
   text-align: center;
@@ -136,4 +147,13 @@
   background: #ffffff;
   /*border: 1px solid #aaa;*/
   box-sizing: border-box;
+}
+
+button{
+    height:30px; 
+    width:100px; 
+    margin: -20px -50px; 
+    position:relative;
+    top:50%; 
+    left:50%;
 }

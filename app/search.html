@@ -118,26 +118,58 @@
           </div>
           <div class="location-slider"></div>
         </div>
+
+        <p class="diet-title">Diet Type</p>
+        <div id="diet">
+          <script id="diet-template" type="text/x-handlebars-template">
+            <ul class="diet-list">
+              {{#diets}}
+                <li id="{{id}}">
+                  <img src = "images/{{image}}"/>
+                  <div>
+                    {{name}}
+                  </div>
+                </li>
+              {{/diets}}
+            </ul>
+          </script>
+        </div>
+        <button id="diet-load">Load more</button>
+
         <p class="cuisine-title">Cuisine Type</p>
         <div id="cuisine">
-          <ul class="cuisine-list">
-            <li value="chinese">Chinese</li>
-            <li value="western">Western</li>
-            <li value="indian">Indian</li>
-            <li value="malay">Malay</li>
-            <li value="carribean">Carribean</li>
-            <li value="italian">Italian</li>
-            <li value="mexican">Mexican</li>
-            <li value="japanese">Japanese</li>
-            <li value="korean">Korean</li>
-            <li value="western">Sub</li>
-            <li value="western">Sub</li>
-            <li value="western">Sub</li>
-          </ul>
-          <button id="cuisine-load">Load more</button>
+          <script id="cuisine-template" type="text/x-handlebars-template">
+            <ul class="cuisine-list">
+              {{#cuisines}}
+                <li id="{{id}}">
+                  <img src = "images/{{image}}"/>
+                  <div>
+                    {{name}}
+                  </div>
+                </li>
+              {{/cuisines}}
+            </ul>
+          </script>
         </div>
+        <button id="cuisine-load">Load more</button>
 
-
+        <p class="amenity-title">Amenities</p>
+        <div id="amenity">
+          <script id="amenity-template" type="text/x-handlebars-template">
+            <ul class="amenity-list">
+              {{#amenities}}
+                <li id="{{id}}">
+                  <img src = "images/{{image}}"/>
+                  <div>
+                    {{name}}
+                  </div>
+                </li>
+              {{/amenities}}
+            </ul>
+          </script>
+        </div>
+        <button id="amenity-load">Load more</button>
+        <div class="bottom-pad"></div>
       </div>
 
       <div class="main-buttons"><div class="full">Search Now</div></div>

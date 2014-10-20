@@ -120,6 +120,47 @@
 
 }
 
+.diet-title{
+  text-align: center;
+  font-weight: bold;
+}
+
+#diet ul {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+}
+
+#diet ul li::before {
+  display: none;
+}
+
+#diet ul li {
+  padding: 3px 2px;
+  margin: 3px;
+  width: 20%;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+
+  img{
+    height:50px;
+  }
+}
+
+#diet ul li:hover {
+  color: #000;
+}
+
+#diet ul li.selected {
+  color: #000;
+  background: #ffffff;
+  /*border: 1px solid #aaa;*/
+  box-sizing: border-box;
+}
+
+
 .cuisine-title{
   text-align: center;
   font-weight: bold;
@@ -143,6 +184,10 @@
   display: inline-block;
   text-align: center;
   cursor: pointer;
+
+  img{
+    height:50px;
+  }
 }
 
 #cuisine ul li:hover {
@@ -156,6 +201,48 @@
   box-sizing: border-box;
 }
 
+
+.amenity-title{
+  text-align: center;
+  font-weight: bold;
+}
+
+#amenity ul {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+}
+
+#amenity ul li::before {
+  display: none;
+}
+
+#amenity ul li {
+  padding: 3px 2px;
+  margin: 3px;
+  width: 20%;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+
+  img{
+    height:50px;
+    min-height:50px;
+  }
+}
+
+#amenity ul li:hover {
+  color: #000;
+}
+
+#amenity ul li.selected {
+  color: #000;
+  background: #ffffff;
+  /*border: 1px solid #aaa;*/
+  box-sizing: border-box;
+}
+
 button{
     height:30px; 
     width:100px; 
@@ -163,4 +250,8 @@ button{
     position:relative;
     top:50%; 
     left:50%;
+}
+
+.bottom-pad{
+    padding-bottom: 15px;
 }

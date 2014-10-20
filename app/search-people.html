@@ -12,6 +12,8 @@
     <!-- endbuild -->
     <script src="scripts/libs/handlebars-v2.0.0.js"></script>
 
+    <script src="scripts/libs/jquery.nouislider.all.js"></script>
+
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
@@ -37,6 +39,7 @@
     <link rel="stylesheet" href="styles/secondary.css">
     <link rel="stylesheet" href="styles/search.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/libs/jquery.nouislider.css">
 
   </head>
   <body>
@@ -68,17 +71,74 @@
       </div>
 
       <div class="main-div">
-
-        Display the filters here
-
+        <p class="sort-bar-title">Sort by</p>
+        <div class="sort-bar">
+          <div class = "sort-bar-icon-people" value="likes">
+            <img src="images/filters/general/like.svg" />
+            <div class="text">Likes</div>
+          </div>
+          
+          <div class = "sort-bar-icon-people" value="followers">
+            <img src="images/filters/general/follower.svg" />
+            <div class="text">Followers</div>
+          </div>
+          <div class = "sort-bar-icon-people" value="reviews">
+            <img src="images/filters/general/review.svg" />
+            <div class="text">Reviews</div>
+          </div>
+        </div>
+        <div class="bottom-pad"></div>
+        <p class="filter-bar-title">Show people with</p>
+        <div class="likes">
+          <div class="likes-icon">
+            <img src="images/filters/general/like.svg" />
+            <div class="likes-display">
+              <span class="likes-display-low"></span>
+              <span> - </span>
+              <span class="likes-display-high"></span>
+              <span> likes</span>
+            </div>
+          </div>
+          <div class="likes-slider"></div>
+        </div>
+        <div class="bottom-pad"></div>
+        <div class="followers">
+          <div class="followers-icon">
+            <img src="images/filters/general/follower.svg" />
+            <div class="followers-display">
+              <span class="followers-display-low"></span>
+              <span> - </span>
+              <span class="followers-display-high"></span>
+              <span> followers</span>
+            </div>
+          </div>
+          <div class="followers-slider"></div>
+        </div>
+        <div class="bottom-pad"></div>
+        <div class="reviews">
+          <div class="reviews-icon">
+            <img src="images/filters/general/review.svg" />
+            <div class="reviews-display">
+              <span class="reviews-display-low"></span>
+              <span> - </span>
+              <span class="reviews-display-high"></span>
+              <span> reviews</span>
+            </div>
+          </div>
+          <div class="reviews-slider"></div>
+        </div>
+        <div class="bottom-pad"></div>
       </div>
 
+      <div class="main-buttons"><div class="full">Search Now</div></div>
+    </div>
       <div class="main-buttons"><div class="full">Search Now</div></div>
 
     </div>
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
+    <script src="scripts/search-people.js"></script>
     <!-- endbuild -->
 
 

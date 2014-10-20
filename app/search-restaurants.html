@@ -12,6 +12,8 @@
     <!-- endbuild -->
     <script src="scripts/libs/handlebars-v2.0.0.js"></script>
 
+    <script src="scripts/libs/jquery.nouislider.all.js"></script>
+
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
@@ -37,6 +39,7 @@
     <link rel="stylesheet" href="styles/secondary.css">
     <link rel="stylesheet" href="styles/search.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/libs/jquery.nouislider.css">
 
   </head>
   <body>
@@ -68,17 +71,118 @@
       </div>
 
       <div class="main-div">
-
-        Remember that for restaurant view there should be an option to toggle to map view of the results
-
+        <p class="sort-bar-title">Sort by</p>
+        <div class="sort-bar">
+          <div class = "sort-bar-icon-restaurant" value="location">
+            <img src="images/filters/general/location.svg" />
+            <div class="text">Distance</div>
+          </div>
+          <div class = "sort-bar-icon" value="ratings">
+            <img src="images/filters/general/star.svg" />
+            <div class="text">Ratings</div>
+          </div>
+          <div class = "sort-bar-icon-restaurant" value="price">
+            <img src="images/filters/general/dollar.svg" />
+            <div class="text">Price</div>
+          </div>
+          <div class = "sort-bar-icon-restaurant" value="likes">
+            <img src="images/filters/general/like.svg" />
+            <div class="text">Likes</div>
+          </div>
+          <div class = "sort-bar-icon-restaurant" value="followers">
+            <img src="images/filters/general/follower.svg" />
+            <div class="text">Followers</div>
+          </div>
+        </div>
+        <div class="bottom-pad"></div>
+        <div class="price">
+          <div class="price-icon">
+            <img src="images/filters/general/price.svg" />
+            <div class="price-display">
+              <span>$</span>
+              <span class="price-display-low"></span>
+              <span> - $</span>
+              <span class="price-display-high"></span>
+            </div>
+          </div>
+          <div class="price-slider"></div>
+        </div>
+        <div class="bottom-pad"></div>
+        <div class="location">
+          <div class="location-icon">
+            <img src="images/filters/general/location.svg" />
+            <div class="location-display">
+              <span>Within </span>
+              <span class="location-display-low"></span>
+              <span> km</span>
+            </div>
+          </div>
+          <div class="location-slider"></div>
+        </div>
+        <div class="bottom-pad"></div>
+        <p class="diet-title">Diet Type</p>
+        <div id="diet">
+          <script id="diet-template" type="text/x-handlebars-template">
+            <ul class="diet-list">
+              {{#diets}}
+                <li id="{{id}}">
+                  <img src = "images/{{image}}"/>
+                  <div>
+                    {{name}}
+                  </div>
+                </li>
+              {{/diets}}
+            </ul>
+          </script>
+        </div>
+        <button id="diet-load">Load more</button>
+        <div class="bottom-pad"></div>
+        <p class="cuisine-title">Cuisine Type</p>
+        <div id="cuisine">
+          <script id="cuisine-template" type="text/x-handlebars-template">
+            <ul class="cuisine-list">
+              {{#cuisines}}
+                <li id="{{id}}">
+                  <img src = "images/{{image}}"/>
+                  <div>
+                    {{name}}
+                  </div>
+                </li>
+              {{/cuisines}}
+            </ul>
+          </script>
+        </div>
+        <button id="cuisine-load">Load more</button>
+        <div class="bottom-pad"></div>
+        <p class="amenity-title">Amenities</p>
+        <div id="amenity">
+          <script id="amenity-template" type="text/x-handlebars-template">
+            <ul class="amenity-list">
+              {{#amenities}}
+                <li id="{{id}}">
+                  <img src = "images/{{image}}"/>
+                  <div>
+                    {{name}}
+                  </div>
+                </li>
+              {{/amenities}}
+            </ul>
+          </script>
+        </div>
+        <button id="amenity-load">Load more</button>
+        <div class="bottom-pad"></div>
       </div>
 
       <div class="main-buttons"><div class="full">Search Now</div></div>
 
     </div>
 
+      <div class="main-buttons"><div class="full">Search Now</div></div>
+
+    </div>
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
+    <script src="scripts/search-restaurants.js"></script>
     <!-- endbuild -->
 
 

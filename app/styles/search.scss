@@ -17,6 +17,11 @@
 	font-weight: bold;
 }
 
+.filter-bar-title{
+  text-align: center;
+  font-weight: bold;
+}
+
 
 .sort-bar {
 
@@ -27,7 +32,7 @@
 
 
     display: inline-block;
-    width: 18%;
+    width: 20%;
     padding: 10px;
 
     .text {
@@ -44,7 +49,63 @@
 
   }
 
+  .sort-bar-icon-people {
+
+
+    display: inline-block;
+    width: 30%;
+    padding: 10px;
+
+    .text {
+
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+
+    }
+
+    img{
+      height:50px;
+    }
+
+  }
+
+  .sort-bar-icon-restaurant {
+
+
+    display: inline-block;
+    width: 18%;
+    padding: 10px;
+
+    .text {
+
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+
+    }
+
+    img{
+      height:50px;
+    }
+
+  }
+
   .sort-bar-icon.selected {
+    color: #000;
+    background: #ffffff;
+    /*border: 1px solid #aaa;*/
+    box-sizing: border-box;
+  }
+
+  .sort-bar-icon-restaurant.selected {
+    color: #000;
+    background: #ffffff;
+    /*border: 1px solid #aaa;*/
+    box-sizing: border-box;
+  }
+
+  .sort-bar-icon-people.selected {
     color: #000;
     background: #ffffff;
     /*border: 1px solid #aaa;*/
@@ -98,6 +159,108 @@
 
 
   .location-icon {
+
+
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+
+    .text {
+
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+
+    }
+
+    img{
+      height:50px;
+    }
+
+  }
+
+}
+
+.likes {
+
+  text-align: center;
+
+
+  .likes-slider{
+    margin: 0 auto;
+    width:60%;
+  }
+
+
+  .likes-icon {
+
+
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+
+    .text {
+
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+
+    }
+
+    img{
+      height:50px;
+    }
+
+  }
+
+}
+
+.followers {
+
+  text-align: center;
+
+
+  .followers-slider{
+    margin: 0 auto;
+    width:60%;
+  }
+
+
+  .followers-icon {
+
+
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+
+    .text {
+
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+
+    }
+
+    img{
+      height:50px;
+    }
+
+  }
+
+}
+
+.reviews {
+
+  text-align: center;
+
+
+  .reviews-slider{
+    margin: 0 auto;
+    width:60%;
+  }
+
+
+  .reviews-icon {
 
 
     display: inline-block;

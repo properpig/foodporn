@@ -8,6 +8,14 @@ $icon-height: 45px;
   line-height: 20px;
 }
 
+.sub-nav {
+  opacity: 0;
+
+  .sub-nav-item{
+    width: 25%;
+  }
+}
+
 .heading {
   padding: 10px 0px;
   font-weight: 400;

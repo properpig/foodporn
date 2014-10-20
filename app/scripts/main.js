@@ -58,6 +58,10 @@
 
   // Allow switching of sub nav
   $('.sub-nav-item').click(function() {
+    // dont do anything if this is for info page
+    if ($(this).hasClass('infopage')) {
+      return;
+    }
     // first check if this tab is already selected
     if ($(this).hasClass('selected')) {
       return;

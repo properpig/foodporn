@@ -82,11 +82,17 @@
       $('#modal-menu-item .photo img').height(width);
 
       $('.controls .right').click(function(event) {
+        if (menuIndex === menu_items.length - 1) {
+          return;
+        }
         displayMenuItem(++menuIndex);
         event.stopPropagation();
       });
 
       $('.controls .left').click(function(event) {
+        if (menuIndex === 0) {
+          return;
+        }
         displayMenuItem(--menuIndex);
         event.stopPropagation();
       });

@@ -136,6 +136,13 @@ $icon-height: 45px;
   padding: $main-padding;
   background: $whitegrey;
 
+  .text {
+    padding: 0px $main-padding;
+  }
+
+  a {
+    color: $darkgrey;
+  }
 }
 
 .map {
@@ -148,6 +155,7 @@ $icon-height: 45px;
 .icons {
 
   text-align: center;
+  // text-align: left;
 
   .food-icon {
 
@@ -156,6 +164,7 @@ $icon-height: 45px;
     padding: 0px 3px;
     height: 80px;
     vertical-align: top;
+    // text-align: center;
 
     img {
       width: 60%;

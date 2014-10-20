@@ -96,18 +96,6 @@
             <div class="rating">{{{ rating_stars rating reviews_count }}}</div>
           </div>
 
-          <div class="description">
-            <div class="heading">Description</div>
-            <div class="text">
-              {{ description }}
-            </div>
-          </div>
-
-          <div class="map">
-            <div class="heading">{{ location_name }}</div>
-            <img src="https://maps.googleapis.com/maps/api/staticmap?center={{ location_x }},{{ location_y }}&zoom=14&size=450x250&markers=color:red%%7C{{ location_x }},{{ location_y }}" />
-          </div>
-
           <div class="cuisine">
 
             <div class="heading">Cuisine</div>
@@ -189,6 +177,26 @@
             </div>
           </div>
 
+          <div class="map">
+            <div class="heading">{{ location_name }}</div>
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center={{ location_x }},{{ location_y }}&zoom=14&size=450x250&markers=color:red%%7C{{ location_x }},{{ location_y }}" />
+          </div>
+
+          <div class="description">
+            <div class="heading">About</div>
+            <div class="text">
+              {{ description }}
+            </div>
+            <br />
+            <div class="text">
+              <div><i class="fa fa-phone"></i><a href="tel:{{ telephone }}"> {{ telephone }} </a><br />
+              <i class="fa fa-envelope"></i><a href="mailto:{{ email }}"> {{ email }}</a></div>
+              <br />
+              <div><span class="bold">Opening hours</span>: {{ opening_hours }}</div>
+            </div>
+
+          </div>
+
         </script>
 
         <script id="food-template" type="text/x-handlebars-template">
@@ -205,8 +213,8 @@
             <div class="photo">
               <a href="food.html?id={{ item.id }}"><img src="images/{{ item.photo }}" /></a>
               <div class="controls">
-                {{#if not_first}}<div class="wrapper left"><div class="red-overlay"><i class="fa fa-caret-left fa-2x"></i></div></div>{{/if}}
-                {{#if not_last}}<div class="wrapper right"><div class="red-overlay"><i class="fa fa-caret-right fa-2x"></i></div></div>{{/if}}
+                <div class="wrapper left">{{#if not_first}}<div class="red-overlay"><i class="fa fa-caret-left fa-2x"></i></div>{{/if}}</div>
+                <div class="wrapper right">{{#if not_last}}<div class="red-overlay"><i class="fa fa-caret-right fa-2x"></i></div>{{/if}}</div>
               </div>
             </div>
 

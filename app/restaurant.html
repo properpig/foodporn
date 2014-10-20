@@ -96,8 +96,17 @@
             <div class="rating">{{{ rating_stars rating reviews_count }}}</div>
           </div>
 
-          <div class="cuisine">
+          <div class="menu">
+            <div class="heading">
+              {{ pluralise food_count "Menu Item" }}
+            </div>
+            <div class="menu-items">
+            {{#foods}}<img class="modal-button food-thumbnail" id="menu-item" src="images/{{ photo }}" data-index={{ @index }} />{{/foods}}
+            </div>
+          </div>
 
+
+          <div class="cuisine">
             <div class="heading">Cuisine</div>
 
             <div class="icons">
@@ -120,15 +129,6 @@
                   <center><div class="text">{{ name }}</div></center>
                 </div>
               {{/dietary}}
-            </div>
-          </div>
-
-          <div class="menu">
-            <div class="heading">
-              {{ pluralise food_count "Menu Item" }}
-            </div>
-            <div class="menu-items">
-            {{#foods}}<img class="modal-button food-thumbnail" id="menu-item" src="images/{{ photo }}" data-index={{ @index }} />{{/foods}}
             </div>
           </div>
 

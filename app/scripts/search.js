@@ -1,6 +1,15 @@
 /*jshint camelcase: false */
 (function () {
     'use strict';
+
+    var selectedSort = "";
+
+    $('.sort-bar-icon').click(function(){
+      $('.sort-bar-icon').removeClass('selected');
+      $(this).addClass('selected');
+      selectedSort = $(this).attr('value');
+    });
+
     $('ul.cuisine-list li').hide().slice(0, 4).show();
     var askForLoad = false;
     var selectedCuisine = [];
@@ -25,7 +34,6 @@
           selectedCuisine[selectedCuisine.length] = $(this).attr('value');
         }
       });
-      console.log(selectedCuisine);
     });
 
     $('.price-slider').noUiSlider({

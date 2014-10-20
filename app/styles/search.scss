@@ -44,6 +44,13 @@
 
   }
 
+  .sort-bar-icon.selected {
+    color: #000;
+    background: #ffffff;
+    /*border: 1px solid #aaa;*/
+    box-sizing: border-box;
+  }
+
 }
 
 .price {

@@ -13,6 +13,11 @@
     var menu_source = $('#menu-template').html();
     var menu_template = Handlebars.compile(menu_source);
 
+    var deals_items;
+    var dealsIndex;
+    var deals_source = $('#deals-template').html();
+    var deals_template = Handlebars.compile(deals_source);
+
     var scrolling = false;
 
     // call a function everytime the user scrolls
@@ -80,6 +85,7 @@
       $.getJSON( window.apiUrl + '/restaurant/' + restaurant_id + '/' + window.username + '/', function( data ) {
 
         menu_items = data.foods;
+        deals_items = data.deals;
 
         console.log(data);
 
@@ -101,7 +107,7 @@
           event.stopPropagation();
         });
 
-        $('.modal-button').click(function() {
+        $('.menu-items .modal-button').click(function() {
           menuIndex = $(this).data('index');
 
           displayMenuItem(menuIndex);
@@ -116,6 +122,28 @@
 
         });
 
+        $('.deal-items .modal-button').click(function(){
+          dealsIndex = $(this).data('index');
+
+          displayDeals(dealsIndex);
+
+          var id = $(this).attr('id');
+          // show the vignette
+          $('#modal-' + id).addClass('open');
+          // slide the modal in
+          $('#modal-' + id + ' .modal').animate({
+            'marginTop': $(window).height()/9
+          });
+
+          //close modal
+          $('.close-deals-button').click(function(){
+            $('#modal-' + id + ' .modal').animate({
+              'marginTop': 900
+            }, 300, function() {
+              $('#modal-' + id).removeClass('open');
+            });
+          });
+        });
       });
     }
 
@@ -146,6 +174,32 @@
       });
     }
 
-    getDetails();
+    function displayDeals(index) {
+      var not_first = (index !== 0);
+      var not_last = (index !== deals_items.length-1);
 
+      $('#modal-deals .modal').html(deals_template({'not_first':not_first, 'not_last':not_last, 'deals':deals_items[index]}));
+
+      // set the height of the menu item so its fixed
+      var width = $('#modal-deals .photo img').width();
+      $('#modal-deals .photo img').height(width);
+
+      $('.controls .right').click(function(event) {
+        if (dealsIndex === deals_items.length - 1) {
+          return;
+        }
+        displayDeals(++dealsIndex);
+        event.stopPropagation();
+      });
+
+      $('.controls .left').click(function(event) {
+        if (dealsIndex === 0) {
+          return;
+        }
+        displayDeals(--dealsIndex);
+        event.stopPropagation();
+      });
+    }
+
+    getDetails();
 })();

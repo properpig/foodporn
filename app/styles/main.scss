@@ -306,6 +306,21 @@ a:visited, a:active, a:hover {
 
 }
 
+.modal.restaurant-deals {
+  min-height: inherit;
+  height: 520px;
+  margin-top: 55px !important;
+  margin-bottom: 0px;
+  position: relative;
+
+  .main-buttons {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+  }
+
+}
+
 .box {
   background: white;
   border-radius: $radius;

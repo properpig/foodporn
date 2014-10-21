@@ -141,9 +141,9 @@
             </div>
             <div class="deal-items">
             {{#deals}}
-              <div class="item">
+              <div class="modal-button item" id="deals" data-index={{ @index }} >
                 <div class="photo">
-                  <img src="images/{{photo}}" />
+                  <img src="images/{{photo}}"/>
                 </div>
                 <div class="info">
                   {{title}}
@@ -228,6 +228,31 @@
 
             <div class="main-buttons"><a href="food.html?id={{ item.id }}"><div class="view-food-button">View Food</div></a></div>
           </script>
+        </div>
+      </div>
+
+      <div class="modal-wrapper" id="modal-deals">
+        <div class="modal restaurant-deals">
+          <script id="deals-template" type="text/x-handlebars-template">
+            <div class="photo">
+              <img src="images/{{ deals.photo }}" />
+              <div class="controls">
+                <div class="wrapper left">{{#if not_first}}<div class="red-overlay"><i class="fa fa-caret-left fa-2x"></i></div>{{/if}}</div>
+                <div class="wrapper right">{{#if not_last}}<div class="red-overlay"><i class="fa fa-caret-right fa-2x"></i></div>{{/if}}</div>
+              </div>
+            </div>
+
+            <div class="info">
+              <div class="deals-title">{{ deals.title }}</div>
+              <div class="deals-details">{{ deals.details }}</div>
+              <div class="deals-more">{{deals.more}}</div>
+            </div>
+
+            <div class="main-buttons">
+              <div class="close-deals-button">Close window</div>
+            </div>
+          </script>
+
         </div>
       </div>
 

@@ -7,6 +7,7 @@
     var selectedDiet = [];
     var selectedCuisine = [];
     var selectedAmenity = [];
+    var search_term = '';
 
     $.getJSON( window.apiUrl + '/filters/list/', function( data ) {
       var source = $('#cuisine-template').html();
@@ -26,7 +27,7 @@
       $('#amenity').append(template(amenities));
 
       initialize();
-      
+
     });
 
     var selectedSort = '';
@@ -135,5 +136,17 @@
       $('.location-slider').Link('lower').to($('.location-display-low'));
     }
 
+    $('.main-buttons').click(function() {
+      var search_query = '&amenity_ids=' + selectedAmenity.join() + '&dietary_ids=' + selectedDiet.join() + '&cuisine_ids=' + selectedCuisine.join() + '&sort=' + selectedSort + '&search=' + search_term;
+      window.location = 'search-results.html?type=food' + search_query;
+    });
+
+    $('#search').keyup(function (e) {
+        if (e.keyCode === 13) {
+          search_term = $('#search').val();
+          // simulate click of search now button
+          $('.main-buttons').click();
+        }
+    });
 
 })();

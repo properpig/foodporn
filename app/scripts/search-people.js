@@ -8,10 +8,11 @@
     var selectedCuisine = [];
     var selectedAmenity = [];
     var selectedSort = '';
+    var search_term = '';
 
     initialize();
 
-    
+
 
     function initialize(){
 
@@ -68,5 +69,17 @@
       }));
     }
 
+    $('.main-buttons').click(function() {
+      var search_query = '&amenity_ids=' + selectedAmenity.join() + '&sort=' + selectedSort + '&search=' + search_term;
+      window.location = 'search-results.html?type=people' + search_query;
+    });
+
+    $("#search").keyup(function (e) {
+        if (e.keyCode == 13) {
+          search_term = $('#search').val();
+          // simulate click of search now button
+          $('.main-buttons').click();
+        }
+    });
 
 })();

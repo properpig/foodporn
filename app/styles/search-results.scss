@@ -1,0 +1,66 @@
+@import '_custom_vars';
+@import 'people';
+
+.main-div {
+  top: $nav-bar-height + $sub-nav-height;
+}
+
+.sub-nav {
+
+  .sub-nav-item {
+    width: 33.333%;
+  }
+
+}
+
+#search {
+  color: $darkgrey;
+}
+
+.result-item {
+
+  padding: 8px;
+  border-bottom: $grey solid 1px;
+
+  .photo {
+    width: 20%;
+    float: left;
+
+    img {
+      border-radius: $radius;
+    }
+
+  }
+
+  .info {
+    width: 80%;
+    float: right;
+    padding-left: 8px;
+
+    .name {
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    .restaurant-name {
+      color: $base-color;
+      font-style: italic;
+    }
+
+    .location-name {
+      line-height: 15px;
+      font-size: 14px;
+      color: $darkgrey;
+    }
+
+    .price, .price-range, .num-followers {
+      display: inline-block;
+    }
+
+    .price::first-letter {
+      font-weight: 400;
+    }
+
+  }
+
+}

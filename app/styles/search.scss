@@ -12,6 +12,10 @@
 
 }
 
+#search {
+  color: $darkgrey;
+}
+
 .sort-bar-title{
 	text-align: center;
 	font-weight: bold;
@@ -407,11 +411,11 @@
 }
 
 button{
-    height:30px; 
-    width:100px; 
-    margin: -20px -50px; 
+    height:30px;
+    width:100px;
+    margin: -20px -50px;
     position:relative;
-    top:50%; 
+    top:50%;
     left:50%;
 }
 

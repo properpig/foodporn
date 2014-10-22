@@ -67,7 +67,7 @@
         <div data-anchor="menu" class="sub-nav-item infopage">Menu<div class="underline"></div></div><!--
          --><div data-anchor="deals" class="sub-nav-item infopage">Deals<div class="underline"></div></div><!--
          --><div data-anchor="reviews" class="sub-nav-item infopage">Reviews<div class="underline"></div></div><!--
-         --><div data-anchor="amenities" class="sub-nav-item infopage">Info<div class="underline"></div></div>
+         --><div data-anchor="map" class="sub-nav-item infopage">Info<div class="underline"></div></div>
       </div>
 
       <div class="main-div">
@@ -105,20 +105,6 @@
             </div>
             <div class="menu-items">
             {{#foods}}<img class="modal-button food-thumbnail" id="menu-item" src="images/{{ photo }}" data-index={{ @index }} />{{/foods}}
-            </div>
-          </div>
-
-
-          <div class="cuisine">
-            <div class="heading">Cuisine</div>
-
-            <div class="icons">
-              {{#cuisine}}
-                <div class="food-icon">
-                  <img src="images/{{ image }}" />
-                  <center><div class="text">{{ name }}</div></center>
-                </div>
-              {{/cuisine}}
             </div>
           </div>
 
@@ -166,20 +152,6 @@
             </div>
           </div>
 
-          <div class="amenities">
-            <div class="heading">
-              Amenities
-            </div>
-            <div class="icons">
-              {{#amenities}}
-                <div class="food-icon">
-                  <img src="images/{{ image }}" />
-                  <center><div class="text">{{ name }}</div></center>
-                </div>
-              {{/amenities}}
-            </div>
-          </div>
-
           <div class="map">
             <div class="heading">{{ location_name }}</div>
             <img src="https://maps.googleapis.com/maps/api/staticmap?center={{ location_x }},{{ location_y }}&zoom=14&size=450x250&markers=color:red%%7C{{ location_x }},{{ location_y }}" />
@@ -197,7 +169,33 @@
               <br />
               <div><span class="bold">Opening hours</span>: {{ opening_hours }}</div>
             </div>
+          </div>
 
+          <div class="cuisine">
+            <div class="heading">Cuisine</div>
+
+            <div class="icons">
+              {{#cuisine}}
+                <div class="food-icon">
+                  <img src="images/{{ image }}" />
+                  <center><div class="text">{{ name }}</div></center>
+                </div>
+              {{/cuisine}}
+            </div>
+          </div>
+
+          <div class="amenities">
+            <div class="heading">
+              Amenities
+            </div>
+            <div class="icons">
+              {{#amenities}}
+                <div class="food-icon">
+                  <img src="images/{{ image }}" />
+                  <center><div class="text">{{ name }}</div></center>
+                </div>
+              {{/amenities}}
+            </div>
           </div>
 
         </script>

@@ -66,7 +66,6 @@ $icon-height: 45px;
   .more {
     display: inline-block;
     float: right;
-    margin-right: 5px;
 
     i {
       font-size: 20px;
@@ -78,7 +77,19 @@ $icon-height: 45px;
     }
   }
 
+  .price {
+    background: rgba(255, 255, 255, 0.85);
+    margin-left: 5px;
+    padding: 0px 5px;
+    line-height: 37px;
+    float: right;
+    color: $darkgrey;
+    font-size: 17px;
+    border-radius: $radius;
+  }
+
 }
+
 
 .circle {
   height: $icon-height;
@@ -210,6 +221,7 @@ $icon-height: 45px;
 .deals {
 
   padding: $main-padding;
+  background: $whitegrey;
 
   .item {
 
@@ -250,7 +262,6 @@ $icon-height: 45px;
 .reviews {
 
   padding: $main-padding;
-  background: $whitegrey;
 
 }
 

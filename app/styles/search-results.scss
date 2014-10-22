@@ -53,6 +53,24 @@
       color: $darkgrey;
     }
 
+    .stats {
+
+      .fa {
+        margin-left: 5px;
+      }
+
+      span:first-child .fa {
+        margin-left: 0px;
+      }
+
+    }
+
+    .rating {
+      .fa {
+        margin-right: 2px;
+      }
+    }
+
     .price, .price-range, .num-followers {
       display: inline-block;
     }

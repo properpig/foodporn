@@ -74,20 +74,6 @@
       });
     });
 
-    Handlebars.registerHelper('rating_stars', function(rating_num, num_reviews) {
-      var i;
-      var rating = '';
-      for (i=0; i<rating_num; i++) {
-        rating += '<i class="fa fa-star"></i>';
-      }
-      for (i=0; i<5-rating_num; i++) {
-        rating += '<i class="fa fa-star-o"></i>';
-      }
-
-      return rating + ' ' + num_reviews;
-
-    });
-
     function getDetails() {
 
       $.getJSON( window.apiUrl + '/restaurant/' + restaurant_id + '/' + window.username + '/', function( data ) {

@@ -63,9 +63,9 @@
       return;
     }
     // first check if this tab is already selected
-    if ($(this).hasClass('selected')) {
-      return;
-    }
+    // if ($(this).hasClass('selected')) {
+    //   return;
+    // }
     $('.sub-nav-item').removeClass('selected');
     $(this).addClass('selected');
     window.location.href = $(this).data('link');
@@ -120,6 +120,20 @@
     }
 
     return 'No ' + string;
+  });
+
+  Handlebars.registerHelper('rating_stars', function(rating_num, num_reviews) {
+    var i;
+    var rating = '';
+    for (i=0; i<rating_num; i++) {
+      rating += '<i class="fa fa-star"></i>';
+    }
+    for (i=0; i<5-rating_num; i++) {
+      rating += '<i class="fa fa-star-o"></i>';
+    }
+
+    return rating + ' ' + num_reviews;
+
   });
 
   $.getJSON( window.apiUrl + '/login/' + '?username=' + localStorage.getItem('username'), function( data ) {

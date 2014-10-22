@@ -78,7 +78,7 @@
               <div class="info">
                 <div class="name">{{ name }}</div>
                 <div>by <span class="restaurant-name">{{ restaurant }}</span></div>
-                <div class="num_likes"><i class="fa fa-thumbs-o-up"></i> <span class="num">{{ num_likes }}</span> <span class="price">{{ price }}</span></div>
+                <div class="stats"><span class="likes"><i class="fa fa-thumbs-o-up"></i> {{ num_likes }}</span> <span class="price">{{ price }}</span> <span class="distance"><i class="fa fa-map-marker"></i> {{ distance }}</span></div>
               </div>
               <div class="clear"></div>
             </div>
@@ -92,10 +92,13 @@
                 <img src="images/{{ photo }}" />
               </div>
               <div class="info">
-                <div class="name">{{ name }}</div>
+                <div class="name">{{ name }}</div><div class="rating">{{{ rating_stars rating reviews_count }}}</div>
                 <div class="location-name">{{ location_name }}</div>
-                <div class="num-followers"><i class="fa fa-users"></i> {{ following_count }}</div>
-                <div class="price-range"><span class="price">{{ price_low }}</span> - <span class="price">{{ price_high }}</span></div>
+                <div class="stats">
+                  <span class="num-followers"><i class="fa fa-users"></i> {{ following_count }}</span>
+                  <span class="price-range"><span class="price">{{ price_low }}</span> - <span class="price">{{ price_high }}</span></span>
+                  <span class="distance"><i class="fa fa-map-marker"></i> {{ distance }}</span>
+                </div>
               </div>
               <div class="clear"></div>
             </div>

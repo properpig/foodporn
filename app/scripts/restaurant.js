@@ -3,7 +3,16 @@
     'use strict';
 
     var query  = window.location.search.substring(1);
-    var restaurant_id = query.substring(query.indexOf('=') + 1, query.length);
+    var restaurant_id = getParameterByName('id');
+
+    // function to get the search parameters
+    function getParameterByName(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+          results = regex.exec(location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
 
     var source = $('#restaurant-template').html();
     var template = Handlebars.compile(source);
@@ -94,6 +103,13 @@
         $('.main-div').html(template(data));
 
       }).done(function() {
+
+        // scroll to reviews if the user landed here from reviews
+        if (getParameterByName('nav') === 'reviews') {
+          setTimeout(function() {
+            $('.infopage').eq(2).click()
+          }, 1000);
+        }
 
         $('.follow-button').click(function(event) {
 

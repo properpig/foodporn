@@ -149,7 +149,7 @@
           displayDeals(dealsIndex);
 
           var id = $(this).attr('id');
-          
+
           // show the vignette
           $('#modal-' + id).addClass('open');
           // slide the modal in
@@ -157,7 +157,7 @@
             'marginTop': $(window).height()/11
           });
 
-          
+
         });
       });
     }
@@ -223,7 +223,7 @@
           $('#modal-restaurant-deals').removeClass('open');
         });
       });
-      
+
     }
 
     getDetails();

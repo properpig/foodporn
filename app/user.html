@@ -112,7 +112,7 @@
                 {{ pluralise num_reviews "Review" }}
               </div>
               <div class="review-items">
-                {{#reviews}}<a href="restaurant.html?id={{ restaurant_id }}"><img class="food-thumbnail" src="images/{{ photo }}" /></a>{{/reviews}}
+                {{#reviews}}<a href="restaurant.html?id={{ restaurant_id }}&nav=reviews&review_id={{ id }}"><img class="food-thumbnail" src="images/{{ photo }}" /></a>{{/reviews}}
               </div>
             </div>
 

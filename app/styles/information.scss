@@ -215,6 +215,19 @@ $icon-height: 45px;
 
   padding: $main-padding;
   background: $whitegrey;
+  width: 100%;
+  display: inline-block;
+
+  .food-thumbnail {
+    display: inline-block;
+    width: 16.666%;
+    margin: 0px;
+    padding: 2px;
+
+    img {
+      border-radius: $radius;
+    }
+  }
 
 }
 

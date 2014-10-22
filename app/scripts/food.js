@@ -11,7 +11,7 @@
     function getDetails() {
 
       $.getJSON( window.apiUrl + '/food/' + food_id + '/' + window.username + '/', function( data ) {
-
+        console.log(data);
         $('.sub-name').text(data.name);
         $('.main-buttons .full').wrap('<a href="restaurant.html?id=' + data.restaurant_id + '"></a>');
 

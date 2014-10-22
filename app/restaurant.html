@@ -104,7 +104,7 @@
               {{ pluralise food_count "Menu Item" }}
             </div>
             <div class="menu-items">
-            {{#foods}}<img class="modal-button food-thumbnail" id="menu-item" src="images/{{ photo }}" data-index={{ @index }} />{{/foods}}
+            {{#foods}}<div class="food-thumbnail"><img class="modal-button" id="menu-item" src="images/{{ photo }}" data-index={{ @index }} /></div>{{/foods}}
             </div>
           </div>
 

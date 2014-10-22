@@ -99,8 +99,20 @@
             </div>
           </div>
 
-          <div class="cuisine">
+          <div class="dietary">
+            <div class="heading">Dietary</div>
 
+            <div class="icons">
+              {{#dietary}}
+                <div class="food-icon">
+                  <img src="images/{{ image }}" />
+                  <center><div class="text">{{ name }}</div></center>
+                </div>
+              {{/dietary}}
+            </div>
+          </div>
+
+          <div class="cuisine">
             <div class="heading">Cuisine</div>
 
             <div class="icons">
@@ -113,17 +125,9 @@
             </div>
           </div>
 
-          <div class="dietary">
-            <div class="heading">Dietary</div>
-
-            <div class="icons">
-              {{#dietary}}
-                <div class="food-icon">
-                  <img src="images/{{ image }}" />
-                  <center><div class="text">{{ name }}</div></center>
-                </div>
-              {{/dietary}}
-            </div>
+          <div class="menu">
+            <div class="heading">{{ restaurant }}&rsquo;s Menu</div>
+            {{#menu}}<div class="food-thumbnail"><a href="food.html?id={{ id }}"><img id="menu-item" src="images/{{ photo }}" /></a></div>{{/menu}}
           </div>
 
 

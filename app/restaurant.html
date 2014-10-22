@@ -148,7 +148,7 @@
               {{ pluralise reviews_count "Review" }}
             </div>
             <div class="review-items">
-              {{#reviews}}<img class="food-thumbnail" src="images/{{ photo }}" />{{/reviews}}
+              {{#reviews}}<img data-id={{ id }} class="food-thumbnail" src="images/{{ photo }}" />{{/reviews}}
             </div>
           </div>
 

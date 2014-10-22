@@ -66,7 +66,7 @@
           thisTemplate.find('.actor-photo img').attr('src', 'images/' + activity.actor_photo).wrap('<a href="user.html?id=' + activity.actor_id + '"></a>');
           thisTemplate.find('.actor').text(activity.actor).wrap('<a href="user.html?id=' + activity.actor_id + '"></a>');
           thisTemplate.find('.restaurant').text(activity.restaurant).wrap('<a href="restaurant.html?id=' + activity.restaurant_id + '"></a>');
-          thisTemplate.find('.photo img').attr('src', 'images/' + activity.photo).wrap('<a href="restaurant.html?id=' + activity.restaurant_id + '"></a>');
+          thisTemplate.find('.photo img').attr('src', 'images/' + activity.photo).wrap('<a href="restaurant.html?id=' + activity.restaurant_id + '&nav=reviews&review_id=' + activity.review_id + '"></a>');
 
           var rating = '';
           for (i=0; i<activity.rating; i++) {

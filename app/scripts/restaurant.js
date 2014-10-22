@@ -2,7 +2,6 @@
 (function () {
     'use strict';
 
-    var query  = window.location.search.substring(1);
     var restaurant_id = getParameterByName('id');
 
     // function to get the search parameters
@@ -107,7 +106,13 @@
         // scroll to reviews if the user landed here from reviews
         if (getParameterByName('nav') === 'reviews') {
           setTimeout(function() {
-            $('.infopage').eq(2).click()
+            $('.infopage').eq(2).click();
+            // open the review
+            // var index1;
+            // var review_id = getParameterByName('review_id');
+            // $('.review_items').children().each(function() {
+            //   console.log($(this).data('id'));
+            // });
           }, 1000);
         }
 

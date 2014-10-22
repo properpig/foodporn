@@ -169,6 +169,13 @@ a:visited, a:active, a:hover {
     color: $darkgrey;
   }
 
+  .unread-count {
+    display: inline-block;
+    padding: 0px 7px;
+    border-radius: $radius;
+    background: $yellow-orange-transparent;
+  }
+
 }
 
 .view-change .navigation-drawer {
@@ -233,6 +240,13 @@ a:visited, a:active, a:hover {
 
   .selected .underline {
     background: $base-color;
+  }
+
+  .unread-count {
+    display: none;
+    padding: 0px 3px;
+    border-radius: $radius;
+    color: $base-color;
   }
 
 }

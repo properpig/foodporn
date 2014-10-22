@@ -31,6 +31,21 @@
         height: dealItem.find('.photo img').height(),
       }, 500);
     });
+
+    // highlight the unread things
+    if (parseInt(localStorage.getItem("deals-unread")) > 0) {
+      $('.sub-nav-item:eq(0) .unread-count').css('display', 'inline-block');
+      $('.deal-item:eq(1)').addClass('unread');
+      $('.deal-item:eq(2)').addClass('unread');
+      setTimeout(function(){
+        $('.deal-item').removeClass('unread');
+        localStorage.setItem("deals-unread", 0);
+      }, 3000);
+    };
+    if (parseInt(localStorage.getItem("friends-unread")) > 0) {
+      $('.sub-nav-item:eq(1) .unread-count').css('display', 'inline-block');
+    }
+
   });
 
 })();

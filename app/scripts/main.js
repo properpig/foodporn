@@ -137,10 +137,18 @@
   });
 
   $.getJSON( window.apiUrl + '/login/' + '?username=' + localStorage.getItem('username'), function( data ) {
+    var unread_count = 0;
+    unread_count += parseInt(localStorage.getItem("deals-unread"));
+    unread_count += parseInt(localStorage.getItem("friends-unread"));
+
+    var unread_count_string = '';
+    if (unread_count > 0) {
+      unread_count_string = ' <span class="unread-count">' + unread_count + '</span>';
+    }
 
     /*jshint multistr: true */
     var navHtml = '<a href="index.html" class="nav-item"><i class="fa fa-cutlery"></i> Food</a> \
-        <a href="activity-deals.html" class="nav-item"><i class="fa fa-rss"></i> Activity Feed</a> \
+        <a href="activity-deals.html" class="nav-item"><i class="fa fa-rss"></i> Activity Feed' + unread_count_string + '</a> \
         <a href="restaurant-following.html" class="nav-item"><i class="fa fa-glass"></i> Restaurants</a> \
         <a href="people-following.html" class="nav-item"><i class="fa fa-users"></i> People</a> \
         <a href="#" class="nav-item"><i class="fa fa-gear"></i> Settings</a> \

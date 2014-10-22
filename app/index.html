@@ -13,6 +13,7 @@
     <!-- endbuild -->
     <script src="scripts/libs/handlebars-v2.0.0.js"></script>
     <script src="scripts/libs/hammer.js"></script>
+    <script src="scripts/libs/jquery.nouislider.all.js"></script>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -37,7 +38,9 @@
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/food_explore.css">
+    <link rel="stylesheet" href="styles/filters.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/libs/jquery.nouislider.css">
 
   </head>
   <body>
@@ -103,13 +106,44 @@
 
       </div>
 
-      <div class="main-buttons"><div class="full" id="preferences">Preferences</div></div>
+      <div class="main-buttons"><div class="full" id="filters">Preferences</div></div>
 
-      <div class="modal-wrapper" id="modal-preferences">
+      <div class="modal-wrapper" id="modal-filters">
         <div class="modal">
-          Apply preferences <br />
-          Aliquam nisl tellus, dictum nec posuere non, tincidunt eget quam. Sed tempus ex eget nisl ultricies, sed auctor nulla lacinia. Donec mattis, odio non interdum aliquam, arcu justo convallis lorem, ac volutpat elit magna ut turpis. Nam eleifend at neque sed blandit. Vivamus elit odio, facilisis ac nibh eget, facilisis euismod neque. Integer finibus eget elit id malesuada. Nunc elementum id quam sit amet hendrerit. Nam consectetur enim quis lorem aliquet, id luctus lorem consequat. In vehicula vestibulum arcu non finibus. Fusce consectetur rhoncus urna sit amet suscipit. Nam ut dictum velit. Nam vitae mattis libero. Aenean volutpat erat nunc, ut lacinia arcu feugiat in. Pellentesque laoreet ipsum massa, vel blandit tellus hendrerit sit amet. Suspendisse a odio placerat, ornare tortor sollicitudin, luctus nisl.
-          Aliquam nisl tellus, dictum nec posuere non, tincidunt eget quam. Sed tempus ex eget nisl ultricies, sed auctor nulla lacinia. Donec mattis, odio non interdum aliquam, arcu justo convallis lorem, ac volutpat elit magna ut turpis. Nam eleifend at neque sed blandit. Vivamus elit odio, facilisis ac nibh eget, facilisis euismod neque. Integer finibus eget elit id malesuada. Nunc elementum id quam sit amet hendrerit. Nam consectetur enim quis lorem aliquet, id luctus lorem consequat. In vehicula vestibulum arcu non finibus. Fusce consectetur rhoncus urna sit amet suscipit. Nam ut dictum velit. Nam vitae mattis libero. Aenean volutpat erat nunc, ut lacinia arcu feugiat in. Pellentesque laoreet ipsum massa, vel blandit tellus hendrerit sit amet. Suspendisse a odio placerat, ornare tortor sollicitudin, luctus nisl.
+
+          <script id="filters-template" type="text/x-handlebars-template">
+
+            <div class="filter-group">
+              <div class="title">Price</div>
+              <div class="slider-value" id="price-range"><span class="min"></span> <span class="hyphen">-</span> <span class="max"></span> per person</div>
+              <div class="slider" id="price-slider"></div>
+            </div>
+
+            <div class="filter-group">
+              <div class="title">Distance</div>
+              <div class="slider-value" id="distance-range"><span class="min"></span> <span class="hyphen">-</span> <span class="max"></span></div>
+              <div class="slider" id="distance-slider"></div>
+            </div>
+
+            <div class="filter-group">
+              <div class="title">Dietary</div>
+              <div class="filter-icons-wrapper dietary-filters">
+                {{#diets}}<div class="filter-icon union" data-id={{id}}><img src="images/{{ image }}"><div class="label-wrapper"><div class="label">{{ name }}</div></div></div>{{/diets}}
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="title">Cuisine</div>
+              <div class="filter-icons-wrapper cuisine-filters">
+                {{#cuisines}}<div class="filter-icon union" data-id={{id}}><img src="images/{{ image }}"><div class="label">{{ name }}</div><div class="checkbox"></div></div>{{/cuisines}}
+                <div class="union more-cuisines" data-id={{id}}><center>More Cuisines <i class="fa fa-angle-down"></i></center></div>
+              </div>
+            </div>
+
+            <br />
+
+          </script>
+
           <div class="main-buttons"><div class="submit" id="preferences">Apply Preferences</div></div>
         </div>
       </div>

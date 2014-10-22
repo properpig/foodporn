@@ -87,7 +87,7 @@
     }).done(function() {
 
       // highlight the unread things
-      if (parseInt(localStorage.getItem("friends-unread")) > 0) {
+      if (parseInt(localStorage.getItem('friends-unread')) > 0) {
         $('.sub-nav-item:eq(1) .unread-count').css('display', 'inline-block');
         $('.activity-item:eq(4)').addClass('unread');
         $('.activity-item:eq(5)').addClass('unread');
@@ -97,7 +97,7 @@
           localStorage.setItem("friends-unread", 0);
         }, 3000);
       };
-      if (parseInt(localStorage.getItem("deals-unread")) > 0) {
+      if (parseInt(localStorage.getItem('deals-unread')) > 0) {
         $('.sub-nav-item:eq(0) .unread-count').css('display', 'inline-block');
       }
     });

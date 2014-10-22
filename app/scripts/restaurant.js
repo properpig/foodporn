@@ -127,7 +127,7 @@
             // display them in a quadrant
             var elems = $('.circle.share');
             var increase = (Math.PI/4) * 2 / elems.length;
-            var x = 0, y = 0, angle = Math.PI/2, elem;
+            var x = 0, y = 0, angle = Math.PI/2;
 
             $('.circle.share').each(function() {
               // elem.innerHTML = angle;
@@ -148,7 +148,7 @@
             }, function() {
               $('.circle.share').hide();
               $('.share-button').attr('src', 'images/icons/share-o.svg');
-            })
+            });
           }
         });
 

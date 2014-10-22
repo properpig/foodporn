@@ -138,8 +138,8 @@
 
   $.getJSON( window.apiUrl + '/login/' + '?username=' + localStorage.getItem('username'), function( data ) {
     var unread_count = 0;
-    unread_count += parseInt(localStorage.getItem("deals-unread"));
-    unread_count += parseInt(localStorage.getItem("friends-unread"));
+    unread_count += parseInt(localStorage.getItem('deals-unread'));
+    unread_count += parseInt(localStorage.getItem('friends-unread'));
 
     var unread_count_string = '';
     if (unread_count > 0) {

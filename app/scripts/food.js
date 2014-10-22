@@ -49,7 +49,7 @@
             // display them in a quadrant
             var elems = $('.circle.share');
             var increase = (Math.PI/4) * 2 / elems.length;
-            var x = 0, y = 0, angle = Math.PI/2, elem;
+            var x = 0, y = 0, angle = Math.PI/2;
 
             $('.circle.share').each(function() {
               // elem.innerHTML = angle;
@@ -65,7 +65,7 @@
             // hide the items
             $('.circle.share').animate({
               right: 0,
-              top: 0,
+              top: 100,
               opacity: 0
             }, function() {
               $('.circle.share').hide();

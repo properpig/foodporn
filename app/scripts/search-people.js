@@ -70,6 +70,7 @@
     }
 
     $('.main-buttons').click(function() {
+      search_term = $('#search').val();
       var search_query = '&amenity_ids=' + selectedAmenity.join() + '&sort=' + selectedSort + '&search=' + search_term;
       window.location = 'search-results.html?type=people' + search_query;
     });

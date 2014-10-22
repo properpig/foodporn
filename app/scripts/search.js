@@ -137,6 +137,7 @@
     }
 
     $('.main-buttons').click(function() {
+      search_term = $('#search').val();
       var search_query = '&amenity_ids=' + selectedAmenity.join() + '&dietary_ids=' + selectedDiet.join() + '&cuisine_ids=' + selectedCuisine.join() + '&sort=' + selectedSort + '&search=' + search_term;
       window.location = 'search-results.html?type=food' + search_query;
     });

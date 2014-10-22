@@ -128,11 +128,12 @@
           displayDeals(dealsIndex);
 
           var id = $(this).attr('id');
+          
           // show the vignette
           $('#modal-' + id).addClass('open');
           // slide the modal in
           $('#modal-' + id + ' .modal').animate({
-            'marginTop': $(window).height()/9
+            'marginTop': $(window).height()/11
           });
 
           //close modal
@@ -178,11 +179,11 @@
       var not_first = (index !== 0);
       var not_last = (index !== deals_items.length-1);
 
-      $('#modal-deals .modal').html(deals_template({'not_first':not_first, 'not_last':not_last, 'deals':deals_items[index]}));
+      $('#modal-restaurant-deals .modal').html(deals_template({'not_first':not_first, 'not_last':not_last, 'deals':deals_items[index]}));
 
       // set the height of the menu item so its fixed
-      var width = $('#modal-deals .photo img').width();
-      $('#modal-deals .photo img').height(width);
+      var width = $('#modal-restaurant-deals .photo img').width();
+      $('#modal-restaurant-deals .photo img').height(width);
 
       $('.controls .right').click(function(event) {
         if (dealsIndex === deals_items.length - 1) {

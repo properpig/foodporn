@@ -70,7 +70,7 @@
             }, function() {
               $('.circle.share').hide();
               $('.share-button').attr('src', 'images/icons/share-o.svg');
-            })
+            });
           }
         });
 

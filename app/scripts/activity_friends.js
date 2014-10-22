@@ -94,9 +94,9 @@
         $('.activity-item:eq(6)').addClass('unread');
         setTimeout(function(){
           $('.activity-item').removeClass('unread');
-          localStorage.setItem("friends-unread", 0);
+          localStorage.setItem('friends-unread', 0);
         }, 3000);
-      };
+      }
       if (parseInt(localStorage.getItem('deals-unread')) > 0) {
         $('.sub-nav-item:eq(0) .unread-count').css('display', 'inline-block');
       }

@@ -19,6 +19,7 @@
     "jQuery": false,
     "google": false,
     "Handlebars": false,
-    "Hammer": false
+    "Hammer": false,
+    "wNumb": false
   }
 }

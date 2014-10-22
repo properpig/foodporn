@@ -159,6 +159,111 @@
 
   });
 
+  // populate the template for pages with filters
+  $.getJSON( window.apiUrl + '/filters/list/', function( data ) {
+
+    var modalSource = $('#filters-template').html();
+    if (!modalSource) {
+      return;
+    }
+    var modalTemplate = Handlebars.compile(modalSource);
+    $('#modal-filters .modal').prepend(modalTemplate(data));
+
+    $('.filter-icon.sort').click(function() {
+      $('.filter-icon.sort').removeClass('selected');
+      $(this).addClass('selected');
+    });
+
+    $('.filter-icon.union').click(function() {
+      $(this).toggleClass('selected');
+    });
+
+    // price slider
+    $('#price-slider').noUiSlider({
+      start: [0, 20],
+      connect: true,
+      range: {
+        'min': 0,
+        'max': 60
+      },
+      format: wNumb({
+        mark: ',',
+        decimals: 0,
+        prefix: '$'
+      }),
+    });
+
+    $('#price-slider').Link('lower').to($('#price-range .min'));
+
+    $('#price-slider').Link('upper').to($('#price-range .max'));
+
+    $('#price-range .min').text('< '); //default
+    $('#price-range .hyphen').hide();
+
+    $('#price-slider').on({
+      slide: function() {
+        if ($('#price-range .min').text() === '$0') {
+          $('#price-range .min').text('< ');
+          $('#price-range .hyphen').hide();
+        } else if ($('#price-range .min').text() !== '< ') {
+          $('#price-range .hyphen').show();
+        }
+
+        if ($('#price-range .max').text() === '$60') {
+          $('#price-range .max').text('$60+');
+        }
+      }
+    });
+
+    // distance slider
+    $('#distance-slider').noUiSlider({
+      start: [0, 20],
+      connect: true,
+      range: {
+        'min': 0,
+        'max': 30
+      },
+      format: wNumb({
+        mark: '.',
+        decimals: 1,
+        postfix: ' km'
+      }),
+    });
+
+    $('#distance-slider').Link('lower').to($('#distance-range .min'));
+
+    $('#distance-slider').Link('upper').to($('#distance-range .max'));
+
+    $('#distance-range .min').text('Within '); //default
+    $('#distance-range .hyphen').hide();
+
+    $('#distance-slider').on({
+      slide: function() {
+        if ($('#distance-range .min').text() === '0.0 km') {
+          $('#distance-range .min').text('Within ');
+          $('#distance-range .hyphen').hide();
+        } else if ($('#distance-range .min').text() !== 'Within ') {
+          $('#distance-range .hyphen').show();
+        }
+
+        if ($('#distance-range .max').text() === '30.0 km') {
+          $('#distance-range .max').text('30.0 km+');
+        }
+      }
+    });
+
+    // init cuisine filters
+    for (var k=4; k<12; k++) {
+      $('.cuisine-filters .filter-icon:eq(' + k + ')').hide();
+    }
+
+    $('.more-cuisines').click(function() {
+      $('.cuisine-filters .filter-icon').show();
+      $(this).hide();
+    });
+
+  });
+
  //  /*
  // * Replace all SVG images with inline SVG
  // */

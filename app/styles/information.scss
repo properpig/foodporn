@@ -103,6 +103,54 @@ $icon-height: 45px;
   text-align: center;
 }
 
+.circle.facebook {
+  background: rgba(62, 94, 150, 0.7);
+}
+
+.circle.twitter {
+  background: rgba(100, 203, 246, 0.7);
+}
+
+.circle.pinterest {
+  background: rgba(224, 102, 106, 0.7);
+}
+
+.circle.messages {
+  background: rgba(115, 209, 143, 0.7);
+}
+
+.circle.email {
+  background: rgba(118, 103, 151, 0.7);
+  font-size: 13px;
+}
+
+.circle.share {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: none;
+}
+
+.share-confirmation {
+  position: absolute;
+  width: 80%;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  bottom: -100px;
+  padding: 10px;
+  background: white;
+  border-radius: $radius;
+  text-align: center;
+  box-shadow: 1px 2px 2px 0px #b8b8b8;
+  opacity: 0.0;
+  z-index: 4;
+
+  .site {
+    color: $base-color;
+  }
+}
+
 .photo-bar.buttons-overlay {
   text-align: right;
   padding: 3px;

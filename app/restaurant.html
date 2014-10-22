@@ -78,7 +78,13 @@
             <img src="images/{{ photo }}" />
             <div class="overlay">
               <div class="circle"><img class="share-button" src="images/icons/share-o.svg" /></div>
+              <div class="circle share email" data-type="email"><i class="fa fa-envelope fa-2x"></i></div>
+              <div class="circle share messages" data-type="messages"><i class="fa fa-comments fa-2x"></i></div>
+              <div class="circle share twitter" data-type="Twitter"><i class="fa fa-twitter fa-2x"></i></div>
+              <div class="circle share pinterest" data-type="Pinterest"><i class="fa fa-pinterest fa-2x"></i></div>
+              <div class="circle share facebook" data-type="Facebook"><i class="fa fa-facebook fa-2x"></i></div>
             </div>
+            <div class="share-confirmation">Successfully shared to <span class="site"></span>. Sharing is caring! :)</div>
             <div class="buttons-overlay photo-bar">
               <div class="follow-button {{#if is_following}}following{{/if}}" data-id={{ restaurant_id }}></div>
               <div class="get-there-button" onclick="window.location='directions.html?id={{ restaurant_id }}';">Get There!</div>

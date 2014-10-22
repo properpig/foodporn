@@ -77,7 +77,13 @@
               <div class="circle"><i class="fa fa-thumbs{{#if is_liked}}{{else}}-o{{/if}}-up fa-2x"></i></div>
               <div class="circle"><i class="fa fa-thumbs{{#if is_disliked}}{{else}}-o{{/if}}-down fa-2x"></i></div>
               <div class="circle"><img class="share-button" src="images/icons/share-o.svg" /></div>
+              <div class="circle share email" data-type="email"><i class="fa fa-envelope fa-2x"></i></div>
+              <div class="circle share messages" data-type="messages"><i class="fa fa-comments fa-2x"></i></div>
+              <div class="circle share twitter" data-type="Twitter"><i class="fa fa-twitter fa-2x"></i></div>
+              <div class="circle share pinterest" data-type="Pinterest"><i class="fa fa-pinterest fa-2x"></i></div>
+              <div class="circle share facebook" data-type="Facebook"><i class="fa fa-facebook fa-2x"></i></div>
             </div>
+            <div class="share-confirmation">Successfully shared to <span class="site"></span>. Sharing is caring! :)</div>
             <div class="liked-overlay photo-bar">
               <div class="more">
                 <i class="fa fa-thumbs-o-up fa-2x"></i>{{ num_likes }} <i class="fa fa-angle-right fa-2x hidden"></i>

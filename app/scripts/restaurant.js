@@ -261,17 +261,7 @@
         }
         displayDeals(--dealsIndex);
         event.stopPropagation();
-      });
-
-      //close modal
-      $('.main-buttons .close-deals-button').click(function(){
-        $('#modal-restaurant-deals .modal').animate({
-          'marginTop': 900
-        }, 300, function() {
-          $('#modal-restaurant-deals').removeClass('open');
-        });
-      });
-
+      }); 
     }
 
     getDetails();

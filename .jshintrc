@@ -20,6 +20,7 @@
     "google": false,
     "Handlebars": false,
     "Hammer": false,
-    "wNumb": false
+    "wNumb": false,
+    "getSearchQuery": false
   }
 }

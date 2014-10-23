@@ -11,6 +11,7 @@
     <script src="scripts/libs/jquery-1.11.1.min.js"></script>
     <!-- endbuild -->
     <script src="scripts/libs/handlebars-v2.0.0.js"></script>
+    <script src="scripts/libs/jquery.nouislider.all.js"></script>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -36,6 +37,8 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
     <link rel="stylesheet" href="styles/people.css">
+    <link rel="stylesheet" href="styles/filters.css">
+    <link rel="stylesheet" href="styles/libs/jquery.nouislider.css">
 
   </head>
   <body>
@@ -94,9 +97,41 @@
 
       <div class="modal-wrapper" id="modal-filters">
         <div class="modal">
-          Apply filters <br />
-          Aliquam nisl tellus, dictum nec posuere non, tincidunt eget quam. Sed tempus ex eget nisl ultricies, sed auctor nulla lacinia. Donec mattis, odio non interdum aliquam, arcu justo convallis lorem, ac volutpat elit magna ut turpis. Nam eleifend at neque sed blandit. Vivamus elit odio, facilisis ac nibh eget, facilisis euismod neque. Integer finibus eget elit id malesuada. Nunc elementum id quam sit amet hendrerit. Nam consectetur enim quis lorem aliquet, id luctus lorem consequat. In vehicula vestibulum arcu non finibus. Fusce consectetur rhoncus urna sit amet suscipit. Nam ut dictum velit. Nam vitae mattis libero. Aenean volutpat erat nunc, ut lacinia arcu feugiat in. Pellentesque laoreet ipsum massa, vel blandit tellus hendrerit sit amet. Suspendisse a odio placerat, ornare tortor sollicitudin, luctus nisl.
-          Aliquam nisl tellus, dictum nec posuere non, tincidunt eget quam. Sed tempus ex eget nisl ultricies, sed auctor nulla lacinia. Donec mattis, odio non interdum aliquam, arcu justo convallis lorem, ac volutpat elit magna ut turpis. Nam eleifend at neque sed blandit. Vivamus elit odio, facilisis ac nibh eget, facilisis euismod neque. Integer finibus eget elit id malesuada. Nunc elementum id quam sit amet hendrerit. Nam consectetur enim quis lorem aliquet, id luctus lorem consequat. In vehicula vestibulum arcu non finibus. Fusce consectetur rhoncus urna sit amet suscipit. Nam ut dictum velit. Nam vitae mattis libero. Aenean volutpat erat nunc, ut lacinia arcu feugiat in. Pellentesque laoreet ipsum massa, vel blandit tellus hendrerit sit amet. Suspendisse a odio placerat, ornare tortor sollicitudin, luctus nisl.
+
+         <div class="filter-group">
+            <div class="title">Sort by</div>
+            <div class="filter-icons-wrapper three sort-filters">
+              <div class="filter-icon sort" data-value="likes"><img src="images/filters/general/like.svg"><div class="label">Likes</div></div><!--
+               --><div class="filter-icon sort" data-value="followers"><img src="images/filters/general/follower.svg"><div class="label">Followers</div></div><!--
+               --><div class="filter-icon sort" data-value="reviews"><img src="images/filters/general/review.svg"><div class="label">Reviews</div></div>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <div class="title">Show people with</div>
+
+            <div class="filter-icons-wrapper">
+              <div class="slide-icon"><img src="images/filters/general/like.svg"></div>
+              <div class="slider-value" id="likes-range"><span class="min"></span> <span class="hyphen">-</span> <span class="max"></span> likes</div>
+              <div class="slider" id="likes-slider"></div>
+
+              <div class="divider"></div>
+
+              <div class="slide-icon"><img src="images/filters/general/follower.svg"></div>
+              <div class="slider-value" id="followers-range"><span class="min"></span> <span class="hyphen">-</span> <span class="max"></span> followers</div>
+              <div class="slider" id="followers-slider"></div>
+
+              <div class="divider"></div>
+
+              <div class="slide-icon"><img src="images/filters/general/review.svg"></div>
+              <div class="slider-value" id="reviews-range"><span class="min"></span> <span class="hyphen">-</span> <span class="max"></span> reviews</div>
+              <div class="slider" id="reviews-slider"></div>
+            </div>
+
+          </div>
+
+          <br />
+
           <div class="main-buttons"><div class="submit" id="filters">Apply Filters</div></div>
         </div>
       </div>
@@ -108,6 +143,9 @@
     <!-- endbuild -->
     <!-- build:js scripts/people_following.min.js -->
     <script src="scripts/people_following.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/search-people.min.js -->
+    <script src="scripts/search-people.js"></script>
     <!-- endbuild -->
 
 

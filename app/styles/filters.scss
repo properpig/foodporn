@@ -1,5 +1,11 @@
 @import '_custom_vars';
 
+#search {
+  color: $darkgrey;
+  font-size: 18px;
+  padding: 3px;
+}
+
 .filter-group {
 
   margin: 15px;
@@ -15,7 +21,7 @@
     background: white;
     border-radius: $radius;
     box-shadow: 1px 2px 2px 0px #b8b8b8;
-    padding: 10px 0px;
+    padding: 10px 0px 5px 0px;
 
     .divider {
       margin: 20px 10px 15px 10px;
@@ -68,8 +74,12 @@
     width: 33.333%;
   }
 
+  .four .filter-icon {
+    width: 25%;
+  }
+
   .slider {
-    margin: 0px 30px;
+    margin: 10px 30px;
   }
 
   .slider-value {
@@ -100,9 +110,13 @@
       border-right: 0px;
     }
 
+    .filter-icons-wrapper {
+      padding: 10px 0px;
+    }
+
   }
 
-  .cuisine-filters {
+  .list-filters {
 
     padding: 0px;
 
@@ -129,8 +143,8 @@
       opacity: 0.7;
     }
 
-    .more-cuisines {
-      padding: 7px;
+    .more-button {
+      padding: 9px;
     }
 
     .checkbox {

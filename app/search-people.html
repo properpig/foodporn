@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/secondary.css">
     <link rel="stylesheet" href="styles/search.css">
+    <link rel="stylesheet" href="styles/filters.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
     <link rel="stylesheet" href="styles/libs/jquery.nouislider.css">
 
@@ -53,7 +54,7 @@
             <img class="hamburger" src="images/hamburger.svg" />
             <img class="logo" src="images/logo.svg" />
           </div><!--
-           --><div class="app-name"><i class="fa fa-search fa-1x"></i><input id="search" type="text" placeholder="style this" /></div>
+           --><div class="app-name"><i class="fa fa-search fa-1x"></i><input id="search" type="text" placeholder="Search for People" /></div>
         </div>
         <div class="icons hidden">
             <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
@@ -71,69 +72,44 @@
       </div>
 
       <div class="main-div">
-        <p class="sort-bar-title">Sort by</p>
-        <div class="sort-bar">
-          <div class = "sort-bar-icon-people" value="likes">
-            <img src="images/filters/general/like.svg" />
-            <div class="text">Likes</div>
+
+       <div class="filter-group">
+          <div class="title">Sort by</div>
+          <div class="filter-icons-wrapper three sort-filters">
+            <div class="filter-icon sort" data-value="likes"><img src="images/filters/general/like.svg"><div class="label">Likes</div></div><!--
+             --><div class="filter-icon sort" data-value="followers"><img src="images/filters/general/follower.svg"><div class="label">Followers</div></div><!--
+             --><div class="filter-icon sort" data-value="reviews"><img src="images/filters/general/review.svg"><div class="label">Reviews</div></div>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <div class="title">Show people with</div>
+
+          <div class="filter-icons-wrapper">
+            <div class="slide-icon"><img src="images/filters/general/like.svg"></div>
+            <div class="slider-value" id="likes-range"><span class="min"></span> <span class="hyphen">-</span> <span class="max"></span> likes</div>
+            <div class="slider" id="likes-slider"></div>
+
+            <div class="divider"></div>
+
+            <div class="slide-icon"><img src="images/filters/general/follower.svg"></div>
+            <div class="slider-value" id="followers-range"><span class="min"></span> <span class="hyphen">-</span> <span class="max"></span> followers</div>
+            <div class="slider" id="followers-slider"></div>
+
+            <div class="divider"></div>
+
+            <div class="slide-icon"><img src="images/filters/general/review.svg"></div>
+            <div class="slider-value" id="reviews-range"><span class="min"></span> <span class="hyphen">-</span> <span class="max"></span> reviews</div>
+            <div class="slider" id="reviews-slider"></div>
           </div>
 
-          <div class = "sort-bar-icon-people" value="followers">
-            <img src="images/filters/general/follower.svg" />
-            <div class="text">Followers</div>
-          </div>
-          <div class = "sort-bar-icon-people" value="reviews">
-            <img src="images/filters/general/review.svg" />
-            <div class="text">Reviews</div>
-          </div>
         </div>
-        <div class="bottom-pad"></div>
-        <p class="filter-bar-title">Show people with</p>
-        <div class="likes">
-          <div class="likes-icon">
-            <img src="images/filters/general/like.svg" />
-            <div class="likes-display">
-              <span class="likes-display-low"></span>
-              <span> - </span>
-              <span class="likes-display-high"></span>
-              <span> likes</span>
-            </div>
-          </div>
-          <div class="likes-slider"></div>
-        </div>
-        <div class="bottom-pad"></div>
-        <div class="followers">
-          <div class="followers-icon">
-            <img src="images/filters/general/follower.svg" />
-            <div class="followers-display">
-              <span class="followers-display-low"></span>
-              <span> - </span>
-              <span class="followers-display-high"></span>
-              <span> followers</span>
-            </div>
-          </div>
-          <div class="followers-slider"></div>
-        </div>
-        <div class="bottom-pad"></div>
-        <div class="reviews">
-          <div class="reviews-icon">
-            <img src="images/filters/general/review.svg" />
-            <div class="reviews-display">
-              <span class="reviews-display-low"></span>
-              <span> - </span>
-              <span class="reviews-display-high"></span>
-              <span> reviews</span>
-            </div>
-          </div>
-          <div class="reviews-slider"></div>
-        </div>
-        <div class="bottom-pad"></div>
+
+        <br />
+
       </div>
 
-      <div class="main-buttons"><div class="full">Search Now</div></div>
-    </div>
-      <div class="main-buttons"><div class="full">Search Now</div></div>
-
+      <div class="main-buttons"><div class="full submit-search-redirect">Search Now</div></div>
     </div>
 
     <!-- build:js scripts/main.min.js -->

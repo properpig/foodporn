@@ -103,3 +103,8 @@ $icon-height: 47px;
   }
 
 }
+
+/* hide the sort filters */
+.filter-group:first-child {
+  display: none;
+}

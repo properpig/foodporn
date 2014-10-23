@@ -1,87 +1,6 @@
 /*jshint camelcase: false */
 (function () {
     'use strict';
-    // var askForDietLoad = false;
-    // var askForCuisineLoad = false;
-    // var askForAmenityLoad = false;
-    // var selectedDiet = [];
-    // var selectedCuisine = [];
-    // var selectedAmenity = [];
-    // var selectedSort = '';
-    // var search_term = '';
-
-    // initialize();
-
-
-
-    // function initialize(){
-
-    //   $('.sort-bar-icon-people').click(function(){
-    //     $('.sort-bar-icon-people').removeClass('selected');
-    //     $(this).addClass('selected');
-    //     selectedSort = $(this).attr('value');
-    //   });
-
-
-    //   $('.likes-slider').noUiSlider({
-    //     start: [ 0, 1000 ],
-    //     connect: true,
-    //     range: {
-    //       'min': 0,
-    //       'max': 1000
-    //     }
-    //   });
-    //   $('.likes-slider').Link('lower').to($('.likes-display-low'), null, wNumb({
-    //     decimals: 0
-    //   }));
-    //   $('.likes-slider').Link('upper').to($('.likes-display-high'), null, wNumb({
-    //     decimals: 0
-    //   }));
-
-    //   $('.followers-slider').noUiSlider({
-    //     start: [ 0, 1000 ],
-    //     connect: true,
-    //     range: {
-    //       'min': 0,
-    //       'max': 50
-    //     }
-    //   });
-    //   $('.followers-slider').Link('lower').to($('.followers-display-low'), null, wNumb({
-    //     decimals: 0
-    //   }));
-    //   $('.followers-slider').Link('upper').to($('.followers-display-high'), null, wNumb({
-    //     decimals: 0
-    //   }));
-
-    //   $('.reviews-slider').noUiSlider({
-    //     start: [ 0, 1000 ],
-    //     connect: true,
-    //     range: {
-    //       'min': 0,
-    //       'max': 100
-    //     }
-    //   });
-    //   $('.reviews-slider').Link('lower').to($('.reviews-display-low'), null, wNumb({
-    //     decimals: 0
-    //   }));
-    //   $('.reviews-slider').Link('upper').to($('.reviews-display-high'), null, wNumb({
-    //     decimals: 0
-    //   }));
-    // }
-
-    // $('.main-buttons').click(function() {
-    //   search_term = $('#search').val();
-    //   var search_query = '&amenity_ids=' + selectedAmenity.join() + '&sort=' + selectedSort + '&search=' + search_term;
-    //   window.location = 'search-results.html?type=people' + search_query;
-    // });
-
-    // $("#search").keyup(function (e) {
-    //     if (e.keyCode == 13) {
-    //       search_term = $('#search').val();
-    //       // simulate click of search now button
-    //       $('.main-buttons').click();
-    //     }
-    // });
 
   // populate the template for pages with filters
   function populateFilters() {
@@ -93,7 +12,7 @@
 
     // likes slider
     $('#likes-slider').noUiSlider({
-      start: [10, 150],
+      start: [1, 150],
       connect: true,
       range: {
         'min': 0,
@@ -126,7 +45,7 @@
 
     // followers slider
     $('#followers-slider').noUiSlider({
-      start: [3, 30],
+      start: [1, 30],
       connect: true,
       range: {
         'min': 0,
@@ -193,11 +112,89 @@
       }
     });
 
+    prepopulateFields();
+
   }
 
-  $('.main-buttons .submit-search').click(function() {
-    var extra = getSearchQuery();
+  function prepopulateFields() {
+
+    // check if this is an old search
+    if (window.location.search.substring(1).length === 0) {
+      return;
+    }
+
+    var sort = getParameterByName('sort');
+    if (sort) {
+      $('.sort-filters .filter-icon').each(function() {
+        if ($(this).data('value') === sort) {
+          $(this).addClass('selected');
+        }
+      });
+    }
+
+    if (getParameterByName('likes_min')) {
+      $('#likes-slider').val([parseInt(getParameterByName('likes_min')), null]);
+      $('#likes-range .hyphen').show();
+    } else {
+      $('#likes-slider').val([0, null]);
+      $('#likes-range .min').text('< ');
+      $('#likes-range .hyphen').hide();
+    }
+
+    if (getParameterByName('likes_max')) {
+      $('#likes-slider').val([null, parseInt(getParameterByName('likes_max'))]);
+    } else {
+      $('#likes-slider').val([null, 200]);
+      $('#likes-range .max').text('200+');
+    }
+
+    if (getParameterByName('followers_min')) {
+      $('#followers-slider').val([parseInt(getParameterByName('followers_min')), null]);
+      $('#followers-range .hyphen').show();
+    } else {
+      $('#followers-slider').val([0, null]);
+      $('#followers-range .min').text('< ');
+      $('#followers-range .hyphen').hide();
+    }
+
+    if (getParameterByName('followers_max')) {
+      $('#followers-slider').val([null, parseInt(getParameterByName('followers_max'))]);
+    } else {
+      $('#followers-slider').val([null, 50]);
+      $('#followers-range .max').text('50+');
+    }
+
+    if (getParameterByName('reviews_min')) {
+      $('#reviews-slider').val([parseInt(getParameterByName('reviews_min')), null]);
+      $('#reviews-range .hyphen').show();
+    } else {
+      $('#reviews-slider').val([0, null]);
+      $('#reviews-range .min').text('< ');
+      $('#reviews-range .hyphen').hide();
+    }
+
+    if (getParameterByName('reviews_max')) {
+      $('#reviews-slider').val([null, parseInt(getParameterByName('reviews_max'))]);
+    } else {
+      $('#reviews-slider').val([null, 50]);
+      $('#reviews-range .max').text('50+');
+    }
+
+  }
+
+  // only for the dedicated search people page
+  $('.main-buttons .submit-search-redirect').click(function() {
+    var extra = getSearchQueryPeople();
     window.location = 'search-results.html?type=people' + extra;
+  });
+
+  // detect enter on search box
+  $('#search').keyup(function (e) {
+      if (e.keyCode === 13) {
+        // simulate click of search now button
+        $('.main-buttons .submit-search').click();
+        $('.main-buttons .submit-search-people').click();
+      }
   });
 
   populateFilters();
@@ -205,8 +202,8 @@
 })();
 
 // global get search query
-/*exported getSearchQuery */
-function getSearchQuery() {
+/*exported getSearchQueryPeople */
+function getSearchQueryPeople() {
 
   'use strict';
 
@@ -255,6 +252,13 @@ function getSearchQuery() {
   if (reviews_max.substring(reviews_max.length-1, reviews_max.length) !== '+') {
     extra_query += '&reviews_max='+reviews_max;
   }
+
+  // get the search term
+  var search_term = $('#search').val();
+  if (search_term) {
+    extra_query += '&search=' + search_term;
+  }
+
   console.log(extra_query);
   return extra_query;
 

@@ -6,7 +6,7 @@
 
   // get the template and kick off
   $.ajax({
-    url: 'templates/restaurant-filter.html',
+    url: 'templates/food-filter.html',
     // cache: true,
     success: function(data) {
       modalTemplate = Handlebars.compile(data);
@@ -21,7 +21,7 @@
     // populate the template for pages with filters
     $.getJSON( window.apiUrl + '/filters/list/', function( data ) {
 
-      if (getParameterByName('type') === 'food' || getParameterByName('type') === 'people') {
+      if (getParameterByName('type') === 'people' || getParameterByName('type') === 'restaurants') {
         return; // means this is the search result page for another type of search
       }
 
@@ -127,26 +127,6 @@
         $(this).hide();
       });
 
-      // init amenities filters
-      for (var j=4; j<8; j++) {
-        $('.amenity-filters .filter-icon:eq(' + j + ')').hide();
-      }
-
-      $('.more-amenities').click(function() {
-        $('.amenity-filters .filter-icon').show();
-        $(this).hide();
-      });
-
-      // init other filters
-      for (var l=4; l<8; l++) {
-        $('.other-filters .filter-icon:eq(' + l + ')').hide();
-      }
-
-      $('.more-other').click(function() {
-        $('.other-filters .filter-icon').show();
-        $(this).hide();
-      });
-
     });
 
   }
@@ -187,34 +167,6 @@
       });
     }
 
-    var amenity_ids = getParameterByName('amenity_ids');
-    if (amenity_ids.length) {
-      amenity_ids = amenity_ids.split(',');
-      $('.amenity-filters .filter-icon').each(function() {
-        if (amenity_ids.indexOf($(this).data('id').toString()) !== -1) {
-          $(this).addClass('selected');
-        }
-      });
-    }
-
-    var other_values = getParameterByName('other_values');
-    if (other_values.length) {
-      other_values = other_values.split(',');
-      $('.other-filters .filter-icon').each(function() {
-        if (other_values.indexOf($(this).data('value').toString()) !== -1) {
-          $(this).addClass('selected');
-        }
-      });
-    }
-
-    // other filters
-    $('.other-filters .filter-icon').each(function() {
-      var filterValue = $(this).data('value');
-      if (getParameterByName(filterValue)) {
-        $(this).addClass('selected');
-      }
-    });
-
     if (getParameterByName('distance_min')) {
       $('#distance-slider').val([parseInt(getParameterByName('distance_min')), null]);
       $('#distance-range .hyphen').show();
@@ -249,10 +201,10 @@
 
   }
 
-  // only for the dedicated search restaurants page
+  // only for the dedicated search food page
   $('.main-buttons .submit-search-redirect').click(function() {
-    var extra = getSearchQueryRestaurant();
-    window.location = 'search-results.html?type=restaurants' + extra;
+    var extra = getSearchQueryFood();
+    window.location = 'search-results.html?type=food' + extra;
   });
 
   // detect enter on search box
@@ -267,8 +219,8 @@
 })();
 
 // global get search query
-/*exported getSearchQueryRestaurant */
-function getSearchQueryRestaurant() {
+/*exported getSearchQueryFood */
+function getSearchQueryFood() {
 
   'use strict';
 
@@ -277,7 +229,6 @@ function getSearchQueryRestaurant() {
   var extra_query = '';
   var dietary_ids = [];
   var cuisine_ids = [];
-  var amenity_ids = [];
 
   // sort filter
   $('.sort-filters .filter-icon').each(function() {
@@ -305,22 +256,6 @@ function getSearchQueryRestaurant() {
   });
 
   extra_query += '&cuisine_ids=' + cuisine_ids.join();
-
-  // amenity filters
-  $('.amenity-filters .filter-icon').each(function() {
-    if ($(this).hasClass('selected')) {
-      amenity_ids.push($(this).data('id'));
-    }
-  });
-
-  extra_query += '&amenity_ids=' + amenity_ids.join();
-
-  // other filters
-  $('.other-filters .filter-icon').each(function() {
-    if ($(this).hasClass('selected')) {
-      extra_query += '&' + $(this).data('value') + '=true';
-    }
-  });
 
   // get the min price
   if ($('#price-range .min').text() !== '< ') {

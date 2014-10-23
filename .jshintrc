@@ -21,6 +21,9 @@
     "Handlebars": false,
     "Hammer": false,
     "wNumb": false,
-    "getSearchQuery": false
+    "getSearchQueryFood": false,
+    "getSearchQueryRestaurant": false,
+    "getSearchQueryPeople": false,
+    "getParameterByName": false
   }
 }

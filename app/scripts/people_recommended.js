@@ -51,7 +51,7 @@
     getDetails('');
 
     $('.main-buttons .submit').click(function() {
-      var extra = getSearchQuery();
+      var extra = getSearchQueryPeople();
       getDetails(extra);
     });
 

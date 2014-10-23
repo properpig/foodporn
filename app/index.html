@@ -111,38 +111,8 @@
       <div class="modal-wrapper" id="modal-filters">
         <div class="modal">
 
-          <script id="filters-template" type="text/x-handlebars-template">
-
-            <div class="filter-group">
-              <div class="title">Price</div>
-              <div class="slider-value" id="price-range"><span class="min"></span> <span class="hyphen">-</span> <span class="max"></span> per person</div>
-              <div class="slider" id="price-slider"></div>
-            </div>
-
-            <div class="filter-group">
-              <div class="title">Distance</div>
-              <div class="slider-value" id="distance-range"><span class="min"></span> <span class="hyphen">-</span> <span class="max"></span></div>
-              <div class="slider" id="distance-slider"></div>
-            </div>
-
-            <div class="filter-group">
-              <div class="title">Dietary</div>
-              <div class="filter-icons-wrapper dietary-filters">
-                {{#diets}}<div class="filter-icon union" data-id={{id}}><img src="images/{{ image }}"><div class="label-wrapper"><div class="label">{{ name }}</div></div></div>{{/diets}}
-              </div>
-            </div>
-
-            <div class="filter-group">
-              <div class="title">Cuisine</div>
-              <div class="filter-icons-wrapper cuisine-filters">
-                {{#cuisines}}<div class="filter-icon union" data-id={{id}}><img src="images/{{ image }}"><div class="label">{{ name }}</div><div class="checkbox"></div></div>{{/cuisines}}
-                <div class="union more-cuisines" data-id={{id}}><center>More Cuisines <i class="fa fa-angle-down"></i></center></div>
-              </div>
-            </div>
-
-            <br />
-
-          </script>
+          <div class="filter-area">
+          </div>
 
           <div class="main-buttons"><div class="submit" id="preferences">Apply Preferences</div></div>
         </div>
@@ -155,6 +125,9 @@
     <!-- endbuild -->
     <!-- build:js scripts/food_explore.min.js -->
     <script src="scripts/food_explore.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/search-food.min.js -->
+    <script src="scripts/search-food.js"></script>
     <!-- endbuild -->
 
 

@@ -1,28 +1,35 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    $.getJSON( window.apiUrl + '/restaurants/list/' + window.username + '/?following=true', function( data ) {
+  var source = $('#restaurant-template').html();
+  var template = Handlebars.compile(source);
 
-      var template = $('.template').children().first().clone();
+  function getDetails(extra) {
+    $.getJSON( window.apiUrl + '/restaurants/list/' + window.username + '/?following=true' + extra, function( data ) {
 
-      $.each(data, function(index, restaurant) {
+      console.log(data);
 
-        var thisTemplate = template.clone();
+      $('.main-div').html(template({'restaurants': data}));
 
-        thisTemplate.find('.name').text(restaurant.name);
-        /*jshint camelcase: false */
-        thisTemplate.find('.price-range .low').text(restaurant.price_low);
-        thisTemplate.find('.price-range .high').text(restaurant.price_high);
-        thisTemplate.find('.address').text(restaurant.location_name);
-        thisTemplate.find('.photo img').attr('src', 'images/' + restaurant.photo);
+    }).done(function() {
 
-        thisTemplate.find('.get-there-button').wrap('<a href="directions.html?id=' + restaurant.id + '"></a>');
-        thisTemplate.find('.photo, .info').wrap('<a href="restaurant.html?id=' + restaurant.id + '"></a>');
+      $('.get-there-button').click(function(event) {
 
-        $('.main-div').append(thisTemplate);
+        var restaurant_id = $(this).data('id');
 
+        window.location = 'directions.html?id=' + restaurant_id;
+
+        event.stopPropagation();
       });
 
-
     });
+  }
+
+  $('.main-buttons .submit').click(function() {
+    var extra = getSearchQueryRestaurant();
+    getDetails(extra);
+  });
+
+  getDetails('');
+
 })();

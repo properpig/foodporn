@@ -1,14 +1,15 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    $.getJSON( window.apiUrl + '/restaurants/list/' + window.username + '/?recommended=true', function( data ) {
+  var source = $('#restaurant-template').html();
+  var template = Handlebars.compile(source);
+
+  function getDetails(extra) {
+    $.getJSON( window.apiUrl + '/restaurants/list/' + window.username + '/?recommended=true' + extra, function( data ) {
 
       console.log(data);
 
-      var source = $('#restaurant-template').html();
-      var template = Handlebars.compile(source);
-
-      $('.main-div').append(template({'restaurants': data}));
+      $('.main-div').html(template({'restaurants': data}));
 
     }).done(function() {
 
@@ -25,4 +26,13 @@
       });
 
     });
+  }
+
+  $('.main-buttons .submit').click(function() {
+    var extra = getSearchQueryRestaurant();
+    getDetails(extra);
+  });
+
+  getDetails('');
+
 })();

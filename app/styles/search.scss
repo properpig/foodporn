@@ -97,23 +97,26 @@
 
   .sort-bar-icon.selected {
     color: #000;
-    background: #ffffff;
-    /*border: 1px solid #aaa;*/
-    box-sizing: border-box;
+    background-color: rgba(0,0,0,0.5);
+    /*border: 1px solid #aaa;
+    box-sizing: border-box;*/
+    border-radius:70%;
   }
 
   .sort-bar-icon-restaurant.selected {
     color: #000;
-    background: #ffffff;
-    /*border: 1px solid #aaa;*/
-    box-sizing: border-box;
+    background-color: rgba(0,0,0,0.5);
+    /*border: 1px solid #aaa;
+    box-sizing: border-box;*/
+    border-radius:70%;
   }
 
   .sort-bar-icon-people.selected {
     color: #000;
-    background: #ffffff;
-    /*border: 1px solid #aaa;*/
-    box-sizing: border-box;
+    background-color: rgba(0,0,0,0.5);
+    /*border: 1px solid #aaa;
+    box-sizing: border-box;*/
+    border-radius:70%;
   }
 
 }
@@ -322,9 +325,12 @@
 
 #diet ul li.selected {
   color: #000;
-  background: #ffffff;
-  /*border: 1px solid #aaa;*/
-  box-sizing: border-box;
+  background-color: rgba(0,0,0,0.5);
+  /*border: 1px solid #aaa;
+  box-sizing: border-box;*/
+  border-radius:70%;
+   
+  
 }
 
 
@@ -363,9 +369,10 @@
 
 #cuisine ul li.selected {
   color: #000;
-  background: #ffffff;
-  /*border: 1px solid #aaa;*/
-  box-sizing: border-box;
+  background: #808080;
+  /*border: 1px solid #aaa;
+  box-sizing: border-box;*/
+  border-radius:70%;
 }
 
 
@@ -405,9 +412,10 @@
 
 #amenity ul li.selected {
   color: #000;
-  background: #ffffff;
-  /*border: 1px solid #aaa;*/
-  box-sizing: border-box;
+  background: #808080;
+  /*border: 1px solid #aaa;
+  box-sizing: border-box;*/
+  border-radius:70%;
 }
 
 button{
@@ -418,6 +426,54 @@ button{
     top:50%;
     left:50%;
 }
+
+
+.like-title{
+  text-align: center;
+  font-weight: bold;
+}
+
+.like{
+
+  text-align :center;
+
+  .like-icon{
+	display: inline-block;
+        width: 20%;
+        padding: 10px;
+	cursor: pointer;
+	padding: 3px 2px;
+  	margin: 3px;	
+
+        .text {
+
+        font-size: 14px;
+        line-height: 16px;
+        text-align: center;
+
+        }
+
+       img{
+    	height:50px;
+	min-height:50px;
+        }
+  }  
+
+  .like-icon.selected {
+	color: #000;
+  	background: #808080;
+  	/*border: 1px solid #aaa;
+        box-sizing: border-box;*/
+        border-radius:70%;
+  	
+	
+
+  } 
+
+}
+
+
+
 
 .bottom-pad{
     padding-bottom: 15px;

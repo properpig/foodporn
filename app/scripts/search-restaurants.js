@@ -7,6 +7,7 @@
     var selectedDiet = [];
     var selectedCuisine = [];
     var selectedAmenity = [];
+    var selectedLike=[];
     var search_term = '';
 
     $.getJSON( window.apiUrl + '/filters/list/', function( data ) {
@@ -38,6 +39,16 @@
         $('.sort-bar-icon-restaurant').removeClass('selected');
         $(this).addClass('selected');
         selectedSort = $(this).attr('value');
+      });
+
+      $('.like-icon').click(function(){
+        $(this).toggleClass('selected');
+        selectedlike = [];
+        $( '.like-icon' ).each(function() {
+          if ($(this).hasClass('selected')){
+            selectedDiet[selectedDiet.length] = $(this).attr('id');
+          }
+        });
       });
 
       $('ul.diet-list li').hide().slice(0, 4).show();

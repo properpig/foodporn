@@ -10,18 +10,18 @@
   display: none;
   padding:10px;
 
+  .text {
+    padding: 5px;
+    margin: 20% 10%;
+  }
+
   .dismiss-button {
     border: 1px solid white;
     padding: 5px;
-    margin: 50% 30%;
+    margin: 0% 30%;
     text-align: center;
     border-radius: $radius;
   }
 
 }
 
-.photo {
-
-    height: 100%;
-    overflow: hidden;
-}

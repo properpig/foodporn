@@ -92,8 +92,13 @@
         foodPhoto.attr('src', 'images/' + foodlist[index].photo);
 
         foodPhoto.css({
-            height: $(window).width()
-        });
+            height: $('.modal.short').width()
+        })
+
+        $('.modal.short').css({
+            height: ($('.modal.short').width() + 50 +'px')
+        })
+
     }
 
     //James Padolsey shuffle

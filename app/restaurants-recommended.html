@@ -11,6 +11,7 @@
     <script src="scripts/libs/jquery-1.11.1.min.js"></script>
     <!-- endbuild -->
     <script src="scripts/libs/handlebars-v2.0.0.js"></script>
+    <script src="scripts/libs/hammer.js"></script>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -36,6 +37,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/libs/font-awesome.min.css">
     <link rel="stylesheet" href="styles/restaurants.css">
+    <link rel="stylesheet" href="styles/cant_decide.css">
 
   </head>
   <body>
@@ -106,8 +108,21 @@
 
       <div class="modal-wrapper" id="modal-cant-decide">
         <div class="modal short">
-          Let us help you! <br />
-          <div class="main-buttons"><div class="submit" id="cant-decide">Done Screening!</div></div>
+            
+            <div class="instructions">
+              <div class="text">
+                Begin Liking and Disliking food photo! <br/>
+                Swipe Right to like the photo <br/>
+                Swipe Left to dislike the photo
+              </div>
+              <div class="dismiss-button">I got it!</div>
+            </div>
+
+            <div class="photo" id="cant-decide-photo"> 
+              <img src="images/blank.png" />
+            </div>
+
+            <div class="main-buttons"><div class="submit" id="done-screening-btn">Done Screening!</div></div>       
         </div>
       </div>
 
@@ -118,6 +133,9 @@
     <!-- endbuild -->
     <!-- build:js scripts/restaurants_recommended.min.js -->
     <script src="scripts/restaurants_recommended.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/cant_decide.min.js -->
+    <script src="scripts/cant_decide.js"></script>
     <!-- endbuild -->
 
 

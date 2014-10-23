@@ -190,11 +190,12 @@
 
   // detect enter on search box
   $('#search').keyup(function (e) {
-      if (e.keyCode === 13) {
-        // simulate click of search now button
-        $('.main-buttons .submit-search').click();
-        $('.main-buttons .submit-search-people').click();
-      }
+    if (e.keyCode === 13) {
+      // simulate click of search now button
+      $('.main-buttons .submit-search').click();
+      $('.main-buttons .submit-search-redirect').click();
+      $(this).blur();
+    }
   });
 
   populateFilters();

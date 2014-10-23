@@ -48,7 +48,7 @@
         });
 
         $('.instructions').fadeToggle();
-        
+
         $('.dismiss-button').click(function() {
             $('.instructions').fadeOut();
         });
@@ -56,7 +56,7 @@
 
     //close modal
     $('#done-screening-btn').click(function(){
-        
+
         $('.restaurant-item').shuffle();
 
         $('#modal-cant-decide .modal').animate({
@@ -88,23 +88,23 @@
         if (index > foodlist.length-1) {
             return;
         }
-        
+
         foodPhoto.attr('src', 'images/' + foodlist[index].photo);
 
         foodPhoto.css({
             height: $('.modal.short').width()
-        })
+        });
 
         $('.modal.short').css({
             height: ($('.modal.short').width() + 50 +'px')
-        })
+        });
 
     }
 
     //James Padolsey shuffle
     (function($){
         $.fn.shuffle = function() {
-     
+
             var allElems = this.get(),
                 getRandom = function(max) {
                     return Math.floor(Math.random() * max);
@@ -115,11 +115,11 @@
                     allElems.splice(random, 1);
                     return randEl;
                });
-     
+
             this.each(function(i){
                 $(this).replaceWith($(shuffled[i]));
             });
-     
+
             return $(shuffled);
         };
     })(jQuery);

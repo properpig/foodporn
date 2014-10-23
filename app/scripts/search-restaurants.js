@@ -6,7 +6,7 @@
 
   // get the template and kick off
   $.ajax({
-    url: 'templates/restaurant-filter.html',
+    url: 'restaurant-filter.html',
     // cache: true,
     success: function(data) {
       modalTemplate = Handlebars.compile(data);
@@ -261,6 +261,7 @@
         // simulate click of search now button
         $('.main-buttons .submit-search').click();
         $('.main-buttons .submit-search-redirect').click();
+        $(this).blur();
       }
   });
 

@@ -1,10 +1,40 @@
 @import '_custom_vars';
 
+/* styling search bar */
 #search {
-  color: $darkgrey;
+  color: white;
+  width: 220px;
   font-size: 18px;
-  padding: 3px;
+  padding: 5px;
+  margin-left: 5px;
+  background: transparent;
+  outline: 0px;
+  border: 0px;
+  border-bottom: solid 1px $lightgrey;
 }
+
+#search:focus {
+  outline: 0px;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: $lightgrey;
+  opacity: 0.7;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: $lightgrey;
+  opacity: 0.7;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: $lightgrey;
+  opacity: 0.7;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: $lightgrey;
+  opacity: 0.7;
+}
+
+/* the rest */
 
 .filter-group {
 

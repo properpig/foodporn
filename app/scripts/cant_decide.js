@@ -40,7 +40,6 @@
     });
 
     $('#cant-decide').click(function() {
-
         $.getJSON( window.apiUrl + '/food/list/' + window.username, function( data ) {
             foodlist = data;
 
@@ -56,8 +55,8 @@
 
     //close modal
     $('#done-screening-btn').click(function(){
-
-        $('.restaurant-item').shuffle();
+        var id = $('.main-div').children().first().attr('class');
+        $('.' + id).shuffle();
 
         $('#modal-cant-decide .modal').animate({
             'marginTop': 900

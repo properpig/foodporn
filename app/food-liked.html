@@ -76,14 +76,15 @@
             <a href="food.html?id={{ id }}">
               <div class="food-photo">
                 <img src="images/{{ photo }}" />
+                <div class="price">{{ price }}</div>
               </div>
             </a>
             <a href="food.html?id={{ id }}">
               <div class="info">
                 <div class="name">{{ name }}</div>
                 <div class="more">
+                  <span class="distance"><i class="fa fa-map-marker"></i> {{ distance }}</span>
                   <div class="num_likes"><i class="fa fa-thumbs-o-up"></i> <span class="num">{{ num_likes }}</span></div>
-                  <div class="price">{{ price }}</div>
                 </div>
               </div>
             </a>

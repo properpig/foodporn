@@ -33,6 +33,14 @@
     float: right;
     padding-left: 8px;
 
+    .follow-button {
+      float: right;
+      font-size: 14px;
+      font-weight: 300;
+      padding: 3px 12px;
+      clear: both;
+    }
+
     .name {
       font-weight: 400;
       line-height: 20px;

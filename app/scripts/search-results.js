@@ -57,22 +57,34 @@
 
         $('.follow-button').click(function() {
 
-          var user_id = $(this).data('id');
-          var follow_button = $(this);
-          var following_span = $(this).parent().find('.followers');
-          var original_following = parseInt(following_span.text().split(' ')[0]);
+          if ($(this).hasClass('follow-user')) {
 
-          $.getJSON (window.apiUrl + '/user/follow/' + user_id + '/' + window.username + '/', function(data) {
+            var user_id = $(this).data('id');
+            var follow_button = $(this);
+            var following_span = $(this).parent().find('.followers');
+            var original_following = parseInt(following_span.text().split(' ')[0]);
 
-            if (data.status === 'success') {
-              follow_button.toggleClass('following');
-              if (data.message === 'followed') {
-                following_span.text((original_following+1) + ' Followers');
-              } else {
-                following_span.text((original_following-1) + ' Followers');
+            $.getJSON (window.apiUrl + '/user/follow/' + user_id + '/' + window.username + '/', function(data) {
+
+              if (data.status === 'success') {
+                follow_button.toggleClass('following');
+                if (data.message === 'followed') {
+                  following_span.text((original_following+1) + ' Followers');
+                } else {
+                  following_span.text((original_following-1) + ' Followers');
+                }
               }
-            }
-          });
+            });
+
+          } else {
+
+            var restaurant_id = $(this).data('id');
+            $.getJSON (window.apiUrl + '/restaurant/follow/' + restaurant_id + '/' + window.username + '/', function(data) {
+              console.log(data);
+            });
+            $(this).toggleClass('following');
+
+          }
 
           event.stopPropagation();
 

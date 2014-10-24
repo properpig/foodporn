@@ -97,6 +97,7 @@
                 <img src="images/{{ photo }}" />
               </div>
               <div class="info">
+                <div class="follow-button follow-restaurant {{#if is_following}}following{{/if}} {{#if is_me}}hidden{{/if}}" data-id={{ id }}></div>
                 <div class="name">{{ name }}</div>
                 <div class="location-name">{{ location_name }}</div>
                 <div class="rating">{{{ rating_stars rating reviews_count }}}</div>
@@ -119,7 +120,7 @@
                 <a href="user.html?id={{ id }}"><img src="images/{{ photo }}" /></a>
               </div>
               <div class="info">
-                <div class="follow-button {{#if is_following}}following{{/if}} {{#if is_me}}hidden{{/if}}" data-id={{ id }}>
+                <div class="follow-button follow-user {{#if is_following}}following{{/if}} {{#if is_me}}hidden{{/if}}" data-id={{ id }}>
                 </div>
                 <div class="name"><a href="user.html?id={{ id }}">{{ name }}</a></div>
                 <div class="username">{{ username }}</div>

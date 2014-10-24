@@ -28,7 +28,7 @@
     });
   }
 
-  $('.main-buttons #filters').click(function() {
+  $('.modal .main-buttons #filters').click(function() {
     var extra = getSearchQueryRestaurant();
     getDetails(extra);
   });

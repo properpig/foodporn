@@ -81,13 +81,13 @@
               </div>
                 <div class="name"><a href="user.html?id={{ id }}">{{ name }}</a></div>
                 <div class="username">{{ username }}</div>
-                <div class="stats">
-                  {{ pluralise num_reviews "Review" }} | <span class="followers">{{ pluralise num_followers "Follower" }}</span> | {{ pluralise num_likes "Like" }}
-                </div>
                 <div class="reviews">
                   {{#reviews}}
                     <a href="restaurant.html?id={{ restaurant_id }}&nav=reviews&review_id={{ id }}"><img src="images/{{ photo }}" /></a>
                   {{/reviews}}
+                </div>
+                <div class="stats">
+                  <img src="images/filters/general/review.svg" /> {{ num_reviews }}  &middot;  <span class="followers"><i class="fa fa-users"></i> {{ num_followers }}</span> &middot; <i class="fa fa-thumbs-o-up"></i> {{ num_likes }}
                 </div>
               </div>
             </div>

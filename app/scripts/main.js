@@ -19,8 +19,8 @@
 (function () {
   'use strict';
 
-  // window.apiUrl = 'http://localhost:8000/foodporn';
-  window.apiUrl = 'http://128.199.140.174:8000/foodporn';
+  window.apiUrl = 'http://localhost:8000/foodporn';
+  // window.apiUrl = 'http://128.199.140.174:8000/foodporn';
   window.username = 'john'; // default
   if ('username' in localStorage) {
     window.username = localStorage.getItem('username');
@@ -152,7 +152,8 @@
         <a href="restaurant-following.html" class="nav-item"><i class="fa fa-glass"></i> Restaurants</a> \
         <a href="people-following.html" class="nav-item"><i class="fa fa-users"></i> People</a> \
         <a href="#" class="nav-item"><i class="fa fa-gear"></i> Settings</a> \
-        <a href="#" class="nav-item"><i class="fa fa-question-circle"></i> Help</a> \
+        <a href="#" class="nav-item"><i class="fa fa-info-circle"></i> About</a> \
+        <a href="logout.html" class="nav-item"><i class="fa fa-sign-out"></i> Logout</a> \
         <a href="user.html?id=' + data.id + '" class="nav-item profile"><img src="images/' + data.photo + '" /><span class="username">' + data.name + '</span></a>';
 
     $('.navigation-drawer').html(navHtml);

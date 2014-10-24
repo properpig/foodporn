@@ -51,7 +51,7 @@
             <img class="hamburger" src="images/hamburger.svg" />
             <img class="logo" src="images/logo.svg" />
           </div><!--
-           --><div class="app-name">Secret Entrance</div>
+           --><div class="app-name">Logout</div>
         </div>
         <div class="icons">
             <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
@@ -67,24 +67,8 @@
       <div class="main-div">
         <div class="note box">
           <img src="images/logo-black.svg" />
-
-          <p>Hello there! We&rsquo;re working hard to get the app working for you! :)</p>
-
-          <p>You will be automatically redirected when the app is ready.</p>
-
-          <center><i class="fa fa-spinner fa-spin"></i></center>
+          Thanks for trying to logout. Note that this page doesn&rsquo;t actually work <span onclick="window.location='login.html';">;)</span>
         </div>
-        <script id="login-template" type="text/x-handlebars-template">
-          <div class="note box">
-            <img src="images/logo-black.svg" />
-            <p>Oh dear it looks like you did not specify a username to log in. No worries. Please select one:</p>
-            <ul>
-              {{#users}}
-                <li class="user-item"><a href="login.html?username={{username}}">{{ username }}</a></li>
-              {{/users}}
-            </ul>
-          </div>
-        </script>
       </div>
 
       <div class="main-buttons" onclick="window.history.back();"><div class="full">Take me back</div></div>
@@ -93,9 +77,6 @@
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
-    <!-- endbuild -->
-    <!-- build:js scripts/access.min.js -->
-    <script src="scripts/access.js"></script>
     <!-- endbuild -->
 
 

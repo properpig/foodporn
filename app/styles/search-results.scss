@@ -49,18 +49,6 @@
       color: $darkgrey;
     }
 
-    .stats {
-
-      .fa {
-        margin-left: 5px;
-      }
-
-      span:first-child .fa {
-        margin-left: 0px;
-      }
-
-    }
-
     .rating {
       .fa {
         margin-right: 2px;
@@ -71,9 +59,9 @@
       display: inline-block;
     }
 
-    .price::first-letter {
-      font-weight: 400;
-    }
+    // .price::first-letter {
+    //   font-weight: 400;
+    // }
 
   }
 

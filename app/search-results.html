@@ -83,7 +83,7 @@
               <div class="info">
                 <div class="name">{{ name }}</div>
                 <div>by <a href="restaurant.html?id={{ restaurant_id }}"><span class="restaurant-name">{{ restaurant }}</span></a></div>
-                <div class="stats"><span class="likes"><i class="fa fa-thumbs-o-up"></i> {{ num_likes }}</span> <span class="price">{{ price }}</span> <span class="distance"><i class="fa fa-map-marker"></i> {{ distance }}</span></div>
+                <div class="stats"><span class="likes"><i class="fa fa-thumbs-o-up"></i> {{ num_likes }}</span> &middot; <span class="price">{{ price }}</span> &middot; <span class="distance"><i class="fa fa-map-marker"></i> {{ distance }}</span></div>
               </div>
               <div class="clear"></div>
             </div>
@@ -97,12 +97,14 @@
                 <img src="images/{{ photo }}" />
               </div>
               <div class="info">
-                <div class="name">{{ name }}</div><div class="rating">{{{ rating_stars rating reviews_count }}}</div>
+                <div class="name">{{ name }}</div>
                 <div class="location-name">{{ location_name }}</div>
+                <div class="rating">{{{ rating_stars rating reviews_count }}}</div>
+
                 <div class="stats">
+                  <span class="price-range"><img src="images/filters/general/dollar.svg" /> <span class="price">{{ price_low }}</span> - <span class="price">{{ price_high }}</span></span> &middot;
+                  <span class="distance"><i class="fa fa-map-marker"></i> {{ distance }}</span> &middot;
                   <span class="num-followers"><i class="fa fa-users"></i> {{ following_count }}</span>
-                  <span class="price-range"><span class="price">{{ price_low }}</span> - <span class="price">{{ price_high }}</span></span>
-                  <span class="distance"><i class="fa fa-map-marker"></i> {{ distance }}</span>
                 </div>
               </div>
               <div class="clear"></div>
@@ -122,7 +124,7 @@
                 <div class="name"><a href="user.html?id={{ id }}">{{ name }}</a></div>
                 <div class="username">{{ username }}</div>
                 <div class="stats">
-                  {{ pluralise num_reviews "Review" }} | <span class="followers">{{ pluralise num_followers "Follower" }}</span> | {{ pluralise num_likes "Like" }}
+                  <img src="images/filters/general/review.svg" /> {{ num_reviews }}  &middot;  <span class="followers"><i class="fa fa-users"></i> {{ num_followers }}</span> &middot; <i class="fa fa-thumbs-o-up"></i> {{ num_likes }}
                 </div>
                 <div class="reviews">
                   {{#reviews}}
@@ -219,6 +221,7 @@
     <!-- endbuild -->
     <!-- build:js scripts/search-people.min.js -->
     <script src="scripts/search-people.js"></script>
+    <!-- endbuild -->
     <!-- build:js scripts/cant_decide.min.js -->
     <script src="scripts/cant_decide.js"></script>
     <!-- endbuild -->

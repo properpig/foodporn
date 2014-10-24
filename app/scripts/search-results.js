@@ -81,22 +81,22 @@
           } else {
 
             var restaurant_id = $(this).data('id');
-            var follow_button = $(this);
-            var follow_count = parseInt(follow_button.data('count'));
-            var following_span = follow_button.parent().find('.stats .followers');
+            var r_follow_button = $(this);
+            var r_follow_count = parseInt(r_follow_button.data('count'));
+            var r_following_span = r_follow_button.parent().find('.stats .followers');
 
             $.getJSON (window.apiUrl + '/restaurant/follow/' + restaurant_id + '/' + window.username + '/', function(data) {
               console.log(data);
             });
             $(this).toggleClass('following');
             if ($(this).hasClass('following')) {
-              follow_count++;
+              r_follow_count++;
             } else {
-              follow_count--;
+              r_follow_count--;
             }
 
-            following_span.html('<i class="fa fa-users"></i> ' + follow_count);
-            follow_button.data('count', follow_count);
+            r_following_span.html('<i class="fa fa-users"></i> ' + r_follow_count);
+            r_follow_button.data('count', r_follow_count);
 
           }
 

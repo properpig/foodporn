@@ -32,7 +32,7 @@
       for (var key in this) {
         src = this[key];
       }
-      $('<img/>').attr('src', 'images/' + src).load(function(){notifyImageLoad()});
+      $('<img/>').attr('src', 'images/' + src).load(function(){notifyImageLoad();});
     });
   }
 

@@ -97,15 +97,16 @@
                 <img src="images/{{ photo }}" />
               </div>
               <div class="info">
-                <div class="follow-button follow-restaurant {{#if is_following}}following{{/if}} {{#if is_me}}hidden{{/if}}" data-id={{ id }}></div>
+                <div class="follow-button follow-restaurant {{#if is_following}}following{{/if}} {{#if is_me}}hidden{{/if}}" data-id={{ id }} data-count={{ following_count }}></div>
                 <div class="name">{{ name }}</div>
-                <div class="location-name">{{ location_name }}</div>
+
                 <div class="rating">{{{ rating_stars rating reviews_count }}}</div>
+                <div class="location-name">{{ location_name }}</div>
 
                 <div class="stats">
                   <span class="price-range"><img src="images/filters/general/dollar.svg" /> <span class="price">{{ price_low }}</span> - <span class="price">{{ price_high }}</span></span> &middot;
                   <span class="distance"><i class="fa fa-map-marker"></i> {{ distance }}</span> &middot;
-                  <span class="num-followers"><i class="fa fa-users"></i> {{ following_count }}</span>
+                  <span class="followers"><i class="fa fa-users"></i> {{ following_count }}</span>
                 </div>
               </div>
               <div class="clear"></div>
@@ -120,7 +121,7 @@
                 <a href="user.html?id={{ id }}"><img src="images/{{ photo }}" /></a>
               </div>
               <div class="info">
-                <div class="follow-button follow-user {{#if is_following}}following{{/if}} {{#if is_me}}hidden{{/if}}" data-id={{ id }}>
+                <div class="follow-button follow-user {{#if is_following}}following{{/if}} {{#if is_me}}hidden{{/if}}" data-id={{ id }} data-count={{ num_followers }}>
                 </div>
                 <div class="name"><a href="user.html?id={{ id }}">{{ name }}</a></div>
                 <div class="username">{{ username }}</div>

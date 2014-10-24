@@ -25,18 +25,19 @@
 
           var user_id = $(this).data('id');
           var follow_button = $(this);
-          var following_span = $(this).parent().find('.followers');
-          var original_following = parseInt(following_span.text().split(' ')[0]);
+          var follow_count = parseInt($(this).data('count'));
+          var following_span = $(this).parent().find('.stats .followers');
 
           $.getJSON (window.apiUrl + '/user/follow/' + user_id + '/' + window.username + '/', function(data) {
 
             if (data.status === 'success') {
               follow_button.toggleClass('following');
               if (data.message === 'followed') {
-                following_span.text((original_following+1) + ' Followers');
+                follow_count++;
               } else {
-                following_span.text((original_following-1) + ' Followers');
+                follow_count--;
               }
+              following_span.html('<i class="fa fa-users"></i> ' + follow_count);
             }
           });
 

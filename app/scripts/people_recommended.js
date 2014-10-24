@@ -37,6 +37,7 @@
               } else {
                 follow_count--;
               }
+              follow_button.data('count', follow_count);
               following_span.html('<i class="fa fa-users"></i> ' + follow_count);
             }
           });

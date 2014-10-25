@@ -78,6 +78,31 @@
 
         $('.main-div').html(template(data));
 
+        // populate the map
+        var mapOptions = {
+          center: {lat: parseFloat(data.location_x), lng: parseFloat(data.location_y)},
+          zoom: 14,
+          mapTypeControl: false,
+          scaleControl: false,
+          zoomControl: false,
+          panControl: true,
+          draggable: false,
+          streetViewControl: false
+        };
+
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+
+        var latlon = new google.maps.LatLng(parseFloat(data.location_x), parseFloat(data.location_y));
+
+        var marker = new google.maps.Marker({
+            position: latlon,
+            map: map,
+            title: data.name
+        });
+
+        marker.setMap(map);
+
       }).done(function() {
 
         // scroll to reviews if the user landed here from reviews
@@ -252,7 +277,7 @@
         }
         displayDeals(--dealsIndex);
         event.stopPropagation();
-      }); 
+      });
     }
 
     getDetails();

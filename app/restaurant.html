@@ -160,7 +160,7 @@
 
           <div class="map">
             <div class="heading">{{ location_name }}</div>
-            <img src="https://maps.googleapis.com/maps/api/staticmap?center={{ location_x }},{{ location_y }}&zoom=14&size=450x250&markers=color:red%%7C{{ location_x }},{{ location_y }}" />
+            <div id="map-canvas"></div>
           </div>
 
           <div class="description">
@@ -265,6 +265,9 @@
     <script src="scripts/restaurant.js"></script>
     <!-- endbuild -->
 
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlfMykYSTngeUvgXnv5tAdlJByP8FpXUM">
+    </script>
 
     <!-- Built with love using Web Starter Kit -->
   </body>

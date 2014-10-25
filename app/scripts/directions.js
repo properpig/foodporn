@@ -9,13 +9,16 @@
     var query  = window.location.search.substring(1);
     var restaurant_id = query.substring(query.indexOf('=') + 1, query.length);
 
-    function initialize() {                                                        
+    function initialize() {
         origin = new google.maps.LatLng(1.296568, 103.852118);
 
         var mapOptions = {
-            zoom: 14,  
+            zoom: 14,
+            mapTypeControl: false,
             center: origin,
+            zoomControl: false,
         };
+
 
         map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         directionsDisplay.setMap(map);
@@ -45,7 +48,7 @@
             componentRestrictions: {country: 'sg'}
         };
         autocomplete = new google.maps.places.Autocomplete(input, autocompleteOptions);
-        
+
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
             calcRoute();
         });

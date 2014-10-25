@@ -217,6 +217,10 @@ $icon-height: 45px;
   }
 }
 
+#map-canvas {
+  height: 200px;
+}
+
 .map {
   background: $whitegrey;
   .heading {

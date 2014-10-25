@@ -44,7 +44,8 @@
 .activity-item {
 
   transition: background 0.5s ease;
-  padding: 7px;
+  padding: 10px 7px;
+  border-bottom: 1px solid $grey;
   clear: both;
 
   .actor-photo {

@@ -110,6 +110,11 @@
     window.history.back();
   });
 
+  // clearing the search
+  $('.app-name .fa-times').click(function() {
+    $('#search').val('').focus();
+  });
+
   Handlebars.registerHelper('pluralise', function(num, type) {
     var string = type;
     if (num !== 1) {

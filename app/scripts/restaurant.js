@@ -103,6 +103,11 @@
 
         marker.setMap(map);
 
+        // link review button to review page
+        $('.review-button').click(function() {
+          window.location = 'review.html?restaurant_id=' + data.restaurant_id;
+        });
+
       }).done(function() {
 
         // scroll to reviews if the user landed here from reviews

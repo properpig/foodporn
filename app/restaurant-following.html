@@ -57,7 +57,7 @@
            --><div class="app-name">Restaurants</div>
         </div>
         <div class="icons">
-            <a href="#"><img src="images/icons/map-view.svg" /></a>
+            <a href="#" class="mapview listview"><img src="images/icons/map-view.svg" /></a>
             <a href="search.html"><i class="fa fa-search fa-2x"></i></a>
          </div>
       </div>
@@ -72,6 +72,10 @@
       </div>
 
       <div class="main-div">
+        <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlfMykYSTngeUvgXnv5tAdlJByP8FpXUM">
+        </script>
+
         <script id="restaurant-template" type="text/x-handlebars-template">
           {{#restaurants}}
           <div class="restaurant-item" onclick="window.location='restaurant.html?id={{ id }}';">
@@ -89,6 +93,19 @@
             </div>
           </div>
           {{/restaurants}}
+        </script>
+
+        <script id="info-template" type="text/x-handlebars-template">
+          <div class="photo"><a href="restaurant.html?id={{ id }}"><img src="images/{{ photo }}" /></a></div>
+          <div class="info">
+            <div class="name"><a href="restaurant.html?id={{ id }}">{{ name }}</a></div>
+            <div class="address"><a href="directions.html?id={{ id }}">{{ location_name }}</a></div>
+            <div class="stats">
+              <span class="price-range"><span class="price">{{ price_low }}</span> - <span class="price">{{ price_high }}</span></span> &middot;
+              <span class="distance"><i class="fa fa-map-marker"></i> {{ distance }}</span> &middot;
+              <span class="followers"><i class="fa fa-users"></i> {{ following_count }}</span>
+            </div>
+          </div>
         </script>
       </div>
 
@@ -133,6 +150,9 @@
     <!-- endbuild -->
     <!-- build:js scripts/search-restaurants.min.js -->
     <script src="scripts/search-restaurants.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/map_view.min.js -->
+    <script src="scripts/map_view.js"></script>
     <!-- endbuild -->
 
 

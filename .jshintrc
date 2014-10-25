@@ -24,6 +24,7 @@
     "getSearchQueryFood": false,
     "getSearchQueryRestaurant": false,
     "getSearchQueryPeople": false,
-    "getParameterByName": false
+    "getParameterByName": false,
+    "showMap": false
   }
 }

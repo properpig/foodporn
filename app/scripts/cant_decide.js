@@ -5,6 +5,15 @@
 
     var myElement = document.getElementById('cant-decide-photo');
     var foodPhoto = $('#cant-decide-photo img');
+    var foodPhoto2 = $('#cant-decide-photo2 img');
+
+    $('#cant-decide-photo img #cant-decide-photo2 img').css({
+        height: $('.modal.short').width()
+    });
+
+    $('.modal.short').css({
+        height: ($('.modal.short').width() + 50 +'px')
+    });
 
     var mc = new Hammer(myElement);
 
@@ -90,14 +99,10 @@
 
         foodPhoto.attr('src', 'images/' + foodlist[index].photo);
 
-        foodPhoto.css({
-            height: $('.modal.short').width()
-        });
-
-        $('.modal.short').css({
-            height: ($('.modal.short').width() + 50 +'px')
-        });
-
+        if (index+1 !== foodlist.length){
+            foodPhoto2.attr('src', 'images/' + foodlist[index+1].photo);
+            foodPhoto2.css('background-image', 'url(images/' + foodlist[index+2].photo + ')');
+        }
     }
 
     //James Padolsey shuffle

@@ -55,7 +55,7 @@
             <img class="hamburger" src="images/hamburger.svg" />
             <img class="logo" src="images/logo.svg" />
           </div><!--
-           --><div class="app-name"><i class="fa fa-search fa-1x"></i><input id="search" type="text" placeholder="Search" /></div>
+           --><div class="app-name"><i class="fa fa-search fa-1x"></i><input id="search" type="text" placeholder="Search" /><i class="fa fa-times fa-1x"></i></div>
         </div>
         <div class="icons hidden">
             <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
@@ -104,7 +104,7 @@
                 <div class="location-name">{{ location_name }}</div>
 
                 <div class="stats">
-                  <span class="price-range"><img src="images/filters/general/dollar.svg" /> <span class="price">{{ price_low }}</span> - <span class="price">{{ price_high }}</span></span> &middot;
+                  <span class="price-range"><span class="price">{{ price_low }}</span> - <span class="price">{{ price_high }}</span></span> &middot;
                   <span class="distance"><i class="fa fa-map-marker"></i> {{ distance }}</span> &middot;
                   <span class="followers"><i class="fa fa-users"></i> {{ following_count }}</span>
                 </div>

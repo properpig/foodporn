@@ -102,6 +102,10 @@
 
           <div class="title">
             <div class="restaurant-name">{{ name }}</div>
+            <div >
+              <img class="recommended" title="Recommended" src="images/recommended.svg {{#if is_recommended}}{{/if}}"/>
+              Recommended
+            </div>
             <div class="rating">{{{ rating_stars rating reviews_count }}}</div>
           </div>
 

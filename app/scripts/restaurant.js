@@ -17,6 +17,11 @@
     var deals_source = $('#deals-template').html();
     var deals_template = Handlebars.compile(deals_source);
 
+    var review_items;
+    var reviewIndex;
+    var review_source = $('#review-template').html();
+    var review_template = Handlebars.compile(review_source);
+
     var scrolling = false;
 
     // call a function everytime the user scrolls
@@ -71,37 +76,15 @@
 
         menu_items = data.foods;
         deals_items = data.deals;
+        review_items = data.reviews;
+
+        mapInfo = {'location_x': data.location_x, 'location_y': data.location_y, 'name': data.name};
 
         console.log(data);
 
         $('.sub-name').text(data.name);
 
         $('.main-div').html(template(data));
-
-        // populate the map
-        var mapOptions = {
-          center: {lat: parseFloat(data.location_x), lng: parseFloat(data.location_y)},
-          zoom: 14,
-          mapTypeControl: false,
-          scaleControl: false,
-          zoomControl: false,
-          panControl: true,
-          draggable: false,
-          streetViewControl: false
-        };
-
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
-
-        var latlon = new google.maps.LatLng(parseFloat(data.location_x), parseFloat(data.location_y));
-
-        var marker = new google.maps.Marker({
-            position: latlon,
-            map: map,
-            title: data.name
-        });
-
-        marker.setMap(map);
 
         // link review button to review page
         $('.review-button').click(function() {
@@ -212,6 +195,21 @@
 
         });
 
+        $('.review-items .modal-button').click(function() {
+          reviewIndex = $(this).data('index');
+
+          displayReviewItem(reviewIndex);
+
+          var id = $(this).attr('id');
+          // show the vignette
+          $('#modal-' + id).addClass('open');
+          // slide the modal in
+          $('#modal-' + id + ' .modal').animate({
+            'marginTop': $(window).height()/9
+          });
+
+        });
+
         $('.deal-items .modal-button').click(function(){
           dealsIndex = $(this).data('index');
 
@@ -258,6 +256,41 @@
       });
     }
 
+    function displayReviewItem(index) {
+      // console.log(index);
+      var not_first = (index !== 0);
+      var not_last = (index !== review_items.length-1);
+
+      $('#modal-review-item .modal').html(review_template({'not_first':not_first, 'not_last':not_last, 'item':review_items[index]}));
+
+      // set the height of the review item so its fixed
+      var width = $('#modal-review-item .photo img').width();
+      $('#modal-review-item .photo img').height(width);
+
+      // make height of modal fit the text
+      var modalHeight = $('#modal-review-item .modal').height();
+      var infoHeight = $('#modal-review-item .info').height();
+
+      var extra = infoHeight + width - modalHeight;
+      $('#modal-review-item .modal').height(modalHeight + extra + 20);
+
+      $('.controls .right').click(function(event) {
+        if (reviewIndex === review_items.length - 1) {
+          return;
+        }
+        displayReviewItem(++reviewIndex);
+        event.stopPropagation();
+      });
+
+      $('.controls .left').click(function(event) {
+        if (reviewIndex === 0) {
+          return;
+        }
+        displayReviewItem(--reviewIndex);
+        event.stopPropagation();
+      });
+    }
+
     function displayDeals(index) {
       var not_first = (index !== 0);
       var not_last = (index !== deals_items.length-1);
@@ -267,6 +300,13 @@
       // set the height of the menu item so its fixed
       var width = $('#modal-restaurant-deals .photo img').width();
       $('#modal-restaurant-deals .photo img').height(width);
+
+      // make height of modal fit the text
+      var modalHeight = $('#modal-restaurant-deals .modal').height();
+      var infoHeight = $('#modal-restaurant-deals .info').height();
+
+      var extra = infoHeight + width - modalHeight;
+      $('#modal-restaurant-deals .modal').height(modalHeight + extra + 20);
 
       $('.controls .right').click(function(event) {
         if (dealsIndex === deals_items.length - 1) {
@@ -287,3 +327,43 @@
 
     getDetails();
 })();
+
+var mapInfo = null;
+
+/* exported initializemap */
+function initializemap() {
+  'use strict';
+
+  if (mapInfo === null) {
+    setTimeout(function() {
+      initializemap();
+    }, 50);
+    console.log('wait');
+    return;
+  }
+
+  // populate the map
+  var mapOptions = {
+    center: {lat: parseFloat(mapInfo.location_x), lng: parseFloat(mapInfo.location_y)},
+    zoom: 14,
+    mapTypeControl: false,
+    scaleControl: false,
+    zoomControl: false,
+    panControl: true,
+    draggable: false,
+    streetViewControl: false
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  var latlon = new google.maps.LatLng(parseFloat(mapInfo.location_x), parseFloat(mapInfo.location_y));
+
+  var marker = new google.maps.Marker({
+      position: latlon,
+      map: map,
+      title: name
+  });
+
+  marker.setMap(map);
+}

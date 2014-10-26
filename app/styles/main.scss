@@ -312,23 +312,8 @@ a:visited, a:active, a:hover {
 
 .modal.short {
   min-height: inherit;
-  height: 450px;
+  height: 460px;
   margin-top: 45px;
-  margin-bottom: 0px;
-  position: relative;
-
-  .main-buttons {
-    position: absolute;
-    width: 100%;
-    bottom: 0px;
-  }
-
-}
-
-.modal.restaurant-deals {
-  min-height: inherit;
-  height: 525px;
-  margin-top: 30px;
   margin-bottom: 0px;
   position: relative;
 

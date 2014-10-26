@@ -45,45 +45,24 @@
 }
 
 .food-container {
-  position: relative;
+  
+  display:inline-block;
+  width: 45%; 
+
+ 
 }
 
-#food-photo, #food-photo2 {
-
-  img {
-    width: 80%;
-    height:absolute;
-    
-  }
-
-  z-index: 2;
-
-}
-
-#food-photo2 {
-  z-index: 1;
-}
-
-
-.info {
-  padding: 7px;
-  width: 100%;
-  background: rgba(0,0,0,0.5);
-  color: white;
-  position: absolute;
-  bottom: 0px;
-  z-index: 3;
-
-}
-
-
+#foodphoto{
+    box-sizing: border-box;	
+    background-color:#000000;
+    img {
+	padding:1px;
+   	border:1px solid #021a40;
+   	background-color:#ff0;
+    }
+ }
 
 
 #counter span.warning{
    	color: #b66875;
 }
-
-
-
-
-

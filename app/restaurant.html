@@ -158,7 +158,7 @@
               {{ pluralise reviews_count "Review" }}
             </div>
             <div class="review-items">
-              {{#reviews}}<img data-id={{ id }} class="food-thumbnail" src="images/{{ photo }}" />{{/reviews}}
+              {{#reviews}}<img data-id={{ id }} data-index={{ @index }} class="food-thumbnail modal-button" src="images/{{ photo }}" id="review-item" />{{/reviews}}
             </div>
           </div>
 
@@ -239,6 +239,31 @@
         </div>
       </div>
 
+      <div class="modal-wrapper" id="modal-review-item">
+        <div class="modal short">
+          <script id="review-template" type="text/x-handlebars-template">
+            <div class="photo">
+              <img src="images/{{ item.photo }}" />
+              <div class="controls">
+                <div class="wrapper left">{{#if not_first}}<div class="red-overlay"><i class="fa fa-caret-left fa-2x"></i></div>{{/if}}</div>
+                <div class="wrapper right">{{#if not_last}}<div class="red-overlay"><i class="fa fa-caret-right fa-2x"></i></div>{{/if}}</div>
+              </div>
+            </div>
+
+            <div class="info">
+              <div class="profile-photo"><a href="user.html?id={{ item.user.id }}"><img src="images/{{ item.user.photo }}" /></a></div>
+              <div class="words">
+                <div class="rating">{{{ rating_stars item.rating '' }}}</div>
+                <div class="username"><a href="user.html?id={{ item.user.id }}">{{ item.user.username }}</a></div>
+                <div class="text">{{ item.text }}</div>
+              </div>
+              <div class="clear"></div>
+            </div>
+
+          </script>
+        </div>
+      </div>
+
       <div class="modal-wrapper" id="modal-restaurant-deals">
         <div class="modal restaurant-deals">
           <script id="deals-template" type="text/x-handlebars-template">
@@ -270,7 +295,7 @@
     <!-- endbuild -->
 
     <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlfMykYSTngeUvgXnv5tAdlJByP8FpXUM">
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlfMykYSTngeUvgXnv5tAdlJByP8FpXUM&callback=initializemap">
     </script>
 
     <!-- Built with love using Web Starter Kit -->

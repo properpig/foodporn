@@ -15,8 +15,9 @@
 
     var myElement = document.getElementById('foodphoto');
     var foodphoto = $('#foodphoto img');
-    //var foodphoto2 = $('#foodphoto2 img');
+    var foodphoto2 = $('#foodphoto2 img');
     var image_index=0;
+    var index=0;
 
     // create a simple instance
     // by default, it only adds horizontal recognizers
@@ -69,8 +70,10 @@
   		{
 		 rating:selectedStar.length,
 		 text:$('textarea').val(),
-		 photo:images[image_index],    	
+		 photo:images[index], 
+ 		 restaurant_id:restaurant_id	   	
 		});
+		window.location='restaurant.html?id=' + restaurant_id;
 	});
 
     }); 
@@ -93,45 +96,40 @@
 
     
     // listen to events...
-    mc.on('panleft panright tap press', function(ev) {
-
-      if (ev.deltaX < -100 && ev.deltaX > 100) {
-        return;
-      }
+    mc.on('panleft panright', function(ev) {
 
       foodphoto.css({
         'left': ev.deltaX,
         // 'top': ev.deltaY
       });  
 
-       if (ev.eventType === 4) {
-        foodphoto.css({
-          'left': 0,
-          'top': 0
-        });
+      if(ev.type=="panleft" && image_index<images.length){
+		index=image_index;
+		populateNextFood(image_index++); 
+		
+      }
+
+      if(ev.type=="panright" && image_index>0){
+		populateNextFood(--image_index); 
+		index=image_index;
       }
 
     });
 
-
-     mc.on('swipeleft', function(ev) {
-        populateNextFood(image_index++);        
-    });
-
      
-     function populateNextFood(index) {
-      if (index > images.length-1) {
+    function populateNextFood(index) {
+     /* if (index > images.length || index<0) {
             return;
-      }      
-      foodphoto.attr('src', 'images/' + images[index]);
-      
-      /*if (index+1 !== images.length){
-        foodphoto2.attr('src', 'images/' + images[index+1]);
-        foodphoto2.css('background-image', images[index+2]);
-      }*/
-    } 
-
-
+      }*/      
+      if (index == images.length-1){
+	foodphoto.attr('src', 'images/' + images[index]);
+	foodphoto2.attr('src', 'images/blank.png');
+      }
+      else{
+      	foodphoto.attr('src', 'images/' + images[index]);
+      	foodphoto2.attr('src', 'images/' + images[index+1]);
+      } 
+   }
     
    function limits(obj, limit) { 
 	var cnt = $("#counter > span"); 

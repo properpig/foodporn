@@ -103,7 +103,8 @@
         </script>
 
         <script id="info-template" type="text/x-handlebars-template">
-          <div class="photo"><a href="restaurant.html?id={{ id }}"><img src="images/{{ photo }}" /></a></div>
+          <div class="left-arrow"><i class="fa fa-caret-left"></i></div>
+          <div class="photo"><img src="images/{{ photo }}" /></div>
           <div class="info">
             <div class="name"><a href="restaurant.html?id={{ id }}">{{ name }}</a></div>
             <div class="address"><a href="directions.html?id={{ id }}">{{ location_name }}</a></div>
@@ -113,6 +114,7 @@
               <span class="followers"><i class="fa fa-users"></i> {{ following_count }}</span>
             </div>
           </div>
+          <div class="right-arrow"><i class="fa fa-caret-right"></i></div>
         </script>
       </div>
 

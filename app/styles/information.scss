@@ -333,6 +333,12 @@ $icon-height: 45px;
 
   padding: $main-padding;
 
+  .add-review {
+    border: 1px solid $grey;
+    opacity: 0.6;
+    background: white;
+  }
+
 }
 
 .amenities {

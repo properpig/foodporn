@@ -158,7 +158,8 @@
               {{ pluralise reviews_count "Review" }}
             </div>
             <div class="review-items">
-              {{#reviews}}<img data-id={{ id }} data-index={{ @index }} class="food-thumbnail modal-button" src="images/{{ photo }}" id="review-item" />{{/reviews}}
+              {{#reviews}}<img data-id={{ id }} data-index={{ @index }} class="food-thumbnail modal-button" src="images/{{ photo }}" id="review-item" />{{/reviews}}<!--
+              --><img class="food-thumbnail add-review review-button" src="images/icons/plus.svg" />
             </div>
           </div>
 

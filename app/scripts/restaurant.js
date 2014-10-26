@@ -105,7 +105,7 @@
             if (parseInt(review_id) === parseInt($(this).data('id'))) {
               $(this).click();
               return;
-            };
+            }
           });
         }, 1000);
       }

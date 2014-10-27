@@ -19,6 +19,8 @@
 
         $('.main-div').html(template(users));
 
+      }).done(function() {
+        scrollToTop();
       });
     }
 

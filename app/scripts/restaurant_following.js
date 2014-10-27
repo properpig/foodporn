@@ -30,6 +30,7 @@
 
     }).done(function() {
       linkGetThereButton();
+      scrollToTop();
     });
   }
 

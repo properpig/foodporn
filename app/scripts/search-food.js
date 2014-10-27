@@ -45,7 +45,7 @@
 
       // price slider
       $('#price-slider').noUiSlider({
-        start: [0, 20],
+        start: [0, 40],
         connect: true,
         range: {
           'min': 0,

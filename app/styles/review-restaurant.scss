@@ -1,0 +1,136 @@
+@import '_custom_vars';
+
+.main-div {
+  padding: 10px;
+}
+
+.title {
+  text-align: center;
+
+  .restaurant-name {
+    font-weight: 400;
+    font-size: 18px;
+  }
+
+}
+
+.instructions {
+  color: $darkgrey;
+  font-style: italic;
+  text-align: center;
+  margin: 10px 0px 5px 0px;
+  opacity: 0.7;
+}
+
+.instructions.error {
+  color: $base-color;
+}
+
+.rating {
+
+  text-align: center;
+
+  .star::after {
+    margin: 1px;
+    font-family: 'FontAwesome';
+    content: '\f006';
+    font-size: 35px;
+    color: $grey;
+  }
+
+  .star.selected::after {
+    font-family: 'FontAwesome';
+    content: '\f005';
+    color: $darkgrey;
+  }
+
+}
+
+.review-text {
+
+  text-align: center;
+  position: relative;
+  margin: 10px 0px;
+  height: 120px;
+
+  textarea {
+    outline: 0;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    line-height: 20px;
+    resize: none;
+
+    :focus {
+      // outline: 0;
+    }
+  }
+
+  .word-left {
+    position: absolute;
+    width: 15%;
+    padding: 0px 5px;
+    bottom: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: $radius;
+  }
+
+}
+
+.photo-upload {
+
+  .photo-wrapper {
+    width: 100%;
+    white-space: no-wrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .photo-container {
+    height: 220px;
+    width: 100%;
+
+    .photo {
+      display: inline-block;
+      height: 100%;
+      position: relative;
+    }
+
+    .select-icon {
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      width: 60px;
+      height: 60px;
+      margin: auto;
+      display: none;
+    }
+
+    img {
+      height: 100%;
+      padding-right: 5px;
+    }
+
+    .photo:last-child img {
+      padding-right: 0px;
+    }
+
+    .photo.selected {
+      > img {
+        -webkit-filter: blur(2px);
+      }
+
+      .select-icon {
+        display: inherit;
+      }
+    }
+
+  }
+
+}
+

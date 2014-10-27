@@ -89,9 +89,7 @@
               <div class="price-range">{{ price_low }} - {{ price_high }}</div>
               <div class="more">
                 <div class="followed-by">
-                  {{#followed_by}}
-                    <a href="user.html?id={{user_id}}"><img src="images/{{photo}}" /></a>
-                  {{/followed_by}}
+                  {{#followed_by}}<a href="user.html?id={{user_id}}"><img src="images/{{photo}}" /></a>{{/followed_by}}
                   <div class="more-following">
                     <i class="fa fa-users"></i> {{ following_count }}
                   </div>

@@ -22,6 +22,7 @@
 
   localStorage.setItem('deals-unread', 2);
   localStorage.setItem('friends-unread', 3);
+  localStorage.removeItem('firsttime');
 
   var num_to_load = 0;
   var num_loaded = 0;

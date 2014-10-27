@@ -36,6 +36,7 @@
 
     }).done(function() {
       linkFollowButton();
+      scrollToTop();
     });
   }
 

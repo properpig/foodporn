@@ -69,10 +69,19 @@ $icon-height: 47px;
   z-index: 4;
   display: none;
 
+  img {
+
+  }
+
   .dismiss-button {
+    position: absolute;
+    bottom: 70px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    width: 50%;
     border: 1px solid white;
     padding: 5px;
-    margin: 0px 30%;
     text-align: center;
     border-radius: $radius;
   }
@@ -107,4 +116,9 @@ $icon-height: 47px;
 /* hide the sort filters */
 .filter-group:first-child {
   display: none;
+}
+
+/* hide the liked and disliked filters */
+.other-filters .filter-icon:first-child, .other-filters .filter-icon:nth-child(6) {
+  display: none !important;
 }

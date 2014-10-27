@@ -77,6 +77,14 @@
         // 'top': ev.deltaY
       });
 
+      if (ev.deltaX > 0 && ev.deltaX > 220) {
+        likeButton.click();
+      }
+
+      if (ev.deltaX < 0 && ev.deltaX < 220) {
+        dislikeButton.click();
+      }
+
       if (ev.eventType === 4) {
         foodphoto.css({
           'left': 0,
@@ -102,6 +110,11 @@
       $.getJSON( window.apiUrl + '/food/list/' + window.username + '/?explore=true' + extra, function( data ) {
         foodlist = data;
         populateNextFood(0);
+      }).done(function() {
+        if (localStorage.getItem('firsttime') === null) {
+          $('.controls .fa-question').click();
+          localStorage.setItem('firsttime', true);
+        }
       });
     }
 

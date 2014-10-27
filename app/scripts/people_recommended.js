@@ -21,6 +21,8 @@
 
       }).done(function(data) {
 
+        scrollToTop();
+
         $('.follow-button').click(function() {
 
           var user_id = $(this).data('id');

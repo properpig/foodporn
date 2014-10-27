@@ -55,6 +55,8 @@
 
     }).done(function() {
 
+        scrollToTop();
+
         $('.follow-button').click(function() {
 
           if ($(this).hasClass('follow-user')) {

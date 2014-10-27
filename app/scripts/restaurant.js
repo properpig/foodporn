@@ -88,12 +88,18 @@
 
         // link review button to review page
         $('.review-button').click(function() {
-          window.location = 'review.html?restaurant_id=' + data.restaurant_id;
+          window.location = 'review-restaurant.html?restaurant_id=' + data.restaurant_id;
         });
       });
+
     }
 
     function linkButtonsScroll() {
+
+      // get the map out if this is the second time we are getting details
+      if (mapLoaded){
+        initializemap();
+      }
 
       // scroll to reviews if the user landed here from reviews
       if (getParameterByName('nav') === 'reviews') {
@@ -332,6 +338,7 @@
 })();
 
 var mapInfo = null;
+var mapLoaded = false;
 
 /* exported initializemap */
 function initializemap() {
@@ -352,7 +359,6 @@ function initializemap() {
     mapTypeControl: false,
     scaleControl: false,
     zoomControl: false,
-    panControl: true,
     draggable: false,
     streetViewControl: false
   };
@@ -369,4 +375,6 @@ function initializemap() {
   });
 
   marker.setMap(map);
+
+  mapLoaded = true;
 }

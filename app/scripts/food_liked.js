@@ -13,6 +13,8 @@
       console.log(data);
 
       $('.main-div').html(template({'foods': data}));
+    }).done(function() {
+      scrollToTop();
     });
   }
 

@@ -25,6 +25,7 @@
     "getSearchQueryRestaurant": false,
     "getSearchQueryPeople": false,
     "getParameterByName": false,
-    "showMap": false
+    "showMap": false,
+    "scrollToTop": false
   }
 }

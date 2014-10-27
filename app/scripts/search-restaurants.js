@@ -153,6 +153,27 @@
 
   function prepopulateFields() {
 
+    // check if this is a dedicated page
+    if (window.location.pathname === '/restaurants-recommended.html') {
+      $('.other-filters .filter-icon').each(function() {
+        var filterValue = $(this).data('value');
+        if (filterValue === 'recommended') {
+          $(this).addClass('selected');
+        }
+      });
+      return;
+    }
+
+    if (window.location.pathname === '/restaurant-following.html') {
+      $('.other-filters .filter-icon').each(function() {
+        var filterValue = $(this).data('value');
+        if (filterValue === 'following') {
+          $(this).addClass('selected');
+        }
+      });
+      return;
+    }
+
     // check if this is an old search
     if (window.location.search.substring(1).length === 0) {
       return;

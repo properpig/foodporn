@@ -143,6 +143,16 @@
 
   function prepopulateFields() {
 
+    // check if this is a dedicated liked food page
+    if (window.location.pathname === '/food-liked.html') {
+      $('.other-filters .filter-icon').each(function() {
+        var filterValue = $(this).data('value');
+        if (filterValue === 'liked') {
+          $(this).addClass('selected');
+        }
+      });
+    }
+
     // check if this is an old search
     if (window.location.search.substring(1).length === 0) {
       return;

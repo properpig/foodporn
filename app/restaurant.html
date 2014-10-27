@@ -102,10 +102,12 @@
 
           <div class="title">
             <div class="restaurant-name">{{ name }}</div>
-            <div >
-              <img class="recommended" title="Recommended" src="images/recommended.svg {{#if is_recommended}}{{/if}}"/>
-              Recommended
-            </div>
+            {{#if is_recommended}}
+              <div class="recommended-label">
+                <img class="recommended-icon" src="images/filters/other/recommended-white.svg"/>
+                Recommended
+              </div>
+            {{/if}}
             <div class="rating">{{{ rating_stars rating reviews_count }}}</div>
           </div>
 
@@ -158,7 +160,8 @@
               {{ pluralise reviews_count "Review" }}
             </div>
             <div class="review-items">
-              {{#reviews}}<img data-id={{ id }} data-index={{ @index }} class="food-thumbnail modal-button" src="images/{{ photo }}" id="review-item" />{{/reviews}}
+              {{#reviews}}<img data-id={{ id }} data-index={{ @index }} class="food-thumbnail modal-button" src="images/{{ photo }}" id="review-item" />{{/reviews}}<!--
+              --><img class="food-thumbnail add-review review-button" src="images/icons/plus.svg" />
             </div>
           </div>
 

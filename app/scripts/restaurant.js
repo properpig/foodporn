@@ -84,148 +84,151 @@
 
         $('.sub-name').text(data.name);
 
-        $('.main-div').html(template(data));
+        $('.main-div').html(template(data)).promise().done(function(){linkButtonsScroll();});
 
         // link review button to review page
         $('.review-button').click(function() {
           window.location = 'review.html?restaurant_id=' + data.restaurant_id;
         });
+      });
+    }
 
-      }).done(function() {
+    function linkButtonsScroll() {
 
-        // scroll to reviews if the user landed here from reviews
-        if (getParameterByName('nav') === 'reviews') {
-          setTimeout(function() {
-            $('.infopage').eq(2).click();
-            // open the review
-            // var index1;
-            // var review_id = getParameterByName('review_id');
-            // $('.review_items').children().each(function() {
-            //   console.log($(this).data('id'));
-            // });
-          }, 1000);
+      // scroll to reviews if the user landed here from reviews
+      if (getParameterByName('nav') === 'reviews') {
+        setTimeout(function() {
+          $('.infopage').eq(2).click();
+          // open the review
+          var review_id = getParameterByName('review_id');
+          $('.review-items').children().each(function() {
+            if (parseInt(review_id) === parseInt($(this).data('id'))) {
+              $(this).click();
+              return;
+            }
+          });
+        }, 1000);
+      }
+
+      $('.follow-button').click(function(event) {
+
+        var restaurant_id = $(this).data('id');
+
+        $.getJSON (window.apiUrl + '/restaurant/follow/' + restaurant_id + '/' + window.username + '/', function(data) {
+          getDetails();
+        });
+
+        $(this).toggleClass('following');
+        event.stopPropagation();
+      });
+
+      $('.share-button').click(function(event) {
+        $(this).toggleClass('clicked');
+
+        // show the items if this is being clicked
+        if ($(this).hasClass('clicked')) {
+          // show a different button
+          $(this).attr('src', 'images/icons/share.svg');
+
+          $('.circle.share').show();
+          $('.circle.share').css({opacity:1.0});
+          // display them in a quadrant
+          var elems = $('.circle.share');
+          var increase = (Math.PI/4) * 2 / elems.length;
+          var x = 0, y = 0, angle = Math.PI/2;
+
+          $('.circle.share').each(function() {
+            // elem.innerHTML = angle;
+            x = 150 * Math.cos(angle);
+            y = 160 * Math.sin(angle) - 45;
+            $(this).animate({
+              right: x,
+              top: y
+            });
+            angle -= increase;
+          });
+        } else {
+          // hide the items
+          $('.circle.share').animate({
+            right: 0,
+            top: 0,
+            opacity: 0
+          }, function() {
+            $('.circle.share').hide();
+            $('.share-button').attr('src', 'images/icons/share-o.svg');
+          });
         }
+      });
 
-        $('.follow-button').click(function(event) {
+      var timeout;
+      $('.circle.share').click(function() {
+        var type = $(this).data('type');
 
-          var restaurant_id = $(this).data('id');
+        // clear the old time out
+        clearTimeout(timeout);
 
-          $.getJSON (window.apiUrl + '/restaurant/follow/' + restaurant_id + '/' + window.username + '/', function(data) {
-            getDetails();
-          });
-
-          $(this).toggleClass('following');
-          event.stopPropagation();
-        });
-
-        $('.share-button').click(function(event) {
-          $(this).toggleClass('clicked');
-
-          // show the items if this is being clicked
-          if ($(this).hasClass('clicked')) {
-            // show a different button
-            $(this).attr('src', 'images/icons/share.svg');
-
-            $('.circle.share').show();
-            $('.circle.share').css({opacity:1.0});
-            // display them in a quadrant
-            var elems = $('.circle.share');
-            var increase = (Math.PI/4) * 2 / elems.length;
-            var x = 0, y = 0, angle = Math.PI/2;
-
-            $('.circle.share').each(function() {
-              // elem.innerHTML = angle;
-              x = 150 * Math.cos(angle);
-              y = 160 * Math.sin(angle) - 45;
-              $(this).animate({
-                right: x,
-                top: y
-              });
-              angle -= increase;
-            });
-          } else {
-            // hide the items
-            $('.circle.share').animate({
-              right: 0,
-              top: 0,
-              opacity: 0
+        $('.share-confirmation').show();
+        $('.share-confirmation .site').text(type);
+        $('.share-confirmation').animate({
+          bottom: 15,
+          opacity: 1.0
+        }, 500, function() {
+          timeout = setTimeout(function() {
+            $('.share-confirmation').animate({
+              bottom: -100,
+              opacity: 0.0
             }, function() {
-              $('.circle.share').hide();
-              $('.share-button').attr('src', 'images/icons/share-o.svg');
+              $('.share-confirmation').hide();
             });
-          }
+          }, 1500);
+        });
+      });
+
+      $('.menu-items .modal-button').click(function() {
+        menuIndex = $(this).data('index');
+
+        displayMenuItem(menuIndex);
+
+        var id = $(this).attr('id');
+        // show the vignette
+        $('#modal-' + id).addClass('open');
+        // slide the modal in
+        $('#modal-' + id + ' .modal').animate({
+          'marginTop': $(window).height()/9
         });
 
-        var timeout;
-        $('.circle.share').click(function() {
-          var type = $(this).data('type');
+      });
 
-          // clear the old time out
-          clearTimeout(timeout);
+      $('.review-items .modal-button').click(function() {
+        reviewIndex = $(this).data('index');
 
-          $('.share-confirmation').show();
-          $('.share-confirmation .site').text(type);
-          $('.share-confirmation').animate({
-            bottom: 15,
-            opacity: 1.0
-          }, 500, function() {
-            timeout = setTimeout(function() {
-              $('.share-confirmation').animate({
-                bottom: -100,
-                opacity: 0.0
-              }, function() {
-                $('.share-confirmation').hide();
-              });
-            }, 1500);
-          });
+        displayReviewItem(reviewIndex);
+
+        var id = $(this).attr('id');
+        // show the vignette
+        $('#modal-' + id).addClass('open');
+        // slide the modal in
+        $('#modal-' + id + ' .modal').animate({
+          'marginTop': $(window).height()/9
         });
 
-        $('.menu-items .modal-button').click(function() {
-          menuIndex = $(this).data('index');
+      });
 
-          displayMenuItem(menuIndex);
+      $('.deal-items .modal-button').click(function(){
+        dealsIndex = $(this).data('index');
 
-          var id = $(this).attr('id');
-          // show the vignette
-          $('#modal-' + id).addClass('open');
-          // slide the modal in
-          $('#modal-' + id + ' .modal').animate({
-            'marginTop': $(window).height()/9
-          });
+        displayDeals(dealsIndex);
 
+        var id = $(this).attr('id');
+
+        // show the vignette
+        $('#modal-' + id).addClass('open');
+        // slide the modal in
+        $('#modal-' + id + ' .modal').animate({
+          'marginTop': $(window).height()/11
         });
 
-        $('.review-items .modal-button').click(function() {
-          reviewIndex = $(this).data('index');
 
-          displayReviewItem(reviewIndex);
-
-          var id = $(this).attr('id');
-          // show the vignette
-          $('#modal-' + id).addClass('open');
-          // slide the modal in
-          $('#modal-' + id + ' .modal').animate({
-            'marginTop': $(window).height()/9
-          });
-
-        });
-
-        $('.deal-items .modal-button').click(function(){
-          dealsIndex = $(this).data('index');
-
-          displayDeals(dealsIndex);
-
-          var id = $(this).attr('id');
-
-          // show the vignette
-          $('#modal-' + id).addClass('open');
-          // slide the modal in
-          $('#modal-' + id + ' .modal').animate({
-            'marginTop': $(window).height()/11
-          });
-
-
-        });
       });
     }
 

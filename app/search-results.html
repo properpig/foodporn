@@ -98,7 +98,7 @@
               </div>
               <div class="info">
                 <div class="follow-button follow-restaurant {{#if is_following}}following{{/if}} {{#if is_me}}hidden{{/if}}" data-id={{ id }} data-count={{ following_count }}></div>
-                <div class="name">{{ name }}</div>
+                <div class="name">{{ name }} {{#if is_recommended}}<img class="recommended-icon fade" src="images/filters/other/recommended.svg"/>{{/if}}</div>
 
                 <div class="rating">{{{ rating_stars rating reviews_count }}}</div>
                 <div class="location-name">{{ location_name }}</div>

@@ -203,6 +203,18 @@ $icon-height: 45px;
 
 }
 
+.recommended-label {
+  background: $darkgrey;
+  display: inline-block;
+  padding: 3px 10px 3px 7px;
+  margin: 3px;
+  color: white;
+  border-radius: $radius;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .description {
 
   padding: $main-padding;
@@ -333,6 +345,12 @@ $icon-height: 45px;
 
   padding: $main-padding;
 
+  .add-review {
+    border: 1px solid $grey;
+    opacity: 0.5;
+    background: white;
+  }
+
 }
 
 .amenities {
@@ -431,8 +449,8 @@ $icon-height: 45px;
   .deals-details {
     margin-top: 10px;
     height: 100%;
-    font-size:15px;
-    line-height: 16px;
+    font-size: 15px;
+    line-height: 17px;
   }
 
   .deals-more {

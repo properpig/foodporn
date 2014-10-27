@@ -138,7 +138,7 @@
       });
 
       // init other filters
-      for (var l=4; l<8; l++) {
+      for (var l=3; l<8; l++) {
         $('.other-filters .filter-icon:eq(' + l + ')').hide();
       }
 
@@ -192,16 +192,6 @@
       amenity_ids = amenity_ids.split(',');
       $('.amenity-filters .filter-icon').each(function() {
         if (amenity_ids.indexOf($(this).data('id').toString()) !== -1) {
-          $(this).addClass('selected');
-        }
-      });
-    }
-
-    var other_values = getParameterByName('other_values');
-    if (other_values.length) {
-      other_values = other_values.split(',');
-      $('.other-filters .filter-icon').each(function() {
-        if (other_values.indexOf($(this).data('value').toString()) !== -1) {
           $(this).addClass('selected');
         }
       });

@@ -60,6 +60,8 @@ function showMap(listings) {
 
     google.maps.event.addListener(marker, 'click', function() {
 
+      map.panTo(latlon);
+
       // close all the other info windows first
       $.each(markers, function(index, marker_obj) {
         // marker_obj.infowindow.close();
@@ -79,7 +81,28 @@ function showMap(listings) {
       marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
 
       // populate the content
-      $('.info-pane').html(infoTemplate(restaurant));
+      $('.info-pane').html(infoTemplate(restaurant)).promise().done(function() {
+
+        // hide arrow for first and last
+        if (index === 0) {
+          $('.info-pane .left-arrow').css('opacity', 0);
+        } else {
+          $('.info-pane .left-arrow').click(function() {
+            // trigger click of next marker
+            new google.maps.event.trigger(markers[index-1], 'click');
+          });
+        }
+
+        if (index === listings.length - 1) {
+          $('.info-pane .right-arrow').css('opacity', 0);
+        } else {
+          // set event listeners for the arrows
+          $('.info-pane .right-arrow').click(function() {
+            // trigger click of next marker
+            new google.maps.event.trigger(markers[index+1], 'click');
+          });
+        }
+      });
 
     });
 

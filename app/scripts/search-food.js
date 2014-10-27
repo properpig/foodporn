@@ -127,6 +127,16 @@
         $(this).hide();
       });
 
+      // init other filters
+      for (var l=2; l<6; l++) {
+        $('.other-filters .filter-icon:eq(' + l + ')').hide();
+      }
+
+      $('.more-other').click(function() {
+        $('.other-filters .filter-icon').show();
+        $(this).hide();
+      });
+
     });
 
   }
@@ -166,6 +176,14 @@
         }
       });
     }
+
+    // other filters
+    $('.other-filters .filter-icon').each(function() {
+      var filterValue = $(this).data('value');
+      if (getParameterByName(filterValue)) {
+        $(this).addClass('selected');
+      }
+    });
 
     if (getParameterByName('distance_min')) {
       $('#distance-slider').val([parseInt(getParameterByName('distance_min')), null]);
@@ -257,6 +275,13 @@ function getSearchQueryFood() {
   });
 
   extra_query += '&cuisine_ids=' + cuisine_ids.join();
+
+  // other filters
+  $('.other-filters .filter-icon').each(function() {
+    if ($(this).hasClass('selected')) {
+      extra_query += '&' + $(this).data('value') + '=true';
+    }
+  });
 
   // get the min price
   if ($('#price-range .min').text() !== '< ') {

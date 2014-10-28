@@ -154,7 +154,7 @@
   function prepopulateFields() {
 
     // check if this is a dedicated page
-    if (window.location.pathname === '/restaurants-recommended.html') {
+    if (window.location.pathname.indexOf('/restaurants-recommended.html') !== -1) {
       $('.other-filters .filter-icon').each(function() {
         var filterValue = $(this).data('value');
         if (filterValue === 'recommended') {
@@ -164,7 +164,7 @@
       return;
     }
 
-    if (window.location.pathname === '/restaurant-following.html') {
+    if (window.location.pathname.indexOf('/restaurant-following.html') !== -1) {
       $('.other-filters .filter-icon').each(function() {
         var filterValue = $(this).data('value');
         if (filterValue === 'following') {

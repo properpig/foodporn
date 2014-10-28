@@ -144,7 +144,7 @@
   function prepopulateFields() {
 
     // check if this is a dedicated liked food page
-    if (window.location.pathname === '/food-liked.html') {
+    if (window.location.pathname.indexOf('/food-liked.html') !== -1) {
       $('.other-filters .filter-icon').each(function() {
         var filterValue = $(this).data('value');
         if (filterValue === 'liked') {

@@ -49,7 +49,7 @@
     });
 
     $('#cant-decide').click(function() {
-        $.getJSON( window.apiUrl + '/food/list/' + window.username, function( data ) {
+        $.getJSON( window.apiUrl + '/food/list/' + window.username + '/?explore=true', function( data ) {
             foodlist = data;
 
             populateNextFood(foodIndex);

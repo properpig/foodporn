@@ -298,6 +298,7 @@ a:visited, a:active, a:hover {
 
   background: whitesmoke;
   width: $modal-width;
+  position: relative;
   margin: 0 auto;
   margin-top: 900px;
   margin-bottom: $main-button-height;
@@ -323,6 +324,27 @@ a:visited, a:active, a:hover {
     bottom: 0px;
   }
 
+}
+
+/* the close button */
+.modal .closebutton {
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  font-family: 'FontAwesome';
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+  height: 26px;
+  width: 26px;
+  color: white;
+  background: $darkgrey;
+  border-radius: 20px;
+  z-index: 4;
+}
+
+.modal .closebutton::after {
+  content: '\f00d';
 }
 
 .box {

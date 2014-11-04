@@ -243,6 +243,7 @@
       var not_last = (index !== menu_items.length-1);
 
       $('#modal-menu-item .modal').html(menu_template({'not_first':not_first, 'not_last':not_last, 'item':menu_items[index]}));
+      addCloseButton('menu-item');
 
       // set the height of the menu item so its fixed
       var width = $('#modal-menu-item .photo img').width();
@@ -271,6 +272,7 @@
       var not_last = (index !== review_items.length-1);
 
       $('#modal-review-item .modal').html(review_template({'not_first':not_first, 'not_last':not_last, 'item':review_items[index]}));
+      addCloseButton('review-item');
 
       // set the height of the review item so its fixed
       var width = $('#modal-review-item .photo img').width();
@@ -305,6 +307,7 @@
       var not_last = (index !== deals_items.length-1);
 
       $('#modal-restaurant-deals .modal').html(deals_template({'not_first':not_first, 'not_last':not_last, 'deals':deals_items[index]}));
+      addCloseButton('restaurant-deals');
 
       // set the height of the menu item so its fixed
       var width = $('#modal-restaurant-deals .photo img').width();

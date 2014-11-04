@@ -80,6 +80,9 @@
     $('#modal-' + id + ' .modal').animate({
       'marginTop': 90
     });
+
+    addCloseButton(id);
+
   });
 
   // closing a modal
@@ -211,6 +214,20 @@ function getParameterByName(name) {
   var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
       results = regex.exec(location.search);
   return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+/*exported addCloseButton */
+function addCloseButton(id) {
+  // hack to add a close button
+  if ($('#modal-' + id + ' .modal').find('.closebutton').length !== 0) {
+    return; // means already added before
+  };
+  $('#modal-' + id + ' .modal').append('<div class="closebutton"></div>').promise().done(function() {
+    // clicking the x button
+    $('.modal .closebutton').click(function() {
+      $('.modal-wrapper').click(); //simulate click on wrapper
+    });
+  });
 }
 
 /*exported scrollToTop */

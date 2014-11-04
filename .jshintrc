@@ -26,6 +26,7 @@
     "getSearchQueryPeople": false,
     "getParameterByName": false,
     "showMap": false,
-    "scrollToTop": false
+    "scrollToTop": false,
+    "addCloseButton": false
   }
 }

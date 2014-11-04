@@ -19,11 +19,15 @@
 (function () {
   'use strict';
 
-  // window.apiUrl = 'http://localhost:8000/foodporn';
-  window.apiUrl = 'http://128.199.140.174:8000/foodporn';
-  window.username = 'john'; // default
+  window.apiUrl = 'http://192.168.2.140:8000/foodporn';
+  // window.apiUrl = 'http://128.199.140.174:8000/foodporn';
+
   if ('username' in localStorage) {
     window.username = localStorage.getItem('username');
+  } else {
+    if (window.location.pathname.indexOf('login') === -1) {
+      window.location = 'error.html';
+    }
   }
 
   var container = document.querySelector('.container');
@@ -144,7 +148,7 @@
 
   });
 
-  $.getJSON( window.apiUrl + '/login/' + '?username=' + localStorage.getItem('username'), function( data ) {
+  $.getJSON( window.apiUrl + '/login/' + '?username=' + localStorage.getItem('username') + '&page=' + window.location.pathname, function( data ) {
     // var unread_count = 0;
     // unread_count += parseInt(localStorage.getItem('deals-unread'));
     // unread_count += parseInt(localStorage.getItem('friends-unread'));

@@ -137,10 +137,18 @@
     }
 
     function likeFood(status) {
+      var stamp;
       var pos = '-100%';
       if (status) {
         pos = '100%';
+        stamp = $('.likestamp');
+      } else {
+        stamp = $('.dislikestamp');
       }
+
+      stamp.addClass('displayed');
+      setTimeout(function(){stamp.removeClass('displayed');},500);
+
       foodphoto.animate({
         'left': pos,
         'top': 0,

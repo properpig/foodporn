@@ -88,6 +88,20 @@ $icon-height: 47px;
 
 }
 
+.stamp {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  color: white;
+  z-index: 4;
+  display: none;
+  transition: 0.2s ease;
+}
+
+.stamp.displayed {
+  display: inline;
+}
+
 .controls {
 
   width: 100%;

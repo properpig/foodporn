@@ -1,5 +1,9 @@
 @import '_custom_vars';
 
+.main-div {
+  top: $nav-bar-height;
+}
+
 .deal-item {
 
   transition: background 0.5s ease;

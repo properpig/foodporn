@@ -65,38 +65,64 @@
     // by default, it only adds horizontal recognizers
     var mc = new Hammer(myElement);
 
-    // listen to events...
-    mc.on('panleft panright tap press', function(ev) {
+    attachHammerListener();
+    var timeout;
 
-      if (ev.deltaX < -100 && ev.deltaX > 100) {
-        return;
-      }
+    function attachHammerListener() {
+      mc = new Hammer(myElement);
+      // listen to events...
+      mc.on('panleft panright', function(ev) {
 
-      foodphoto.css({
-        'left': ev.deltaX,
-        // 'top': ev.deltaY
+        if (ev.eventType === 4) {
+          foodphoto.animate({
+            'left': 0,
+            'top': 0
+          }, 100);
+          return;
+        }
+
+        if (ev.deltaX < -150) {
+          mc.off('panleft panright tap press swipeleft swiperight');
+          dislikeButton.click();
+        }
+
+        if (ev.deltaX > 150) {
+          mc.off('panleft panright tap press swipeleft swiperight');
+          likeButton.click();
+        }
+
+        foodphoto.css({
+          'left': ev.deltaX,
+          // 'top': ev.deltaY
+        });
+
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(function() {
+          foodphoto.animate({
+            'left': 0,
+            'top': 0
+          }, 100);
+        }, 500);
+
       });
 
-      if (ev.eventType === 4) {
-        foodphoto.css({
-          'left': 0,
-          'top': 0
-        });
-      }
+      mc.on('swipeleft', function(ev) {
+        mc.off('panleft panright tap press swipeleft swiperight');
+        dislikeButton.click(); // simulate a click to the button
+      });
 
-    });
+      mc.on('swiperight', function(ev) {
+        mc.off('panleft panright tap press swipeleft swiperight');
+        likeButton.click(); // simulate a click to the button
+      });
 
-    mc.on('swipeleft', function(ev) {
-      dislikeButton.click(); // simulate a click to the button
-    });
+      mc.on('press tap', function(ev) {
+        $('.controls .fa-info').click();
+      });
 
-    mc.on('swiperight', function(ev) {
-      likeButton.click(); // simulate a click to the button
-    });
-
-    mc.on('press tap', function(ev) {
-      window.location='food.html?id=' + foodlist[foodIndex].id;
-    });
+    }
 
     function getFoodList(extra) {
       $.getJSON( window.apiUrl + '/food/list/' + window.username + '/?explore=true' + extra, function( data ) {
@@ -125,6 +151,7 @@
           'left': 0,
           'opacity': 1.0
         });
+        attachHammerListener();
       });
     }
 

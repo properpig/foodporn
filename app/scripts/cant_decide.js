@@ -16,37 +16,52 @@
     });
 
     var mc = new Hammer(myElement);
+    attachHammerListener();
+    var timeout;
 
-    // listen to events...
-    mc.on('panleft panright', function(ev) {
+    function attachHammerListener() {
+      mc = new Hammer(myElement);
+      // listen to events...
+      mc.on('panleft panright', function(ev) {
 
-        if (ev.deltaX < -100 && ev.deltaX > 100) {
-            return;
+        if (ev.eventType === 4) {
+          foodPhoto.animate({
+            'left': 0,
+            'top': 0
+          }, 100);
+          return;
+        }
+
+        if (ev.deltaX < -150) {
+          mc.off('panleft panright tap press swipeleft swiperight');
+          $.getJSON (window.apiUrl + '/food/dislike/' + foodlist[foodIndex].id + '/' + window.username + '/');
+          likeFood(false);
+        }
+
+        if (ev.deltaX > 150) {
+          mc.off('panleft panright tap press swipeleft swiperight');
+          $.getJSON (window.apiUrl + '/food/like/' + foodlist[foodIndex].id + '/' + window.username + '/');
+          likeFood(true);
         }
 
         foodPhoto.css({
-            'left': ev.deltaX,
-            // 'top': ev.deltaY
+          'left': ev.deltaX,
+          // 'top': ev.deltaY
         });
 
-        if (ev.eventType === 4) {
-            foodPhoto.css({
-              'left': 0,
-              'top': 0
-            });
-        }
 
-    });
+        clearTimeout(timeout);
 
-    mc.on('swipeleft', function(ev) {
-        $.getJSON (window.apiUrl + '/food/dislike/' + foodlist[foodIndex].id + '/' + window.username + '/');
-        likeFood(false);
-    });
+        timeout = setTimeout(function() {
+          foodPhoto.animate({
+            'left': 0,
+            'top': 0
+          }, 100);
+        }, 500);
 
-    mc.on('swiperight', function(ev) {
-        $.getJSON (window.apiUrl + '/food/like/' + foodlist[foodIndex].id + '/' + window.username + '/');
-        likeFood(true);
-    });
+      });
+
+    }
 
     $('#cant-decide').click(function() {
         $.getJSON( window.apiUrl + '/food/list/' + window.username + '/?explore=true', function( data ) {
@@ -89,6 +104,7 @@
                 'left': 0,
                 'opacity': 1.0
             });
+            attachHammerListener();
         });
     }
 

@@ -93,7 +93,7 @@
 
           <div class="followed-by photo-bar">
             <div class="more">
-              <i class="fa fa-users fa-2x"></i>{{ following_count }} <i class="fa fa-angle-right fa-2x {{#if less_than_8}}hidden{{/if}}"></i>
+              <i class="fa fa-users fa-2x"></i>{{ following_count }} <i class="fa fa-angle-right fa-2x hidden {{#if less_than_8}}hidden{{/if}}"></i>
             </div>
             {{#followed_by}}
               <a href="user.html?id={{user_id}}"><img src="images/{{photo}}" /></a>

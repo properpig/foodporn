@@ -19,8 +19,8 @@
 (function () {
   'use strict';
 
-  window.apiUrl = 'http://192.168.2.140:8000/foodporn';
-  // window.apiUrl = 'http://128.199.140.174:8000/foodporn';
+  // window.apiUrl = 'http://192.168.2.140:8000/foodporn';
+  window.apiUrl = 'http://128.199.140.174:8000/foodporn';
 
   if ('username' in localStorage) {
     window.username = localStorage.getItem('username');

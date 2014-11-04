@@ -218,10 +218,11 @@ function getParameterByName(name) {
 
 /*exported addCloseButton */
 function addCloseButton(id) {
+  'use strict';
   // hack to add a close button
   if ($('#modal-' + id + ' .modal').find('.closebutton').length !== 0) {
     return; // means already added before
-  };
+  }
   $('#modal-' + id + ' .modal').append('<div class="closebutton"></div>').promise().done(function() {
     // clicking the x button
     $('.modal .closebutton').click(function() {

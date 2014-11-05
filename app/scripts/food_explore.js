@@ -1,6 +1,17 @@
 (function () {
     'use strict';
 
+    // we want to reload the page if the user clicked back
+    var d = new Date();
+    d = d.getTime();
+    if ($('#reloadValue').val().length == 0) {
+      $('#reloadValue').val(d);
+      $('body').show();
+    } else {
+      $('#reloadValue').val('');
+      location.reload();
+    }
+
     var source = $('#food-template').html();
     var template = Handlebars.compile(source);
 

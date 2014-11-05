@@ -4,7 +4,7 @@
     // we want to reload the page if the user clicked back
     var d = new Date();
     d = d.getTime();
-    if ($('#reloadValue').val().length == 0) {
+    if ($('#reloadValue').val().length === 0) {
       $('#reloadValue').val(d);
       $('body').show();
     } else {

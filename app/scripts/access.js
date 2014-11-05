@@ -3,26 +3,11 @@
   'use strict';
 
   var username = getParameterByName('username');
+  var vcode = getParameterByName('vcode');
 
-  if (username.length) {
-    localStorage.setItem('username', username);
-  } else {
-    var source = $('#login-template').html();
-    var template = Handlebars.compile(source);
-
-    $.getJSON( window.apiUrl + '/people/list/john/', function( data ) {
-
-      var users = {'users': data};
-
-      $('.main-div').html(template(users));
-
-    });
-    return;
-  }
-
-  localStorage.setItem('deals-unread', 2);
-  localStorage.setItem('friends-unread', 3);
-  localStorage.removeItem('firsttime');
+  // localStorage.setItem('deals-unread', 2);
+  // localStorage.setItem('friends-unread', 3);
+  // localStorage.removeItem('firsttime');
 
   var num_to_load = 0;
   var num_loaded = 0;
@@ -47,9 +32,19 @@
     }
   }
 
-   $.getJSON( window.apiUrl + '/images/list/', function( data ) {
-    num_to_load = data.length;
-    preload(data);
-   });
+  $.getJSON(window.apiUrl + '/login/?username=' + username + '&vcode=' + vcode, function(data) {
+    if (data.success) {
+      localStorage.setItem('username', username);
+      $.getJSON( window.apiUrl + '/images/list/', function( data ) {
+        num_to_load = data.length;
+        preload(data);
+      });
+    } else {
+      var source = $('#login-template').html();
+      var template = Handlebars.compile(source);
+      $('.main-div').html(template({}));
+      return;
+    }
+  });
 
 })();

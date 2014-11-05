@@ -51,7 +51,7 @@
             <img class="hamburger" src="images/hamburger.svg" />
             <img class="logo" src="images/logo.svg" />
           </div><!--
-           --><div class="app-name">Secret Entrance</div>
+           --><div class="app-name">Log In</div>
         </div>
         <div class="icons">
             <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
@@ -77,12 +77,8 @@
         <script id="login-template" type="text/x-handlebars-template">
           <div class="note box">
             <img src="images/logo-black.svg" />
-            <p>Oh dear it looks like you did not specify a username to log in. No worries. Please select one:</p>
-            <ul>
-              {{#users}}
-                <li class="user-item"><a href="login.html?username={{username}}">{{ username }}</a></li>
-              {{/users}}
-            </ul>
+            <p>We were unable to authenticate you.</p>
+            <p>Please check that you followed the link from the SMS sent. If the problem cannot be resolved, please send us an SMS at <a href="tel:+6590903026"> 90903026 </a>.</p>
           </div>
         </script>
       </div>

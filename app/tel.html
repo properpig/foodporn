@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <style>
+      #phone-numbers {
+        height: 200px;
+      }
+    </style>
+
+    <link rel="stylesheet" href="css/foundation.css">
+  </head>
+
+  <body>
+    Paste phone numbers: <br />
+    <textarea id="phone-numbers"></textarea> <br />
+
+    Type message: <br />
+    <textarea id="message-to-send"></textarea> <br />
+    <button class="submit">Send SMS</button> <br/ >
+
+    <table id="output"></table>
+
+    <script src="scripts/libs/jquery-1.11.1.min.js"></script>
+
+    <script type="text/javascript">
+      (function() {
+
+        var arrayOfLines = [];
+
+        // attach event listener to listen for changes to our text area
+        $('#phone-numbers').bind('input propertychange', function() {
+
+          // get the entered text and match it
+          var text = $('#phone-numbers').val();
+          arrayOfLines = text.match(/[^\r\n]+/g);
+
+          // then output the matched numbers for the user to confirm
+          var output = '<tr><th>Recipient No.</th><th>Status</th></tr>';
+          for (var i=0; i<arrayOfLines.length; i++) {
+            if (arrayOfLines[i].indexOf('+65') === -1) {
+              arrayOfLines[i] = '+65' + arrayOfLines[i];
+            }
+            output += '<tr><td class="number">' + arrayOfLines[i] + '</td><td class="status">Waiting</td></tr>';
+          }
+
+          $('#output').html(output);
+
+        });
+
+        $('.submit').click(function() {
+          //get the message
+          var message = $('#message-to-send').val();
+
+          $('#output tr').each(function(){
+
+            var row = $(this);
+            var handphone = row.find('.number').text();
+
+            if (handphone.length < 1) {
+              return;
+            }
+
+            $.post( 'http://localhost:8000/foodporn/sms/', {handphone: handphone, message: message}, function(data) {
+              if (data.success) {
+                row.find('.status').text(data.success);
+              } else {
+                row.find('.status').text('Error');
+              }
+            }, "json");
+
+            console.log(handphone);
+
+          });
+
+          $(this).unbind("click");
+          $(this).text('Messages Queued');
+          $(this).blur();
+
+        });
+
+      })();
+    </script>
+  </body>
+<html>

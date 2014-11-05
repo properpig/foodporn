@@ -19,7 +19,7 @@
 (function () {
   'use strict';
 
-  // window.apiUrl = 'http://192.168.2.140:8000/foodporn';
+  // window.apiUrl = 'http://localhost:8000/foodporn';
   window.apiUrl = 'http://128.199.140.174:8000/foodporn';
 
   if ('username' in localStorage) {
@@ -148,7 +148,7 @@
 
   });
 
-  $.getJSON( window.apiUrl + '/login/' + '?username=' + localStorage.getItem('username') + '&page=' + window.location.pathname, function( data ) {
+  $.getJSON( window.apiUrl + '/nav/' + '?username=' + localStorage.getItem('username') + '&page=' + window.location.pathname, function( data ) {
     // var unread_count = 0;
     // unread_count += parseInt(localStorage.getItem('deals-unread'));
     // unread_count += parseInt(localStorage.getItem('friends-unread'));

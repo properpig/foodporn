@@ -113,7 +113,7 @@
               return;
             }
           });
-        }, 500);
+        }, 1000);
       }
 
       $('.follow-button').click(function(event) {

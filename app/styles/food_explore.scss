@@ -136,3 +136,95 @@ $icon-height: 47px;
 .other-filters .filter-icon:first-child, .other-filters .filter-icon:nth-child(6) {
   display: none !important;
 }
+
+/* history */
+.heading {
+  font-weight: 400;
+  text-align: center;
+  padding: 8px;
+  border-bottom: 1px solid $grey;
+}
+
+.result-item {
+
+  padding: 8px;
+  border-bottom: $grey solid 1px;
+
+  .photo {
+    width: 20%;
+    float: left;
+
+    img {
+      border-radius: $radius;
+    }
+
+  }
+
+  .information {
+    width: 80%;
+    float: right;
+    padding-left: 8px;
+
+    .follow-button {
+      float: right;
+      font-size: 14px;
+      font-weight: 300;
+      padding: 3px 12px;
+      clear: both;
+    }
+
+    .name {
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    .restaurant-name {
+      color: $base-color;
+      font-style: italic;
+    }
+
+    .location-name {
+      line-height: 15px;
+      font-size: 14px;
+      color: $darkgrey;
+    }
+
+    .rating {
+      .fa {
+        margin-right: 2px;
+      }
+    }
+
+    .price, .price-range, .num-followers {
+      display: inline-block;
+    }
+
+    // .price::first-letter {
+    //   font-weight: 400;
+    // }
+
+  }
+
+  .buttons {
+
+    .square-button {
+      width: 32%;
+      margin: 1%;
+      padding: 3px 6px;
+      border: 1px solid $grey;
+      border-radius: $radius;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .square-button:first-child {
+      margin-left: 0;
+    }
+
+    .square-button:last-child {
+      margin-right: 0;
+    }
+
+  }
+
+}

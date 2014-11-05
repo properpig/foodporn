@@ -48,24 +48,50 @@
       <div class="app-bar-container">
         <div class="app-bar">
           <div class="hamburger-container">
+            <!-- <img class="hamburger" src="images/hamburger.svg" /> -->
             <img class="logo" src="images/logo.svg" />
           </div><!--
-           --><div class="app-name"><center>Please Log in</center></div>
+           --><div class="app-name">Welcome</div>
         </div>
+        <div class="icons">
+<!--             <a href="#" class="hidden"><img src="images/icons/map-view.svg" /></a>
+            <a href="search.html"><i class="fa fa-search fa-2x"></i></a> -->
+         </div>
+      </div>
+
+      <div class="navigation-drawer">
       </div>
 
       <div class="vignette"></div>
 
-      <div class="main-div">
+      <div class="main-div extended">
         <div class="note box">
           <img src="images/logo-black.svg" />
-          It appears that you are not logged in. You have to be logged in to continue <span onclick="window.location='login.html';">;)</span>
+
+          <p>Some introduction to our app here.</p>
+
+          <p>Instructions + gif to add the app to homescreen and launch from there.</p>
+
+          <div><div class="checkbox"></div>I'm launching this from my home screen</div>
+
+          <div class="proceed-button">Proceed</div>
+
+          <center><i class="fa fa-spinner fa-spin"></i></center>
         </div>
       </div>
 
-      <div class="main-buttons" onclick="window.history.back();"><div class="full">Take me back</div></div>
-
     </div>
+
+    <script>
+      var query_string = window.location.href.slice(window.location.href.indexOf('?') + 1);
+      $('.proceed-button').click(function() {
+        window.location = 'login.html?' + query_string;
+      });
+      $('.checkbox').click(function() {
+        $(this).addClass('selected');
+        $('.proceed-button').fadeIn();
+      });
+    </script>
 
 
     <!-- Built with love using Web Starter Kit -->

@@ -15,6 +15,9 @@
     var source = $('#food-template').html();
     var template = Handlebars.compile(source);
 
+    var historySource = $('#history-template').html();
+    var historyTemplate = Handlebars.compile(historySource);
+
     var foodlist;
     var foodIndex = 0;
 
@@ -44,13 +47,29 @@
       $('.instructions').fadeToggle();
     });
 
-    $('.controls .fa-undo').click(function() {
-      if (foodIndex === 0) {
-        return;
-      }
-      populateNextFood(--foodIndex);
-      $.getJSON (window.apiUrl + '/food/reset/' + foodlist[foodIndex].id + '/' + window.username + '/');
+    $('.controls .fa-history').click(function() {
+      var id = $(this).attr('id');
+      // show the vignette
+      $('#modal-' + id).addClass('open');
+      // slide the modal in
+      $('#modal-' + id + ' .modal').animate({
+        'marginTop': 90
+      });
+      addCloseButton(id);
+
+      // load the history
+      $.getJSON( window.apiUrl + '/food/history/' + window.username + '/', function( data ) {
+        $('#modal-history .history-list').html(historyTemplate(data));
+      });
     });
+
+    // $('.controls .fa-undo').click(function() {
+    //   if (foodIndex === 0) {
+    //     return;
+    //   }
+    //   populateNextFood(--foodIndex);
+    //   $.getJSON (window.apiUrl + '/food/reset/' + foodlist[foodIndex].id + '/' + window.username + '/');
+    // });
 
     $('.dismiss-button').click(function() {
       $('.instructions').fadeOut();

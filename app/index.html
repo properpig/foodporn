@@ -101,7 +101,7 @@
         </div>
 
         <div class="controls">
-          <div class="circle"><i class="fa fa-undo fa-2x"></i></div>
+          <div class="circle"><i class="fa fa-history fa-2x" id="history"></i></div>
           <div class="circle"><i class="fa fa-question fa-2x"></i></div>
           <div class="circle"><i class="fa fa-info fa-2x"></i></div>
           <div class="circle"><i class="fa fa-thumbs-o-down fa-2x"></i></div>
@@ -123,6 +123,36 @@
           </div>
 
           <div class="main-buttons"><div class="submit" id="preferences">Apply Preferences</div></div>
+        </div>
+      </div>
+
+      <div class="modal-wrapper" id="modal-history">
+        <div class="modal">
+          <div class="history-list">
+            <script id="history-template" type="text/x-handlebars-template">
+              <div class="heading">Recently Liked/Disliked</div>
+              {{#each this}}
+                <div class="result-item" onclick="window.location='food.html?id={{ id }}';">
+                  <div class="photo">
+                    <img src="images/{{ photo }}" />
+                  </div>
+                  <div class="information">
+                    <div class="name">{{ name }}</div>
+                    <div>by <a href="restaurant.html?id={{ restaurant_id }}"><span class="restaurant-name">{{ restaurant }}</span></a></div>
+                    <div class="stats"><span class="likes"><i class="fa fa-thumbs-o-up"></i> {{ num_likes }}</span> &middot; <span class="price">{{ price }}</span></div>
+                    <div class="buttons">
+                      <div class="like square-button"><i class="fa fa-thumbs-o-up"></i> Like</div><!--
+                      --><div class="dislike square-button"><i class="fa fa-thumbs-o-down"></i> Dislike</div><!--
+                      --><div class="clearlike square-button"><i class="fa fa-eraser"></i> Clear</div>
+                    </div>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              {{/each}}
+            </script>
+          </div>
+
+          <div class="main-buttons"><div id="close">Back</div></div>
         </div>
       </div>
 

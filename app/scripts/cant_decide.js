@@ -32,13 +32,13 @@
           return;
         }
 
-        if (ev.deltaX < -150) {
+        if (ev.deltaX < -100) {
           mc.off('panleft panright tap press swipeleft swiperight');
           $.getJSON (window.apiUrl + '/food/dislike/' + foodlist[foodIndex].id + '/' + window.username + '/');
           likeFood(false);
         }
 
-        if (ev.deltaX > 150) {
+        if (ev.deltaX > 100) {
           mc.off('panleft panright tap press swipeleft swiperight');
           $.getJSON (window.apiUrl + '/food/like/' + foodlist[foodIndex].id + '/' + window.username + '/');
           likeFood(true);

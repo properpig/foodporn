@@ -59,8 +59,59 @@
 
       // load the history
       $.getJSON( window.apiUrl + '/food/history/' + window.username + '/', function( data ) {
-        $('#modal-history .history-list').html(historyTemplate(data));
+        console.log(data);
+        $('#modal-history .history-list').html(historyTemplate(data)).promise().done(function() {
+          $('.buttons .like').click(function(event) {
+            event.stopPropagation();
+            var likebutton = $(this);
+            if (likebutton.hasClass('selected')) {
+              return;
+            }
+            var dislikebutton = $(this).parent().find('.dislike');
+            var clearbutton = $(this).parent().find('.clearlike');
+            var id = likebutton.data('id');
+            $.getJSON (window.apiUrl + '/food/like/' + id + '/' + window.username + '/', function() {
+              likebutton.addClass('selected');
+              dislikebutton.removeClass('selected');
+              clearbutton.removeClass('selected');
+            });
+          });
+          $('.buttons .dislike').click(function(event) {
+            event.stopPropagation();
+            var dislikebutton = $(this);
+            if (dislikebutton.hasClass('selected')) {
+              return;
+            }
+            var likebutton = $(this).parent().find('.like');
+            var clearbutton = $(this).parent().find('.clearlike');
+            var id = dislikebutton.data('id');
+            $.getJSON (window.apiUrl + '/food/dislike/' + id + '/' + window.username + '/', function() {
+              dislikebutton.addClass('selected');
+              likebutton.removeClass('selected');
+              clearbutton.removeClass('selected');
+            });
+          });
+          $('.buttons .clearlike').click(function(event) {
+            event.stopPropagation();
+            var id = $(this).data('id');
+            var button = $(this);
+            var likebutton = button.parent().find('.like');
+            var dislikebutton = button.parent().find('.dislike');
+            $.getJSON (window.apiUrl + '/food/reset/' + id + '/' + window.username + '/', function() {
+              button.addClass('selected');
+              likebutton.removeClass('selected');
+              dislikebutton.removeClass('selected');
+            });
+          });
+
+        });
       });
+    });
+
+    $('.main-buttons #close').click(function() {
+      $('.modal-wrapper.open').click();
+      $('#reloadValue').val('');
+      location.reload();
     });
 
     // $('.controls .fa-undo').click(function() {
@@ -111,12 +162,12 @@
           return;
         }
 
-        if (ev.deltaX < -150) {
+        if (ev.deltaX < -100) {
           mc.off('panleft panright tap press swipeleft swiperight');
           dislikeButton.click();
         }
 
-        if (ev.deltaX > 150) {
+        if (ev.deltaX > 100) {
           mc.off('panleft panright tap press swipeleft swiperight');
           likeButton.click();
         }

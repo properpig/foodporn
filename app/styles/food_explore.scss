@@ -215,6 +215,30 @@ $icon-height: 47px;
       border-radius: $radius;
       display: inline-block;
       text-align: center;
+      background: $whitegrey;
+      font-size: 14px;
+      color: $darkgrey;
+    }
+
+    .square-button.like i::after {
+      content: "\f087";
+    }
+
+    .square-button.selected.like i::after {
+      content: "\f164";
+    }
+
+    .square-button.dislike i::after {
+      content: "\f088";
+    }
+
+    .square-button.selected.dislike i::after {
+      content: "\f165";
+    }
+
+    .square-button.selected {
+      border: 1px solid $base-color;
+      color: $base-color;
     }
 
     .square-button:first-child {

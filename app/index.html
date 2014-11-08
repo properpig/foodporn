@@ -137,13 +137,13 @@
                     <img src="images/{{ photo }}" />
                   </div>
                   <div class="information">
-                    <div class="name">{{ name }}</div>
+                    <div class="name"><a href="food.html?id={{ id }}">{{ name }}</a></div>
                     <div>by <a href="restaurant.html?id={{ restaurant_id }}"><span class="restaurant-name">{{ restaurant }}</span></a></div>
                     <div class="stats"><span class="likes"><i class="fa fa-thumbs-o-up"></i> {{ num_likes }}</span> &middot; <span class="price">{{ price }}</span></div>
                     <div class="buttons">
-                      <div class="like square-button"><i class="fa fa-thumbs-o-up"></i> Like</div><!--
-                      --><div class="dislike square-button"><i class="fa fa-thumbs-o-down"></i> Dislike</div><!--
-                      --><div class="clearlike square-button"><i class="fa fa-eraser"></i> Clear</div>
+                      <div class="like square-button {{#if is_liked}}selected{{/if}}" data-id={{ id }}><i class="fa"></i> Like</div><!--
+                      --><div class="dislike square-button {{#if is_disliked}}selected{{/if}}" data-id={{ id }}><i class="fa"></i> Dislike</div><!--
+                      --><div class="clearlike square-button {{#if is_neither}}selected{{/if}}" data-id={{ id }}><i class="fa fa-eraser"></i> Neither</div>
                     </div>
                   </div>
                   <div class="clear"></div>

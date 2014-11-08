@@ -26,7 +26,7 @@
       }
 
       $('#modal-filters .modal .filter-area').html(modalTemplate(data)).promise().done(function(){
-        prepopulateFields();
+        setTimeout(function(){prepopulateFields();},500);
       });
 
       // that means it was the dedicated search page

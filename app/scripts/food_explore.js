@@ -21,34 +21,45 @@
     var foodlist;
     var foodIndex = 0;
 
-    getFoodList('');
+    var foodSettings = '';
+    if (localStorage.getItem('preferences')) {
+      foodSettings = localStorage.getItem('preferences');
+      if (window.location.toString().indexOf('?') === -1) {
+        window.location = window.location.toString().split('?')[0] + '?explore=true' + foodSettings;
+      }
+    }
+    getFoodList(foodSettings);
 
     var myElement = document.getElementById('food-photo');
     var foodphoto = $('#food-photo img');
     var foodphoto2 = $('#food-photo2 img');
 
     // set some listeners to the buttons
-    var likeButton = $('.controls .fa-thumbs-o-up');
-    var dislikeButton = $('.controls .fa-thumbs-o-down');
+    var likeButton = $('.controls .fa-thumbs-o-up').parent();
+    var dislikeButton = $('.controls .fa-thumbs-o-down').parent();
     dislikeButton.click(function(){
-      $.getJSON (window.apiUrl + '/food/dislike/' + foodlist[foodIndex].id + '/' + window.username + '/');
-      likeFood(false);
+      mc.off('panleft panright tap press swipeleft swiperight');
+      $.getJSON (window.apiUrl + '/food/dislike/' + foodlist[foodIndex].id + '/' + window.username + '/', function() {
+        likeFood(false);
+      });
     });
     likeButton.click(function(){
-      $.getJSON (window.apiUrl + '/food/like/' + foodlist[foodIndex].id + '/' + window.username + '/');
-      likeFood(true);
+      mc.off('panleft panright tap press swipeleft swiperight');
+      $.getJSON (window.apiUrl + '/food/like/' + foodlist[foodIndex].id + '/' + window.username + '/', function() {
+        likeFood(true);
+      });
     });
 
-    $('.controls .fa-info').click(function() {
-      window.location='food.html?id=' + foodlist[foodIndex].id;
-    });
+    // $('.controls .fa-info').parent().click(function() {
+    //   window.location='food.html?id=' + foodlist[foodIndex].id;
+    // });
 
-    $('.controls .fa-question').click(function() {
+    $('.controls .fa-question-circle').parent().click(function() {
       $('.instructions').fadeToggle();
     });
 
-    $('.controls .fa-history').click(function() {
-      var id = $(this).attr('id');
+    $('.controls .fa-history').parent().click(function() {
+      var id = 'history';
       // show the vignette
       $('#modal-' + id).addClass('open');
       // slide the modal in
@@ -57,9 +68,16 @@
       });
       addCloseButton(id);
 
+
       // load the history
       $.getJSON( window.apiUrl + '/food/history/' + window.username + '/', function( data ) {
         console.log(data);
+
+        // make the close button trigger a reload
+        $('.modal .closebutton').click(function() {
+          $('.main-buttons #close').click();
+        });
+
         $('#modal-history .history-list').html(historyTemplate(data)).promise().done(function() {
           $('.buttons .like').click(function(event) {
             event.stopPropagation();
@@ -110,8 +128,7 @@
 
     $('.main-buttons #close').click(function() {
       $('.modal-wrapper.open').click();
-      $('#reloadValue').val('');
-      location.reload();
+      $('.main-buttons .submit').click();
     });
 
     // $('.controls .fa-undo').click(function() {
@@ -144,15 +161,19 @@
 
     // create a simple instance
     // by default, it only adds horizontal recognizers
-    var mc = new Hammer(myElement);
+    // var mc = new Hammer(myElement);
 
     attachHammerListener();
     var timeout;
+
+    var mc;
 
     function attachHammerListener() {
       mc = new Hammer(myElement);
       // listen to events...
       mc.on('panleft panright', function(ev) {
+
+        clearTimeout(timeout);
 
         if (ev.eventType === 4) {
           foodphoto.animate({
@@ -163,12 +184,10 @@
         }
 
         if (ev.deltaX < -100) {
-          mc.off('panleft panright tap press swipeleft swiperight');
           dislikeButton.click();
         }
 
         if (ev.deltaX > 100) {
-          mc.off('panleft panright tap press swipeleft swiperight');
           likeButton.click();
         }
 
@@ -176,9 +195,6 @@
           'left': ev.deltaX,
           // 'top': ev.deltaY
         });
-
-
-        clearTimeout(timeout);
 
         timeout = setTimeout(function() {
           foodphoto.animate({
@@ -189,29 +205,33 @@
 
       });
 
-      mc.on('swipeleft', function(ev) {
-        mc.off('panleft panright tap press swipeleft swiperight');
-        dislikeButton.click(); // simulate a click to the button
-      });
+      // mc.on('swipeleft', function(ev) {
+      //   mc.off('panleft panright tap press swipeleft swiperight');
+      //   dislikeButton.click(); // simulate a click to the button
+      // });
 
-      mc.on('swiperight', function(ev) {
-        mc.off('panleft panright tap press swipeleft swiperight');
-        likeButton.click(); // simulate a click to the button
-      });
+      // mc.on('swiperight', function(ev) {
+      //   mc.off('panleft panright tap press swipeleft swiperight');
+      //   likeButton.click(); // simulate a click to the button
+      // });
 
-      mc.on('press tap', function(ev) {
-        $('.controls .fa-info').click();
+      mc.on('doubletap', function(ev) {
+        $('.info-button').click();
       });
 
     }
 
     function getFoodList(extra) {
+
+      localStorage.setItem('preferences', extra);
+      console.log(localStorage.getItem('preferences'));
+
       $.getJSON( window.apiUrl + '/food/list/' + window.username + '/?explore=true' + extra, function( data ) {
         foodlist = data;
         populateNextFood(0);
       }).done(function() {
         if (localStorage.getItem('firsttime') === null) {
-          $('.controls .fa-question').click();
+          $('.controls .fa-question-circle').click();
           localStorage.setItem('firsttime', true);
         }
       });
@@ -246,13 +266,20 @@
 
     function populateNextFood(index) {
       if (index > foodlist.length-1) {
+        foodphoto.attr('src', 'images/error.svg');
+        mc.off('panleft panright tap press swipeleft swiperight');
+        $('.info').html('');
         return;
       }
       $('.info').html(template(foodlist[index]));
       foodphoto.attr('src', 'images/' + foodlist[index].photo);
       if (index+1 !== foodlist.length){
         foodphoto2.attr('src', 'images/' + foodlist[index+1].photo);
-        foodphoto2.css('background-image', 'url(images/' + foodlist[index+2].photo + ')');
+        if (index+2 !== foodlist.length){
+          foodphoto2.css('background-image', 'url(images/' + foodlist[index+2].photo + ')');
+        }
+      } else {
+        foodphoto2.attr('src', 'images/error.svg');
       }
     }
 

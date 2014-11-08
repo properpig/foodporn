@@ -144,7 +144,7 @@
       rating += '<i class="fa fa-star-o"></i>';
     }
 
-    return rating + ' ' + num_reviews;
+    return rating;
 
   });
 

@@ -41,6 +41,14 @@ $icon-height: 47px;
     font-size: 18px;
   }
 
+  .info-button {
+    border: 1px solid white;
+    border-radius: $radius;
+    background: rgba(255,255,255,0.2);
+    padding: 0px 9px;
+    float: right;
+  }
+
   .restaurant-name {
     font-size: 17px;
     font-weight: 400;
@@ -64,7 +72,7 @@ $icon-height: 47px;
   width: 100%;
   height: 100%;
   position: absolute;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   color: white;
   z-index: 4;
   display: none;
@@ -75,15 +83,17 @@ $icon-height: 47px;
 
   .dismiss-button {
     position: absolute;
-    bottom: 70px;
+    bottom: 15px;
     left: 0px;
     right: 0px;
     margin: auto;
     width: 50%;
     border: 1px solid white;
-    padding: 5px;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 7px;
     text-align: center;
     border-radius: $radius;
+    font-weight: 400;
   }
 
 }
@@ -104,25 +114,38 @@ $icon-height: 47px;
 
 .controls {
 
+  margin-top: 3px;
   width: 100%;
   text-align: center;
 
-  .circle {
-    height: $icon-height;
-    width: $icon-height;
-    line-height: $icon-height + 5px;
-    background: $base-color-transparent;
-    padding: 3px;
-    margin: 5px;
-    border-radius: 1000px;
-    color: white;
-    text-align: center;
+  .wrapper {
+    width: 25%;
     display: inline-block;
+    float: left;
+    padding-right: 3px;
+  }
+
+  .wrapper:first-child {
+    padding-left: 3px;
+  }
+
+  .circle {
+    // height: $icon-height;
+    // width: $icon-height;
+    // line-height: $icon-height + 5px;
+    background: white;
+    color: $base-color;
+    padding: 6px 0px;
+    // margin: 5px;
+    border-radius: $radius;
+    border: 1px solid $base-color;
+    text-align: center;
     transition: background 0.2s ease;
   }
 
   .circle.clicked {
-    background: $yellow-orange-transparent;
+    background: $base-color-transparent;
+    color: white;
   }
 
 }
@@ -211,13 +234,13 @@ $icon-height: 47px;
       width: 32%;
       margin: 1%;
       padding: 3px 6px;
-      border: 1px solid $grey;
+      border: 1px solid $base-color;
       border-radius: $radius;
       display: inline-block;
       text-align: center;
-      background: $whitegrey;
+      // background: $whitegrey;
       font-size: 14px;
-      color: $darkgrey;
+      color: $base-color;
     }
 
     .square-button.like i::after {
@@ -238,7 +261,8 @@ $icon-height: 47px;
 
     .square-button.selected {
       border: 1px solid $base-color;
-      color: $base-color;
+      background: $base-color-transparent;
+      color: white;
     }
 
     .square-button:first-child {

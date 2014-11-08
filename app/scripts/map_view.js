@@ -28,6 +28,10 @@ function showMap(listings) {
   var marker1 = new google.maps.Marker({
       position: new google.maps.LatLng(user.x, user.y),
       map: map,
+      icon: {
+        url: 'images/icons/marker-location.png',
+        scaledSize: new google.maps.Size(35, 35),
+      },
   });
 
   marker1.infowindow = new google.maps.InfoWindow();

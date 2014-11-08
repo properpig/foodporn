@@ -78,7 +78,10 @@
           <div id="food-photo2"><img src="images/blank.png" /></div>
           <div class="info">
             <script id="food-template" type="text/x-handlebars-template">
+              <div class="info-button" onclick="window.location='food.html?id={{ id }}';"><i class="fa fa-info-circle"></i> Info</div>
               <div class="name">{{ name }}</div>
+              <div class="clear"></div>
+
               <div>by
                 <span class="restaurant-name"><a href="restaurant.html?id={{ restaurant_id }}">{{ restaurant }}</a></span>
                 <span class="stats">
@@ -90,7 +93,7 @@
           </div>
           <div class="instructions">
             <img src="images/drawing.svg"/>
-            <div class="dismiss-button">I got it!</div>
+            <div class="dismiss-button">OK, I got it!</div>
           </div>
           <div class="likestamp stamp">
             <img src="images/likeStamp.svg"/>
@@ -101,11 +104,11 @@
         </div>
 
         <div class="controls">
-          <div class="circle"><i class="fa fa-history fa-2x" id="history"></i></div>
-          <div class="circle"><i class="fa fa-question fa-2x"></i></div>
-          <div class="circle"><i class="fa fa-info fa-2x"></i></div>
-          <div class="circle"><i class="fa fa-thumbs-o-down fa-2x"></i></div>
-          <div class="circle"><i class="fa fa-thumbs-o-up fa-2x"></i></div>
+          <div class="wrapper"><div class="circle"><i class="fa fa-question-circle"></i> Help</div></div>
+          <div class="wrapper"><div class="circle"><i class="fa fa-history" id="history"></i> History</div></div>
+          <!-- <div class="circle"><i class="fa fa-info"></i> Info</div> -->
+          <div class="wrapper"><div class="circle"><i class="fa fa-thumbs-o-down"></i> Dislike</div></div>
+          <div class="wrapper"><div class="circle"><i class="fa fa-thumbs-o-up"></i> Like</div></div>
         </div>
 
         <div class="clear"></div>

@@ -112,7 +112,7 @@
       }
     });
 
-    prepopulateFields();
+    setTimeout(function(){prepopulateFields();},500);
 
   }
 

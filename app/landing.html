@@ -70,11 +70,15 @@
 
           <p>Some introduction to our app here.</p>
 
-          <p>Instructions + gif to add the app to homescreen and launch from there.</p>
+          <p>Instructions.</p>
 
-          <div><div class="checkbox"></div>I'm launching this from my home screen</div>
+          <p>To take part in this survey, you should be accessing our application through a Chrome browser on your mobile device: </p>
+          <div><div id="is_mobile" class="checkbox"></div>Mobile device detected</div>
+          <div><div id="is_chrome" class="checkbox"></div>Chrome browser detected</div>
 
-          <div class="proceed-button">Proceed</div>
+          <div class="error"><p>We were unable to detect your mobile phone/Chrome browser. Please double check that you are accessing the application from your phone, and that you are using a Chrome browser.</p></div>
+
+          <div class="proceed-button disabled">Proceed</div>
 
           <!-- <center><i class="fa fa-spinner fa-spin"></i></center> -->
         </div>
@@ -84,12 +88,38 @@
 
     <script>
       var query_string = window.location.href.slice(window.location.href.indexOf('?') + 1);
-      $('.proceed-button').click(function() {
-        window.location = 'login.html?' + query_string;
-      });
-      $('.checkbox').click(function() {
-        $(this).addClass('selected');
-        $('.proceed-button').fadeIn();
+
+      // make call to API to check
+      $.get('http://128.199.140.174:8000/foodporn/uacheck/?' + query_string, function(data) {
+      // $.get('http://192.168.2.140:8000/foodporn/uacheck/?' + query_string, function(data) {
+
+        var proceed = true;
+        setTimeout(function() {
+          if (data.is_mobile) {
+            $('#is_mobile').addClass('selected');
+          } else {
+            $('#is_mobile').addClass('crossed');
+            proceed = false;
+          }
+
+          if (data.is_chrome) {
+            $('#is_chrome').addClass('selected');
+          } else {
+            $('#is_chrome').addClass('crossed');
+            proceed = false;
+          }
+
+          if (proceed) {
+            $('.proceed-button').removeClass('disabled');
+            $('.proceed-button').click(function() {
+              window.location = 'login.html?' + query_string;
+            });
+          } else {
+            $('.error').fadeIn();
+          }
+        }, 500);
+
+
       });
     </script>
 

@@ -4,10 +4,14 @@
   padding: 7px 7px 0px 0px;
 }
 
-.food-item {
-  width: 47.5%;
-  margin: 0px 0px 7px 8px;
+.food-item-wrapper {
+  width: 50%;
   display: inline-block;
+  box-sizing: border-box;
+
+  .food-item {
+    margin: 0px 0px 7px 8px;
+  }
 
   .food-photo {
     position: relative;

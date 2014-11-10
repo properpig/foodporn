@@ -23,6 +23,20 @@
 
 }
 
+.error {
+  display: none;
+  background-color: #f2e1e1;
+  border: 1px solid $base-color;
+  color: #6a0000;
+  padding: 10px;
+  border-radius: $radius;
+
+  p {
+    padding: 0px;
+    font-size: 14px;
+  }
+}
+
 .proceed-button {
   background-color: $base-color;
   color: white;
@@ -31,22 +45,29 @@
   padding: 10px;
   text-align: center;
   border-radius: $radius;
-  display: none;
+  transition: background-color 1s ease;
+}
+
+.disabled {
+  background-color: $base-color-transparent;
 }
 
 .checkbox {
-  width: 35px;
-  font-size: 30px;
-  line-height: 32px;
+  font-size: 20px;
   font-family: 'FontAwesome';
   display: inline-block;
   color: $darkgrey;
+  margin-right: 5px;
 }
 
 .checkbox::after {
-  content: '\f096';
+  content: '\f10c';
 }
 
 .checkbox.selected::after {
-  content: '\f046';
+  content: '\f058';
+}
+
+.checkbox.crossed::after {
+  content: '\f057';
 }

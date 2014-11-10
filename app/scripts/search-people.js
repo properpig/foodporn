@@ -2,6 +2,10 @@
 (function () {
     'use strict';
 
+  // set the width
+  $('#search').width($(window).width() - 64 - 80);
+  $('#search, .app-name .fa-times').css('opacity', 1.0);
+
   // populate the template for pages with filters
   function populateFilters() {
 

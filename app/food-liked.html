@@ -72,7 +72,8 @@
       <div class="main-div">
         <!-- this is our template -->
         <script id="food-template" type="text/x-handlebars-template">
-        {{#foods}}<div class="box food-item">
+        {{#foods}}<div class="food-item-wrapper">
+          <div class="box food-item">
             <a href="food.html?id={{ id }}">
               <div class="food-photo">
                 <img src="images/{{ photo }}" />
@@ -88,7 +89,8 @@
                 </div>
               </div>
             </a>
-          </div>{{/foods}}
+          </div>
+        </div>{{/foods}}
         </script>
       </div>
 

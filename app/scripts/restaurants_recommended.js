@@ -6,8 +6,12 @@
   var lastExtra = '';
   var listings;
 
+  var follow = false;
+
   function linkFollowButton() {
     $('.follow-button').click(function(event) {
+
+      follow = true;
 
       var restaurant_id = $(this).data('id');
 
@@ -36,7 +40,12 @@
 
     }).done(function() {
       linkFollowButton();
-      scrollToTop();
+      // prevent the page from scrolling if the user is just following
+      if (!follow) {
+        scrollToTop();
+      }
+      follow = false;
+
     });
   }
 

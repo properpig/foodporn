@@ -37,15 +37,29 @@
     // set some listeners to the buttons
     var likeButton = $('.controls .fa-thumbs-o-up').parent();
     var dislikeButton = $('.controls .fa-thumbs-o-down').parent();
-    dislikeButton.click(function(){
+    dislikeButton.click(function(e){
+      if (foodphoto.offset().left !== 0 && e.hasOwnProperty('originalEvent')) {
+        return;
+      }
+      var swipedetect = '';
+      if(!e.hasOwnProperty('originalEvent')) {
+        swipedetect = '?swipe=true';
+      }
       mc.off('panleft panright tap press swipeleft swiperight');
-      $.getJSON (window.apiUrl + '/food/dislike/' + foodlist[foodIndex].id + '/' + window.username + '/', function() {
+      $.getJSON (window.apiUrl + '/food/dislike/' + foodlist[foodIndex].id + '/' + window.username + '/' + swipedetect, function() {
         likeFood(false);
       });
     });
-    likeButton.click(function(){
+    likeButton.click(function(e){
+      if (foodphoto.offset().left !== 0 && e.hasOwnProperty('originalEvent')) {
+        return;
+      }
+      var swipedetect = '';
+      if(!e.hasOwnProperty('originalEvent')) {
+        swipedetect = '?swipe=true';
+      }
       mc.off('panleft panright tap press swipeleft swiperight');
-      $.getJSON (window.apiUrl + '/food/like/' + foodlist[foodIndex].id + '/' + window.username + '/', function() {
+      $.getJSON (window.apiUrl + '/food/like/' + foodlist[foodIndex].id + '/' + window.username + '/' + swipedetect, function() {
         likeFood(true);
       });
     });
@@ -75,7 +89,7 @@
 
         // make the close button trigger a reload
         $('.modal .closebutton').click(function() {
-          $('.main-buttons #close').click();
+          $('.main-buttons .submit').click();
         });
 
         $('#modal-history .history-list').html(historyTemplate(data)).promise().done(function() {
@@ -127,7 +141,10 @@
     });
 
     $('.main-buttons #close').click(function() {
-      $('.modal-wrapper.open').click();
+      $('.main-buttons .submit').click();
+    });
+
+    $('.modal-wrapper.open').click(function() {
       $('.main-buttons .submit').click();
     });
 
@@ -228,7 +245,8 @@
 
       $.getJSON( window.apiUrl + '/food/list/' + window.username + '/?explore=true' + extra, function( data ) {
         foodlist = data;
-        populateNextFood(0);
+        foodIndex = 0;
+        populateNextFood(foodIndex);
       }).done(function() {
         if (localStorage.getItem('firsttime') === null) {
           $('.controls .fa-question-circle').click();
@@ -284,6 +302,7 @@
     }
 
     $('.main-buttons .submit').click(function() {
+      console.log('sub');
       var extra = getSearchQueryFood();
       getFoodList(extra);
     });

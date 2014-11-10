@@ -148,7 +148,7 @@
 
   });
 
-  $.getJSON( window.apiUrl + '/nav/' + '?username=' + localStorage.getItem('username') + '&page=' + window.location.pathname, function( data ) {
+  $.getJSON( window.apiUrl + '/nav/' + '?username=' + localStorage.getItem('username') + '&page=' + window.location.pathname + window.location.search, function( data ) {
     // var unread_count = 0;
     // unread_count += parseInt(localStorage.getItem('deals-unread'));
     // unread_count += parseInt(localStorage.getItem('friends-unread'));

@@ -1,0 +1,66 @@
+@import '_custom_vars';
+
+.main-div {
+  top: $nav-bar-height;
+  text-align: center;
+}
+
+.title {
+  font-weight: 400;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 26px;
+}
+
+.box {
+  margin: 10px;
+  padding-bottom: 10px;
+}
+
+.person-item {
+  width: 30%;
+  display: inline-block;
+
+  .photo {
+
+    text-align: center;
+
+    img {
+      border-radius: 5em;
+      width: 80%;
+    }
+
+  }
+
+  .info {
+    text-align: center;
+  }
+
+  .name {
+    padding-top: 3px;
+    line-height: 18px;
+  }
+
+  .username {
+    line-height: 18px;
+    font-style: italic;
+  }
+
+}
+
+.credits {
+  padding: 0px 10px;
+  text-align: left;
+
+  p {
+    padding: 0px;
+    padding-bottom: 10px;
+    line-height: 18px;
+  }
+
+  a {
+    color: $darkgrey;
+    font-style: italic;
+  }
+
+}

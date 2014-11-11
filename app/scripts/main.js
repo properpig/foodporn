@@ -164,7 +164,7 @@
         <a href="activity-friends.html" class="nav-item"><i class="fa fa-rss"></i> Activity Feed</a> \
         <a href="restaurant-following.html" class="nav-item"><i class="fa fa-glass"></i> Restaurants</a> \
         <a href="people-following.html" class="nav-item"><i class="fa fa-users"></i> People</a> \
-        <a href="#" class="nav-item"><i class="fa fa-info-circle"></i> About</a> \
+        <a href="about.html" class="nav-item"><i class="fa fa-info-circle"></i> About</a> \
         <a href="logout.html" class="nav-item"><i class="fa fa-sign-out"></i> Logout</a> \
         <a href="user.html?id=' + data.id + '" class="nav-item profile"><img src="images/' + data.photo + '" /><span class="username">' + data.name + '</span></a>';
 

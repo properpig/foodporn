@@ -17,8 +17,11 @@
 
     function attachHammerListener() {
       mc = new Hammer(myElement);
+
+      mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+
       // listen to events...
-      mc.on('panleft panright', function(ev) {
+      mc.on('panup pandown', function(ev) {
 
         if (ev.eventType === 4) {
           foodPhoto.animate({
@@ -28,20 +31,20 @@
           return;
         }
 
-        if (ev.deltaX < -100) {
-          mc.off('panleft panright tap press swipeleft swiperight');
+        if (ev.deltaY > 100) {
+          mc.off('panup pandown tap press swipeleft swiperight');
           $.getJSON (window.apiUrl + '/food/dislike/' + foodlist[foodIndex].id + '/' + window.username + '/');
           likeFood(false);
         }
 
-        if (ev.deltaX > 100) {
-          mc.off('panleft panright tap press swipeleft swiperight');
+        if (ev.deltaY < -100) {
+          mc.off('panup pandown tap press swipeleft swiperight');
           $.getJSON (window.apiUrl + '/food/like/' + foodlist[foodIndex].id + '/' + window.username + '/');
           likeFood(true);
         }
 
         foodPhoto.css({
-          'left': ev.deltaX,
+          'top': ev.deltaY,
           // 'top': ev.deltaY
         });
 
@@ -85,18 +88,19 @@
     });
 
     function likeFood(status) {
-        var pos = '-100%';
+        var height = foodPhoto.height();
+        var pos = height;
         if (status) {
-            pos = '100%';
+            pos = -height;
         }
         foodPhoto.animate({
-            'left': pos,
-            'top': 0,
+            'top': pos,
+            'left': 0,
             'opacity': 0.0
         }, 500, function() {
             populateNextFood(++foodIndex);
             foodPhoto.css({
-                'left': 0,
+                'top': 0,
                 'opacity': 1.0
             });
             attachHammerListener();

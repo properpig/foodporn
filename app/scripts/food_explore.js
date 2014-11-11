@@ -45,7 +45,7 @@
       if(!e.hasOwnProperty('originalEvent')) {
         swipedetect = '?swipe=true';
       }
-      mc.off('panleft panright tap press swipeleft swiperight');
+      mc.off('panup pandown tap press');
       $.getJSON (window.apiUrl + '/food/dislike/' + foodlist[foodIndex].id + '/' + window.username + '/' + swipedetect, function() {
         likeFood(false);
       });
@@ -58,7 +58,7 @@
       if(!e.hasOwnProperty('originalEvent')) {
         swipedetect = '?swipe=true';
       }
-      mc.off('panleft panright tap press swipeleft swiperight');
+      mc.off('panup pandown tap press');
       $.getJSON (window.apiUrl + '/food/like/' + foodlist[foodIndex].id + '/' + window.username + '/' + swipedetect, function() {
         likeFood(true);
       });
@@ -188,7 +188,8 @@
     function attachHammerListener() {
       mc = new Hammer(myElement);
       // listen to events...
-      mc.on('panleft panright', function(ev) {
+      mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+      mc.on('panup pandown', function(ev) {
 
         clearTimeout(timeout);
 
@@ -200,16 +201,16 @@
           return;
         }
 
-        if (ev.deltaX < -100) {
-          dislikeButton.click();
-        }
-
-        if (ev.deltaX > 100) {
+        if (ev.deltaY < -100) {
           likeButton.click();
         }
 
+        if (ev.deltaY > 100) {
+          dislikeButton.click();
+        }
+
         foodphoto.css({
-          'left': ev.deltaX,
+          'top': ev.deltaY,
           // 'top': ev.deltaY
         });
 
@@ -223,12 +224,12 @@
       });
 
       // mc.on('swipeleft', function(ev) {
-      //   mc.off('panleft panright tap press swipeleft swiperight');
+      //   mc.off('panup pandown tap press');
       //   dislikeButton.click(); // simulate a click to the button
       // });
 
       // mc.on('swiperight', function(ev) {
-      //   mc.off('panleft panright tap press swipeleft swiperight');
+      //   mc.off('panup pandown tap press');
       //   likeButton.click(); // simulate a click to the button
       // });
 
@@ -257,9 +258,10 @@
 
     function likeFood(status) {
       var stamp;
-      var pos = '-100%';
+      var height = foodphoto.height();
+      var pos = height;
       if (status) {
-        pos = '100%';
+        pos = -height;
         stamp = $('.likestamp');
       } else {
         stamp = $('.dislikestamp');
@@ -269,13 +271,13 @@
       setTimeout(function(){stamp.removeClass('displayed');},500);
 
       foodphoto.animate({
-        'left': pos,
-        'top': 0,
+        'top': pos,
+        'left': 0,
         'opacity': 0.0
       }, 500, function() {
         populateNextFood(++foodIndex);
         foodphoto.css({
-          'left': 0,
+          'top': 0,
           'opacity': 1.0
         });
         attachHammerListener();
@@ -285,7 +287,7 @@
     function populateNextFood(index) {
       if (index > foodlist.length-1) {
         foodphoto.attr('src', 'images/error.svg');
-        mc.off('panleft panright tap press swipeleft swiperight');
+        mc.off('panup pandown tap press');
         $('.info').html('');
         return;
       }
@@ -302,7 +304,6 @@
     }
 
     $('.main-buttons .submit').click(function() {
-      console.log('sub');
       var extra = getSearchQueryFood();
       getFoodList(extra);
     });
